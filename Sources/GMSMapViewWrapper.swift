@@ -26,6 +26,10 @@ import RxSwift
 }
 
 @objc public protocol GMSMarkerWrapper: class {
+
+    var title: String? { get set }
+    var tappable: Bool { @objc(isTappable) get set }
+    var zIndex: Int32 { get set }
     
     var position: CLLocationCoordinate2D { get set }
     var snippet: String? { get set }
@@ -41,6 +45,8 @@ import RxSwift
     var opacity: Float { get set }
     var userData: Any? { get set }
     
+    //weak var map: GMSMapViewWrapper? { get set }
+
     //var appearAnimation: GMSMarkerAnimation { get set }
     //var layer: GMSMarkerLayer { get }
     //weak var panoramaView: GMSPanoramaView? { get set }

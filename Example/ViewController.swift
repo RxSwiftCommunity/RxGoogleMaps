@@ -20,9 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        mapView.delegate = self
-        
-        mapView.rx.setDelegate(self)
+        //mapView.rx.setDelegate(self)
         
         mapView.rx.willMove.asDriver()
             .drive(onNext: { print("Gesture: \($0.byGesture)") })
@@ -53,35 +51,36 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let camera = GMSCameraPosition.camera(withLatitude: -33, longitude: 151, zoom: 6, bearing: 30, viewingAngle: 45)
+        let camera = GMSCameraPosition.camera(withLatitude: 33.3659424, longitude: 126.3476852, zoom: 12, bearing: 30, viewingAngle: 45)
         mapView.camera = camera
         
-        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: -33, longitude: 151))
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 33.3659424, longitude: 126.3476852))
+        marker.title = "Hello, RxSwift"
         marker.map = mapView
 
     }
 
 }
 
-extension ViewController: RxGMSMapViewDelegate {
-    
-    func mapView(_ mapView: GMSMapViewWrapper, didHandleTap marker: GMSMarkerWrapper) -> Bool {
-        return true
-    }
-    
-}
+//extension ViewController: RxGMSMapViewDelegate {
+//    
+//    func mapView(_ mapView: GMSMapViewWrapper, didHandleTap marker: GMSMarkerWrapper) -> Bool {
+//        return false
+//    }
+//    
+//}
 
-extension ViewController: GMSMapViewDelegate/*, GMSMapViewDelegateWrapper*/ {
-
+//extension ViewController: GMSMapViewDelegate {
+//
 //    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
 //        print("willmove \(gesture)")
 //    }
-    
+//    
 //    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
 //        print("Did change position: \(position.target.longitude)")
 //    }
-    
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print("Did tap at: (\(coordinate.latitude), \(coordinate.longitude))")
-    }
-}
+//    
+//    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+//        print("Did tap at: (\(coordinate.latitude), \(coordinate.longitude))")
+//    }
+//}
