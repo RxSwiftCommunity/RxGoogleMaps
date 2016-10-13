@@ -113,6 +113,22 @@ public extension Reactive where Base: GMSMapViewWrapper {
         return ControlEvent(events: source)
     }
 
+    public var didTapPOI: ControlEvent<(placeID: String, name: String, location: CLLocationCoordinate2D)> {
+        let source = delegateProxy
+            .methodInvoked(#selector(GMSMapViewDelegateWrapper.mapView(_:didTapPOIWithPlaceID:name:location:)))
+            .map { a -> (placeID: String, name: String, location: CLLocationCoordinate2D)in
+                let placeID = try castOrThrow(NSString.self, a[1]) as String
+                let name = try castOrThrow(NSString.self, a[2]) as String
+                
+                let value = try castOrThrow(NSValue.self, a[3])
+                var coordinate = CLLocationCoordinate2D()
+                value.getValue(&coordinate)
+                return (placeID, name, coordinate)
+        }
+
+        return ControlEvent(events: source)
+    }
+
 }
 
 public struct RxGMSGestureProperty {

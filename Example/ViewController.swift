@@ -58,6 +58,11 @@ class ViewController: UIViewController {
             .drive(onNext: { print("Did tap overlay: \($0.title ?? "")") })
             .addDisposableTo(disposeBag)
 
+        mapView.rx.didTapPOI.asDriver()
+            .drive(onNext: { (placeID, name, coordinate) in
+                print("Did tap POI: [\(placeID)] \(name) (\(coordinate.latitude), \(coordinate.longitude))")
+            })
+            .addDisposableTo(disposeBag)
     }
     
     override func viewDidAppear(_ animated: Bool) {

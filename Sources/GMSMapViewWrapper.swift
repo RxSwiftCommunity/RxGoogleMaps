@@ -75,6 +75,7 @@ import RxSwift
 
     @objc optional func mapView(_ mapView: GMSMapViewWrapper, didTapOverlay overlay: GMSOverlayWrapper)
     
-
+    @objc optional func mapView(_ mapView: GMSMapViewWrapper, didTapPOIWithPlaceID placeID: NSString, name: NSString, location: CLLocationCoordinate2D)
+    
 }
 
