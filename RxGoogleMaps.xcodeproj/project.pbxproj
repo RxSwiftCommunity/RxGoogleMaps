@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52CC730831BAA9E9CDA0326E /* Pods_RxGoogleMapsTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C671F0BB63A806849BEBCBB /* Pods_RxGoogleMapsTestApp.framework */; };
+		A90681E71DAFCDD00019C689 /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = A90681E61DAFCDD00019C689 /* key.plist */; };
 		A90F13831DAB73C600F866FF /* RxGoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90F137A1DAB73C600F866FF /* RxGoogleMaps.framework */; };
 		A90F138A1DAB73C600F866FF /* RxGoogleMapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F13891DAB73C600F866FF /* RxGoogleMapsTests.swift */; };
 		A90F138C1DAB73C600F866FF /* RxGoogleMaps.h in Headers */ = {isa = PBXBuildFile; fileRef = A90F137C1DAB73C600F866FF /* RxGoogleMaps.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,6 +111,7 @@
 		68A4B0A38F0A3915733038E3 /* Pods-RxGoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGoogleMaps.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxGoogleMaps/Pods-RxGoogleMaps.release.xcconfig"; sourceTree = "<group>"; };
 		695CF0F76EEB783E8810E8C3 /* Pods-RxGoogleMapsTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGoogleMapsTestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxGoogleMapsTestApp/Pods-RxGoogleMapsTestApp.release.xcconfig"; sourceTree = "<group>"; };
 		A82ED62F75EA89579C69CA11 /* Pods_RxGoogleMapsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxGoogleMapsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90681E61DAFCDD00019C689 /* key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
 		A90F137A1DAB73C600F866FF /* RxGoogleMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxGoogleMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90F137C1DAB73C600F866FF /* RxGoogleMaps.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxGoogleMaps.h; sourceTree = "<group>"; };
 		A90F137D1DAB73C600F866FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				A90F9CC21DAABB5600A3461E /* Assets.xcassets */,
 				A90F9CC41DAABB5600A3461E /* LaunchScreen.storyboard */,
 				A90F9CC71DAABB5600A3461E /* Info.plist */,
+				A90681E61DAFCDD00019C689 /* key.plist */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90681E71DAFCDD00019C689 /* key.plist in Resources */,
 				A90F9CC61DAABB5600A3461E /* LaunchScreen.storyboard in Resources */,
 				A90F9CC31DAABB5600A3461E /* Assets.xcassets in Resources */,
 				A90F9CC11DAABB5600A3461E /* Main.storyboard in Resources */,

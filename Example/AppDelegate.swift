@@ -17,7 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        GMSServices.provideAPIKey("Google_Maps_API_Key_Here")
+        // set GoogleMaps API Key
+        if let path = Bundle.main.path(forResource: "key", ofType: "plist"),
+            let keys = NSDictionary(contentsOfFile: path),
+            let key = keys["googleMapsAPIKey"] as? String {
+            GMSServices.provideAPIKey(key)
+        }
         
         return true
     }
