@@ -16,17 +16,6 @@ target 'RxGoogleMaps' do
     common
 end
 
-target 'RxGoogleMapsTestApp' do
-    common
-end
-
-target 'RxGoogleMapsTests' do
-    common
-
-    pod 'GoogleMaps', '~> 2.1.0'
-    pod 'Nimble'
-end
-
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
