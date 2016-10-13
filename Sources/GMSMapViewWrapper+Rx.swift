@@ -17,12 +17,16 @@ extension Reactive where Base: GMSMapViewWrapper {
         return RxGMSMapViewDelegateProxy.proxyForObject(base)
     }
  
-    public var delegate: RxGMSMapViewDelegate? {
-        return delegateProxy.delegate
+    public func setHandleTapMarker(_ closure: RxGMSHandleTapMarker?) {
+        delegateProxy.handleTapMarker = closure
     }
     
-    public func setDelegate(_ delegate: RxGMSMapViewDelegate?) {
-        delegateProxy.delegate = delegate
+    public func setHandleMarkerInfoContents(_ closure: RxGMSHandleMarkerInfoContents?) {
+        delegateProxy.handleMarkerInfoContents = closure
+    }
+
+    public func setHandleTapMyLocationButton(_ closure: RxGMSHandleTapMyLocationButton?) {
+        delegateProxy.handleTapMyLocationButton = closure
     }
 }
 
@@ -80,7 +84,7 @@ public extension Reactive where Base: GMSMapViewWrapper {
     }
     
     public var didTapMarker: ControlEvent<GMSMarkerWrapper> {
-        return ControlEvent(events: delegateProxy.didTapMarker)
+        return ControlEvent(events: delegateProxy.didTapMarkerEvent)
     }
     
     public var didTapInfoWindow: ControlEvent<GMSMarkerWrapper> {
@@ -127,6 +131,10 @@ public extension Reactive where Base: GMSMapViewWrapper {
         }
 
         return ControlEvent(events: source)
+    }
+
+    public var didTapMyLocationButton: ControlEvent<Void> {
+        return ControlEvent(events: delegateProxy.didTapMyLocationButtonEvent)
     }
 
 }

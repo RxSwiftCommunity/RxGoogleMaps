@@ -16,11 +16,33 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     
     let disposeBag = DisposeBag()
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //mapView.rx.setDelegate(self)
+        mapView.settings.myLocationButton = true
+        mapView.isMyLocationEnabled = true
+
+        mapView.rx.setHandleTapMarker { marker in
+            print("Handle tap marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
+            return false
+        }
+        
+        mapView.rx.setHandleMarkerInfoContents { marker in
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 180, height: 60))
+            label.textAlignment = .center
+            label.textColor = UIColor.brown
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+            label.backgroundColor = UIColor.yellow
+            label.text = marker.title
+            return label
+        }
+        
+        mapView.rx.setHandleTapMyLocationButton {
+            print("Handle my location button")
+            return false
+        }
         
         mapView.rx.willMove.asDriver()
             .drive(onNext: { print("Gesture: \($0.byGesture)") })
@@ -63,6 +85,17 @@ class ViewController: UIViewController {
                 print("Did tap POI: [\(placeID)] \(name) (\(coordinate.latitude), \(coordinate.longitude))")
             })
             .addDisposableTo(disposeBag)
+        
+        mapView.rx.didTapMyLocationButton.take(1).asObservable()
+            .subscribe(onNext: { [weak self] in
+                self?.locationManager.requestWhenInUseAuthorization()
+            })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.didTapMyLocationButton.asDriver()
+            .drive(onNext: { print("Did tap my location button") })
+            .addDisposableTo(disposeBag)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,14 +122,6 @@ class ViewController: UIViewController {
     }
 
 }
-
-//extension ViewController: RxGMSMapViewDelegate {
-//    
-//    func mapView(_ mapView: GMSMapViewWrapper, didHandleTap marker: GMSMarkerWrapper) -> Bool {
-//        return false
-//    }
-//    
-//}
 
 //extension ViewController: GMSMapViewDelegate {
 //

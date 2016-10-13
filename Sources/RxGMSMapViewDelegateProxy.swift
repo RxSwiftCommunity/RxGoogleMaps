@@ -12,14 +12,21 @@ import RxSwift
 import RxCocoa
 import UIKit
 
+public typealias RxGMSHandleTapMarker = (GMSMarkerWrapper) -> (Bool)
+public typealias RxGMSHandleMarkerInfoContents = (GMSMarkerWrapper) -> (UIView?)
+public typealias RxGMSHandleTapMyLocationButton = () -> (Bool)
+
 public class RxGMSMapViewDelegateProxy
     : DelegateProxy
     , GMSMapViewDelegateWrapper
     , DelegateProxyType {
     
-    weak var delegate: RxGMSMapViewDelegate? = nil
+    var handleTapMarker: RxGMSHandleTapMarker? = nil
+    var handleMarkerInfoContents: RxGMSHandleMarkerInfoContents? = nil
+    var handleTapMyLocationButton: RxGMSHandleTapMyLocationButton? = nil
     
-    let didTapMarker = PublishSubject<GMSMarkerWrapper>()
+    let didTapMarkerEvent = PublishSubject<GMSMarkerWrapper>()
+    let didTapMyLocationButtonEvent = PublishSubject<Void>()
     
     /**
      For more information take a look at `DelegateProxyType`.
@@ -39,11 +46,22 @@ public class RxGMSMapViewDelegateProxy
     
 }
 
+// For delegates that needs return types
+
 extension RxGMSMapViewDelegateProxy {
 
-    public func mapView(_ mapView: GMSMapViewWrapper, didHandleTap marker: GMSMarkerWrapper) -> Bool {
-        didTapMarker.onNext(marker)
-        return delegate?.mapView(mapView, didHandleTap: marker) ?? false
+    public func didHandleTap(_ marker: GMSMarkerWrapper) -> Bool {
+        didTapMarkerEvent.onNext(marker)
+        return handleTapMarker?(marker) ?? false
+    }
+    
+    public func markerInfoContents(marker: GMSMarkerWrapper) -> UIView? {
+        return handleMarkerInfoContents?(marker)
+    }
+
+    public func didTapMyLocationButton() -> Bool {
+        didTapMyLocationButtonEvent.onNext()
+        return handleTapMyLocationButton?() ?? false
     }
 
 }

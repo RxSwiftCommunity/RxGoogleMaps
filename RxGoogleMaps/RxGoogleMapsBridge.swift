@@ -11,8 +11,17 @@ import GoogleMaps
 import RxGoogleMaps
 
 extension RxGMSMapViewDelegateProxy: GMSMapViewDelegate {
+
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        return self.mapView(mapView, didHandleTap: marker)
+        return self.didHandleTap(marker)
+    }
+
+    public func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        return self.markerInfoContents(marker: marker)
+    }
+    
+    public func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        return self.didTapMyLocationButton()
     }
 }
 
