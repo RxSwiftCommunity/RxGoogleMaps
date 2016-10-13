@@ -83,6 +83,26 @@ public extension Reactive where Base: GMSMapViewWrapper {
         return ControlEvent(events: delegateProxy.didTapMarker)
     }
     
+    public var didTapInfoWindow: ControlEvent<GMSMarkerWrapper> {
+        let source = delegateProxy
+            .methodInvoked(#selector(GMSMapViewDelegateWrapper.mapView(_:didTapInfoWindowOfMarker:)))
+            .map { a in
+                return try castOrThrow(GMSMarkerWrapper.self, a[1])
+        }
+        
+        return ControlEvent(events: source)
+    }
+    
+    
+    public var didLongPressInfoWindow: ControlEvent<GMSMarkerWrapper> {
+        let source = delegateProxy
+            .methodInvoked(#selector(GMSMapViewDelegateWrapper.mapView(_:didLongPressInfoWindowOfMarker:)))
+            .map { a in
+                return try castOrThrow(GMSMarkerWrapper.self, a[1])
+        }
+        
+        return ControlEvent(events: source)
+    }
 }
 
 public struct RxGMSGestureProperty {

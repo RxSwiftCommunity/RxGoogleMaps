@@ -65,7 +65,9 @@ import RxSwift
 
     @objc optional func mapView(_ mapView: GMSMapViewWrapper, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D)
 
-    //@objc optional func mapView(_ mapView: GMSMapViewWrapper, didTapMarker marker: GMSMarkerWrapper) -> Bool
+    @objc optional func mapView(_ mapView: GMSMapViewWrapper, didTapInfoWindowOfMarker marker: GMSMarkerWrapper)
+    
+    @objc optional func mapView(_ mapView: GMSMapViewWrapper, didLongPressInfoWindowOfMarker marker: GMSMarkerWrapper)
 
 }
 

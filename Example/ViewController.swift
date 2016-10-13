@@ -46,6 +46,14 @@ class ViewController: UIViewController {
             .drive(onNext: { print("Did tap marker at: (\($0.position.latitude), \($0.position.longitude))") })
             .addDisposableTo(disposeBag)
         
+        mapView.rx.didTapInfoWindow.asDriver()
+            .drive(onNext: { print("Did tap info window: (\($0.position.latitude), \($0.position.longitude))") })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.didLongPressInfoWindow.asDriver()
+            .drive(onNext: { print("Did long press info window: (\($0.position.latitude), \($0.position.longitude))") })
+            .addDisposableTo(disposeBag)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
