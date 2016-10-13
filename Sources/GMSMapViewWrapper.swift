@@ -25,11 +25,17 @@ import RxSwift
     
 }
 
-@objc public protocol GMSMarkerWrapper: class {
-
+@objc public protocol GMSOverlayWrapper: class {
+    
     var title: String? { get set }
     var tappable: Bool { @objc(isTappable) get set }
     var zIndex: Int32 { get set }
+    
+    //weak var map: GMSMapViewWrapper? { get set }
+
+}
+
+@objc public protocol GMSMarkerWrapper: GMSOverlayWrapper {
     
     var position: CLLocationCoordinate2D { get set }
     var snippet: String? { get set }
@@ -44,8 +50,6 @@ import RxSwift
     var rotation: CLLocationDegrees { get set }
     var opacity: Float { get set }
     var userData: Any? { get set }
-    
-    //weak var map: GMSMapViewWrapper? { get set }
 
     //var appearAnimation: GMSMarkerAnimation { get set }
     //var layer: GMSMarkerLayer { get }
@@ -68,6 +72,9 @@ import RxSwift
     @objc optional func mapView(_ mapView: GMSMapViewWrapper, didTapInfoWindowOfMarker marker: GMSMarkerWrapper)
     
     @objc optional func mapView(_ mapView: GMSMapViewWrapper, didLongPressInfoWindowOfMarker marker: GMSMarkerWrapper)
+
+    @objc optional func mapView(_ mapView: GMSMapViewWrapper, didTapOverlay overlay: GMSOverlayWrapper)
+    
 
 }
 

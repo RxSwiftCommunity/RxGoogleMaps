@@ -14,7 +14,6 @@ extension RxGMSMapViewDelegateProxy: GMSMapViewDelegate {
     public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         return self.mapView(mapView, didHandleTap: marker)
     }
-
 }
 
 extension GoogleMaps.GMSMapView: GMSMapViewWrapper {
@@ -25,5 +24,7 @@ extension GoogleMaps.GMSMapView: GMSMapViewWrapper {
 }
 
 extension GoogleMaps.GMSCameraPosition: GMSCameraPositionWrapper { }
+
+extension GoogleMaps.GMSOverlay: GMSOverlayWrapper { }
 
 extension GoogleMaps.GMSMarker: GMSMarkerWrapper { }

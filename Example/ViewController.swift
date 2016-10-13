@@ -43,15 +43,19 @@ class ViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         mapView.rx.didTapMarker.asDriver()
-            .drive(onNext: { print("Did tap marker at: (\($0.position.latitude), \($0.position.longitude))") })
+            .drive(onNext: { print("Did tap marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didTapInfoWindow.asDriver()
-            .drive(onNext: { print("Did tap info window: (\($0.position.latitude), \($0.position.longitude))") })
+            .drive(onNext: { print("Did tap info window: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didLongPressInfoWindow.asDriver()
             .drive(onNext: { print("Did long press info window: (\($0.position.latitude), \($0.position.longitude))") })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.didTapOverlay.asDriver()
+            .drive(onNext: { print("Did tap overlay: \($0.title ?? "")") })
             .addDisposableTo(disposeBag)
 
     }
@@ -59,13 +63,24 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let camera = GMSCameraPosition.camera(withLatitude: 33.3659424, longitude: 126.3476852, zoom: 12, bearing: 30, viewingAngle: 45)
+        let center = CLLocationCoordinate2D(latitude: 33.3659424, longitude: 126.3476852)
+        
+        let camera = GMSCameraPosition.camera(withLatitude: center.latitude, longitude: center.longitude, zoom: 12, bearing: 30, viewingAngle: 45)
         mapView.camera = camera
         
-        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 33.3659424, longitude: 126.3476852))
+        let marker = GMSMarker(position: center)
         marker.title = "Hello, RxSwift"
         marker.map = mapView
 
+        let circle = GMSCircle()
+        circle.title = "Circle"
+        circle.radius = 2000
+        circle.isTappable = true
+        circle.position = center
+        circle.fillColor = UIColor.green.withAlphaComponent(0.3)
+        circle.strokeColor = UIColor.green.withAlphaComponent(0.8)
+        circle.strokeWidth = 4
+        circle.map = mapView
     }
 
 }
