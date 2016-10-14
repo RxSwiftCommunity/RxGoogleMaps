@@ -134,3 +134,9 @@ extension GoogleMaps.GMSOverlay: RxGMSOverlay { }
 extension GoogleMaps.GMSMarker: RxGMSMarker { }
 
 extension GoogleMaps.GMSCircle: RxGMSCircle { }
+
+extension GoogleMaps.GMSPolyline: RxGMSPolyline { }
+
+extension GoogleMaps.GMSPolygon: RxGMSPolygon { }
+
+extension GoogleMaps.GMSGroundOverlay: RxGMSGroundOverlay { }

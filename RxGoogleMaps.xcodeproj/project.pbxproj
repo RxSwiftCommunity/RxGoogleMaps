@@ -24,6 +24,9 @@
 		A943D56B1DB0BF680027DEA3 /* RxGMSMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943D5691DB0BF350027DEA3 /* RxGMSMarker.swift */; };
 		A943D56E1DB0C0AE0027DEA3 /* RxGMSMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943D56C1DB0C0960027DEA3 /* RxGMSMapViewDelegate.swift */; };
 		A943D5711DB143FA0027DEA3 /* RxGMSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943D56F1DB143DF0027DEA3 /* RxGMSCircle.swift */; };
+		A943D5731DB147460027DEA3 /* RxGMSPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943D5721DB147460027DEA3 /* RxGMSPolyline.swift */; };
+		A943D5751DB148150027DEA3 /* RxGMSPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943D5741DB148150027DEA3 /* RxGMSPolygon.swift */; };
+		A943D5771DB14EB80027DEA3 /* RxGMSGroundOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943D5761DB14EB80027DEA3 /* RxGMSGroundOverlay.swift */; };
 		C5B2468C4099994FDD74ED4D /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE9272F37DFF9F5256AB1B0 /* Pods_Example.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		EEB81EB29052586A7DD95210 /* Pods_RxGoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45012DB18C468B57384D4DB7 /* Pods_RxGoogleMaps.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +85,9 @@
 		A943D5691DB0BF350027DEA3 /* RxGMSMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMarker.swift; sourceTree = "<group>"; };
 		A943D56C1DB0C0960027DEA3 /* RxGMSMapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapViewDelegate.swift; sourceTree = "<group>"; };
 		A943D56F1DB143DF0027DEA3 /* RxGMSCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSCircle.swift; sourceTree = "<group>"; };
+		A943D5721DB147460027DEA3 /* RxGMSPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSPolyline.swift; sourceTree = "<group>"; };
+		A943D5741DB148150027DEA3 /* RxGMSPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSPolygon.swift; sourceTree = "<group>"; };
+		A943D5761DB14EB80027DEA3 /* RxGMSGroundOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSGroundOverlay.swift; sourceTree = "<group>"; };
 		AEE9272F37DFF9F5256AB1B0 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF89390E396F6FACAAC053EE /* Pods-RxGoogleMapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGoogleMapsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxGoogleMapsTests/Pods-RxGoogleMapsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +193,9 @@
 				A943D5661DB0B4A10027DEA3 /* RxGMSOverlay.swift */,
 				A943D5691DB0BF350027DEA3 /* RxGMSMarker.swift */,
 				A943D56F1DB143DF0027DEA3 /* RxGMSCircle.swift */,
+				A943D5721DB147460027DEA3 /* RxGMSPolyline.swift */,
+				A943D5741DB148150027DEA3 /* RxGMSPolygon.swift */,
+				A943D5761DB14EB80027DEA3 /* RxGMSGroundOverlay.swift */,
 				A90F9CE21DAB1B0600A3461E /* RxGMSMapViewDelegateProxy.swift */,
 			);
 			path = Sources;
@@ -396,8 +405,11 @@
 				A943D5681DB0B5080027DEA3 /* RxGMSOverlay.swift in Sources */,
 				A90F13B91DABB75800F866FF /* RxGMSMapView.swift in Sources */,
 				A943D5711DB143FA0027DEA3 /* RxGMSCircle.swift in Sources */,
+				A943D5731DB147460027DEA3 /* RxGMSPolyline.swift in Sources */,
 				A90F13981DAB73D200F866FF /* RxGMSMapView+Rx.swift in Sources */,
 				A943D56B1DB0BF680027DEA3 /* RxGMSMarker.swift in Sources */,
+				A943D5751DB148150027DEA3 /* RxGMSPolygon.swift in Sources */,
+				A943D5771DB14EB80027DEA3 /* RxGMSGroundOverlay.swift in Sources */,
 				A943D56E1DB0C0AE0027DEA3 /* RxGMSMapViewDelegate.swift in Sources */,
 				A90F13991DAB73D500F866FF /* RxGMSMapViewDelegateProxy.swift in Sources */,
 			);
