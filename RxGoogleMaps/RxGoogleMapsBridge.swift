@@ -132,3 +132,5 @@ extension GoogleMaps.GMSCameraPosition: RxGMSCameraPosition { }
 extension GoogleMaps.GMSOverlay: RxGMSOverlay { }
 
 extension GoogleMaps.GMSMarker: RxGMSMarker { }
+
+extension GoogleMaps.GMSCircle: RxGMSCircle { }

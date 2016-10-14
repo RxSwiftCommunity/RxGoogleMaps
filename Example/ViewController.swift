@@ -220,6 +220,15 @@ class ViewController: UIViewController {
             circle.strokeColor = UIColor.green.withAlphaComponent(0.8)
             circle.strokeWidth = 4
             circle.map = mapView
+            
+//            actionButton0.rx.tap.map{ UIColor.red }
+//                .bindTo(circle.rx.fillColor.asObserver())
+//                .addDisposableTo(disposeBag)
+//            
+//            actionButton1.rx.tap.map{ UIColor.green }
+//                .bindTo(circle.rx.fillColor.asObserver())
+//                .addDisposableTo(disposeBag)
+
         }
         
         do {
