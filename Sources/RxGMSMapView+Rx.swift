@@ -17,15 +17,15 @@ extension Reactive where Base: RxGMSMapView {
         return RxGMSMapViewDelegateProxy.proxyForObject(base)
     }
  
-    public func handleTapMarker(_ closure: RxGMSHandleTapMarker?) {
+    public func handleTapMarkerWrapper(_ closure: RxGMSHandleTapMarker?) {
         delegateProxy.handleTapMarker = closure
     }
     
-    public func handleMarkerInfoWindow(_ closure: RxGMSHandleMarkerInfoView?) {
+    public func handleMarkerInfoWindowWrapper(_ closure: RxGMSHandleMarkerInfoView?) {
         delegateProxy.handleMarkerInfoWindow = closure
     }
     
-    public func handleMarkerInfoContents(_ closure: RxGMSHandleMarkerInfoView?) {
+    public func handleMarkerInfoContentsWrapper(_ closure: RxGMSHandleMarkerInfoView?) {
         delegateProxy.handleMarkerInfoContents = closure
     }
 
@@ -55,12 +55,12 @@ public extension Reactive where Base: RxGMSMapView {
         )
     }
     
-    public var didChange: ControlEvent<RxGMSCameraPosition> {
-        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didChangeCameraPosition:)))
+    public var didChangeWrapper: Observable<RxGMSCameraPosition> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didChangeCameraPosition:)))
     }
     
-    public var idleAt: ControlEvent<RxGMSCameraPosition> {
-        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:idleAtCameraPosition:)))
+    public var idleAtWrapper: Observable<RxGMSCameraPosition> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:idleAtCameraPosition:)))
     }
     
     public var didTapAt: ControlEvent<CLLocationCoordinate2D> {
@@ -83,20 +83,20 @@ public extension Reactive where Base: RxGMSMapView {
         return ControlEvent(events: source)
     }
     
-    public var didTapMarker: ControlEvent<RxGMSMarker> {
-        return ControlEvent(events: delegateProxy.didTapMarkerEvent)
+    public var didTapMarkerWrapper: Observable<RxGMSMarker> {
+        return delegateProxy.didTapMarkerEvent
     }
     
-    public var didTapInfoWindow: ControlEvent<RxGMSMarker> {
-        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didTapInfoWindowOfMarker:)))
+    public var didTapInfoWindowWrapper: Observable<RxGMSMarker> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didTapInfoWindowOfMarker:)))
     }
     
-    public var didLongPressInfoWindow: ControlEvent<RxGMSMarker> {
-        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didLongPressInfoWindowOfMarker:)))
+    public var didLongPressInfoWindowWrapper: Observable<RxGMSMarker> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didLongPressInfoWindowOfMarker:)))
     }
     
-    public var didTapOverlay: ControlEvent<RxGMSOverlay> {
-        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didTapOverlay:)))
+    public var didTapOverlayWrapper: Observable<RxGMSOverlay> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didTapOverlay:)))
     }
 
     public var didTapPOI: ControlEvent<(placeID: String, name: String, location: CLLocationCoordinate2D)> {
@@ -119,16 +119,16 @@ public extension Reactive where Base: RxGMSMapView {
         return ControlEvent(events: delegateProxy.didTapMyLocationButtonEvent)
     }
 
-    public var didBeginDraggingMarker: ControlEvent<RxGMSMarker> {
-        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didBeginDraggingMarker:)))
+    public var didBeginDraggingMarkerWrapper: Observable<RxGMSMarker> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didBeginDraggingMarker:)))
     }
 
-    public var didEndDraggingMarker: ControlEvent<RxGMSMarker> {
-        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didEndDraggingMarker:)))
+    public var didEndDraggingMarkerWrapper: Observable<RxGMSMarker> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didEndDraggingMarker:)))
     }
 
-    public var didDragMarker: ControlEvent<RxGMSMarker> {
-        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didDragMarker:)))
+    public var didDragMarkerWrapper: Observable<RxGMSMarker> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didDragMarker:)))
     }
 
     public var didStartTileRendering: ControlEvent<Void> {

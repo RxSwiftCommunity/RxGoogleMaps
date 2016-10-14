@@ -9,6 +9,8 @@
 import Foundation
 import GoogleMaps
 import RxGoogleMaps
+import RxCocoa
+import RxSwift
 
 extension RxGMSMapViewDelegateProxy: GMSMapViewDelegate {
 
@@ -53,6 +55,74 @@ extension GoogleMaps.GMSMapView: RxGMSMapView {
         return settings as RxGMSUISettings
     }
     
+}
+
+extension Reactive where Base: GoogleMaps.GMSMapView {
+    
+    public var didChange: ControlEvent<GMSCameraPosition> {
+        return ControlEvent(events: didChangeWrapper.map { $0 as! GMSCameraPosition })
+    }
+    
+    public var idleAt: ControlEvent<GMSCameraPosition> {
+        return ControlEvent(events: idleAtWrapper.map { $0 as! GMSCameraPosition })
+    }
+    
+    public var didTapMarker: ControlEvent<GMSMarker> {
+        return ControlEvent(events: didTapMarkerWrapper.map { $0 as! GMSMarker })
+    }
+    
+    public var didTapInfoWindow: ControlEvent<GMSMarker> {
+        return ControlEvent(events: didTapInfoWindowWrapper.map { $0 as! GMSMarker })
+    }
+    
+    public var didLongPressInfoWindow: ControlEvent<GMSMarker> {
+        return ControlEvent(events: didLongPressInfoWindowWrapper.map { $0 as! GMSMarker })
+    }
+    
+    public var didTapOverlay: ControlEvent<GMSOverlay> {
+        return ControlEvent(events: didTapOverlayWrapper.map { $0 as! GMSOverlay })
+    }
+    
+    public var didBeginDraggingMarker: ControlEvent<GMSMarker> {
+        return ControlEvent(events: didBeginDraggingMarkerWrapper.map { $0 as! GMSMarker })
+    }
+    
+    public var didEndDraggingMarker: ControlEvent<GMSMarker> {
+        return ControlEvent(events: didEndDraggingMarkerWrapper.map { $0 as! GMSMarker })
+    }
+    
+    public var didDragMarker: ControlEvent<GMSMarker> {
+        return ControlEvent(events: didDragMarkerWrapper.map { $0 as! GMSMarker })
+    }
+    
+}
+
+extension Reactive where Base: GoogleMaps.GMSMapView {
+
+    public func handleTapMarker(_ closure: ((GMSMarker) -> (Bool))?) {
+        if let c = closure {
+            handleTapMarkerWrapper { c($0 as! GMSMarker) }
+        } else {
+            handleTapMarkerWrapper(nil)
+        }
+    }
+    
+    public func handleMarkerInfoWindow(_ closure: ((GMSMarker) -> (UIView?))?) {
+        if let c = closure {
+            handleMarkerInfoWindowWrapper { c($0 as! GMSMarker) }
+        } else {
+            handleMarkerInfoWindowWrapper(nil)
+        }
+    }
+    
+    public func handleMarkerInfoContents(_ closure: ((GMSMarker) -> (UIView?))?) {
+        if let c = closure {
+            handleMarkerInfoContentsWrapper { c($0 as! GMSMarker) }
+        } else {
+            handleMarkerInfoContentsWrapper(nil)
+        }
+    }
+
 }
 
 extension GoogleMaps.GMSUISettings: RxGMSUISettings { }
