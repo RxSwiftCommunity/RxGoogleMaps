@@ -25,7 +25,10 @@ class ViewController: UIViewController {
         
         mapView.settings.myLocationButton = true
 
-        Observable.just(true).bindTo(mapView.rx.myLocationEnabled).addDisposableTo(disposeBag)
+        let startLocationManager = mapView.rx.didTapMyLocationButton.take(1).publish()
+        _ = startLocationManager.subscribe(onNext: { [weak self] in self?.locationManager.requestWhenInUseAuthorization() })
+        _ = startLocationManager.map { true }.bindTo(mapView.rx.myLocationEnabled)
+        startLocationManager.connect().addDisposableTo(disposeBag)
         
         mapView.rx.handleTapMarker { marker in
             print("Handle tap marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
@@ -86,12 +89,6 @@ class ViewController: UIViewController {
         mapView.rx.didTapPOI.asDriver()
             .drive(onNext: { (placeID, name, coordinate) in
                 print("Did tap POI: [\(placeID)] \(name) (\(coordinate.latitude), \(coordinate.longitude))")
-            })
-            .addDisposableTo(disposeBag)
-        
-        mapView.rx.didTapMyLocationButton.take(1).asObservable()
-            .subscribe(onNext: { [weak self] in
-                self?.locationManager.requestWhenInUseAuthorization()
             })
             .addDisposableTo(disposeBag)
         
