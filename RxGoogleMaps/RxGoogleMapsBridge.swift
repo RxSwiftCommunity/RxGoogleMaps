@@ -18,7 +18,7 @@ extension RxGMSMapViewDelegateProxy: GMSMapViewDelegate {
 
     public func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         return self.markerInfoWindow(marker: marker)
-    }d
+    }
     
     public func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
         return self.markerInfoContents(marker: marker)

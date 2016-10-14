@@ -36,35 +36,29 @@ extension Reactive where Base: RxGMSMapView {
 
 public extension Reactive where Base: RxGMSMapView {
 
+    private func methodInvokedWithParam1<T>(_ selector: Selector) -> Observable<T> {
+        return delegateProxy
+            .methodInvoked(selector)
+            .map { a in return try castOrThrow(T.self, a[1]) }
+    }
+    
+    private func controlEventWithParam1<T>(_ selector: Selector) -> ControlEvent<T> {
+        return ControlEvent(events: methodInvokedWithParam1(selector))
+    }
+    
     public var willMove: ControlEvent<RxGMSGestureProperty> {
-        let source = delegateProxy
-            .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:willMove:)))
-            .map { a in
-                return try castOrThrow(Bool.self, a[1])
-            }
-            .map(RxGMSGestureProperty.init)
-        
-        return ControlEvent(events: source)
+        return ControlEvent(events:
+            methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:willMove:)))
+                .map(RxGMSGestureProperty.init)
+        )
     }
     
     public var didChange: ControlEvent<RxGMSCameraPosition> {
-        let source = delegateProxy
-            .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didChangeCameraPosition:)))
-            .map { a in
-                return try castOrThrow(RxGMSCameraPosition.self, a[1])
-            }
-        
-        return ControlEvent(events: source)
+        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didChangeCameraPosition:)))
     }
     
     public var idleAt: ControlEvent<RxGMSCameraPosition> {
-        let source = delegateProxy
-            .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:idleAtCameraPosition:)))
-            .map { a in
-                return try castOrThrow(RxGMSCameraPosition.self, a[1])
-        }
-        
-        return ControlEvent(events: source)
+        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:idleAtCameraPosition:)))
     }
     
     public var didTapAt: ControlEvent<CLLocationCoordinate2D> {
@@ -92,33 +86,15 @@ public extension Reactive where Base: RxGMSMapView {
     }
     
     public var didTapInfoWindow: ControlEvent<RxGMSMarker> {
-        let source = delegateProxy
-            .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didTapInfoWindowOfMarker:)))
-            .map { a in
-                return try castOrThrow(RxGMSMarker.self, a[1])
-        }
-        
-        return ControlEvent(events: source)
+        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didTapInfoWindowOfMarker:)))
     }
     
     public var didLongPressInfoWindow: ControlEvent<RxGMSMarker> {
-        let source = delegateProxy
-            .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didLongPressInfoWindowOfMarker:)))
-            .map { a in
-                return try castOrThrow(RxGMSMarker.self, a[1])
-        }
-        
-        return ControlEvent(events: source)
+        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didLongPressInfoWindowOfMarker:)))
     }
     
     public var didTapOverlay: ControlEvent<RxGMSOverlay> {
-        let source = delegateProxy
-            .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didTapOverlay:)))
-            .map { a in
-                return try castOrThrow(RxGMSOverlay.self, a[1])
-        }
-        
-        return ControlEvent(events: source)
+        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didTapOverlay:)))
     }
 
     public var didTapPOI: ControlEvent<(placeID: String, name: String, location: CLLocationCoordinate2D)> {
