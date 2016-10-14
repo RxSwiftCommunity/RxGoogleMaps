@@ -154,6 +154,26 @@ public extension Reactive where Base: RxGMSMapView {
     }
 }
 
+public extension Reactive where Base: RxGMSMapView, Base: UIView {
+    
+    public var myLocationEnabled: AnyObserver<Bool> {
+        return UIBindingObserver(UIElement: base) { control, myLocationEnabled in
+            control.myLocationEnabled = myLocationEnabled
+        }.asObserver()
+    }
+
+    public var myLocation: Observable<CLLocation?> {
+        return observeWeakly(CLLocation.self, "myLocation")
+    }
+    
+    public var selectedMarker: AnyObserver<RxGMSMarker?> {
+        return UIBindingObserver(UIElement: base) { control, selectedMarker in
+            control.selectedMarkerWrapper = selectedMarker
+        }.asObserver()
+    }
+}
+
+
 public struct RxGMSGestureProperty {
     public let byGesture: Bool
 }

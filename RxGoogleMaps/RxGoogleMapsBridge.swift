@@ -34,6 +34,12 @@ extension GoogleMaps.GMSMapView: RxGMSMapView {
         get { return delegate as? RxGMSMapViewDelegate }
         set { delegate = newValue as? GMSMapViewDelegate }
     }
+    
+    public var selectedMarkerWrapper: RxGMSMarker? {
+        get { return selectedMarker as? RxGMSMarker }
+        set { selectedMarker = newValue as? GMSMarker }
+    }
+
 }
 
 extension GoogleMaps.GMSCameraPosition: RxGMSCameraPosition { }

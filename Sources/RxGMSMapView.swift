@@ -14,6 +14,10 @@ import RxSwift
     
     var delegateWrapper: RxGMSMapViewDelegate? { get set }
     
+    
+    var myLocationEnabled: Bool { @objc(isMyLocationEnabled) get set }
+
+    var selectedMarkerWrapper: RxGMSMarker? { get set }
 }
 
 @objc public protocol RxGMSCameraPosition: class {
