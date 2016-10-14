@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         }
         
         mapView.rx.willMove.asDriver()
-            .drive(onNext: { print("Gesture: \($0.byGesture)") })
+            .drive(onNext: { print("Will move: by gesture \($0.byGesture)") })
             .addDisposableTo(disposeBag)
 
         mapView.rx.didChange.asDriver()
@@ -96,6 +96,17 @@ class ViewController: UIViewController {
             .drive(onNext: { print("Did tap my location button") })
             .addDisposableTo(disposeBag)
 
+        mapView.rx.didBeginDraggingMarker.asDriver()
+            .drive(onNext: { print("Did begin dragging marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.didEndDraggingMarker.asDriver()
+            .drive(onNext: { print("Did end dragging marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.didDragMarker.asDriver()
+            .drive(onNext: { print("Did drag marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
+            .addDisposableTo(disposeBag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,8 +119,9 @@ class ViewController: UIViewController {
         
         let marker = GMSMarker(position: center)
         marker.title = "Hello, RxSwift"
+        marker.isDraggable = true
         marker.map = mapView
-
+        
         let circle = GMSCircle()
         circle.title = "Circle"
         circle.radius = 2000

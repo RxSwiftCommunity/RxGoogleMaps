@@ -76,6 +76,12 @@ import RxSwift
     @objc optional func mapView(_ mapView: RxGMSMapView, didTapOverlay overlay: RxGMSOverlay)
     
     @objc optional func mapView(_ mapView: RxGMSMapView, didTapPOIWithPlaceID placeID: NSString, name: NSString, location: CLLocationCoordinate2D)
-    
+
+    @objc optional func mapView(_ mapView: RxGMSMapView, didBeginDraggingMarker marker: RxGMSMarker)
+
+    @objc optional func mapView(_ mapView: RxGMSMapView, didEndDraggingMarker marker: RxGMSMarker)
+
+    @objc optional func mapView(_ mapView: RxGMSMapView, didDragMarker marker: RxGMSMarker)
+
 }
 

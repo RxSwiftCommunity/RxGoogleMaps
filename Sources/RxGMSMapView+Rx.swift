@@ -117,6 +117,18 @@ public extension Reactive where Base: RxGMSMapView {
         return ControlEvent(events: delegateProxy.didTapMyLocationButtonEvent)
     }
 
+    public var didBeginDraggingMarker: ControlEvent<RxGMSMarker> {
+        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didBeginDraggingMarker:)))
+    }
+
+    public var didEndDraggingMarker: ControlEvent<RxGMSMarker> {
+        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didEndDraggingMarker:)))
+    }
+
+    public var didDragMarker: ControlEvent<RxGMSMarker> {
+        return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didDragMarker:)))
+    }
+
 }
 
 public struct RxGMSGestureProperty {
