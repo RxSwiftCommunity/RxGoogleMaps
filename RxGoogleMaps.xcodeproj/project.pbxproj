@@ -10,11 +10,11 @@
 		A90681E71DAFCDD00019C689 /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = A90681E61DAFCDD00019C689 /* key.plist */; };
 		A90681F81DAFD1750019C689 /* RxGoogleMapsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90681F61DAFD16F0019C689 /* RxGoogleMapsBridge.swift */; };
 		A90F138C1DAB73C600F866FF /* RxGoogleMaps.h in Headers */ = {isa = PBXBuildFile; fileRef = A90F137C1DAB73C600F866FF /* RxGoogleMaps.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A90F13981DAB73D200F866FF /* GMSMapViewWrapper+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CE01DAB19C100A3461E /* GMSMapViewWrapper+Rx.swift */; };
+		A90F13981DAB73D200F866FF /* RxGMSMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CE01DAB19C100A3461E /* RxGMSMapView+Rx.swift */; };
 		A90F13991DAB73D500F866FF /* RxGMSMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CE21DAB1B0600A3461E /* RxGMSMapViewDelegateProxy.swift */; };
 		A90F13B21DAB8F1F00F866FF /* RxGoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90F137A1DAB73C600F866FF /* RxGoogleMaps.framework */; };
 		A90F13B31DAB8F1F00F866FF /* RxGoogleMaps.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A90F137A1DAB73C600F866FF /* RxGoogleMaps.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A90F13B91DABB75800F866FF /* GMSMapViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F13B71DABB6B100F866FF /* GMSMapViewWrapper.swift */; };
+		A90F13B91DABB75800F866FF /* RxGMSMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F13B71DABB6B100F866FF /* RxGMSMapView.swift */; };
 		A90F9CBC1DAABB5600A3461E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CBB1DAABB5600A3461E /* AppDelegate.swift */; };
 		A90F9CBE1DAABB5600A3461E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CBD1DAABB5600A3461E /* ViewController.swift */; };
 		A90F9CC11DAABB5600A3461E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90F9CBF1DAABB5600A3461E /* Main.storyboard */; };
@@ -64,7 +64,7 @@
 		A90F137A1DAB73C600F866FF /* RxGoogleMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxGoogleMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90F137C1DAB73C600F866FF /* RxGoogleMaps.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxGoogleMaps.h; sourceTree = "<group>"; };
 		A90F137D1DAB73C600F866FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A90F13B71DABB6B100F866FF /* GMSMapViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMSMapViewWrapper.swift; sourceTree = "<group>"; };
+		A90F13B71DABB6B100F866FF /* RxGMSMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapView.swift; sourceTree = "<group>"; };
 		A90F9CB91DAABB5600A3461E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90F9CBB1DAABB5600A3461E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A90F9CBD1DAABB5600A3461E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		A90F9CC21DAABB5600A3461E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A90F9CC51DAABB5600A3461E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A90F9CC71DAABB5600A3461E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A90F9CE01DAB19C100A3461E /* GMSMapViewWrapper+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GMSMapViewWrapper+Rx.swift"; sourceTree = "<group>"; };
+		A90F9CE01DAB19C100A3461E /* RxGMSMapView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxGMSMapView+Rx.swift"; sourceTree = "<group>"; };
 		A90F9CE21DAB1B0600A3461E /* RxGMSMapViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapViewDelegateProxy.swift; sourceTree = "<group>"; };
 		AEE9272F37DFF9F5256AB1B0 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF89390E396F6FACAAC053EE /* Pods-RxGoogleMapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxGoogleMapsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxGoogleMapsTests/Pods-RxGoogleMapsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,8 +173,8 @@
 		A90F9CDE1DAABCB300A3461E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A90F13B71DABB6B100F866FF /* GMSMapViewWrapper.swift */,
-				A90F9CE01DAB19C100A3461E /* GMSMapViewWrapper+Rx.swift */,
+				A90F13B71DABB6B100F866FF /* RxGMSMapView.swift */,
+				A90F9CE01DAB19C100A3461E /* RxGMSMapView+Rx.swift */,
 				A90F9CE21DAB1B0600A3461E /* RxGMSMapViewDelegateProxy.swift */,
 			);
 			path = Sources;
@@ -381,8 +381,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A90F13B91DABB75800F866FF /* GMSMapViewWrapper.swift in Sources */,
-				A90F13981DAB73D200F866FF /* GMSMapViewWrapper+Rx.swift in Sources */,
+				A90F13B91DABB75800F866FF /* RxGMSMapView.swift in Sources */,
+				A90F13981DAB73D200F866FF /* RxGMSMapView+Rx.swift in Sources */,
 				A90F13991DAB73D500F866FF /* RxGMSMapViewDelegateProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

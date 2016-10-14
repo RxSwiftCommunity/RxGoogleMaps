@@ -18,7 +18,7 @@ extension RxGMSMapViewDelegateProxy: GMSMapViewDelegate {
 
     public func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         return self.markerInfoWindow(marker: marker)
-    }
+    }d
     
     public func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
         return self.markerInfoContents(marker: marker)
@@ -29,15 +29,15 @@ extension RxGMSMapViewDelegateProxy: GMSMapViewDelegate {
     }
 }
 
-extension GoogleMaps.GMSMapView: GMSMapViewWrapper {
-    public var delegateWrapper: GMSMapViewDelegateWrapper? {
-        get { return delegate as? GMSMapViewDelegateWrapper }
+extension GoogleMaps.GMSMapView: RxGMSMapView {
+    public var delegateWrapper: RxGMSMapViewDelegate? {
+        get { return delegate as? RxGMSMapViewDelegate }
         set { delegate = newValue as? GMSMapViewDelegate }
     }
 }
 
-extension GoogleMaps.GMSCameraPosition: GMSCameraPositionWrapper { }
+extension GoogleMaps.GMSCameraPosition: RxGMSCameraPosition { }
 
-extension GoogleMaps.GMSOverlay: GMSOverlayWrapper { }
+extension GoogleMaps.GMSOverlay: RxGMSOverlay { }
 
-extension GoogleMaps.GMSMarker: GMSMarkerWrapper { }
+extension GoogleMaps.GMSMarker: RxGMSMarker { }

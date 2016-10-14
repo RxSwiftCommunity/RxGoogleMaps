@@ -12,13 +12,13 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-public typealias RxGMSHandleTapMarker = (GMSMarkerWrapper) -> (Bool)
+public typealias RxGMSHandleTapMarker = (RxGMSMarker) -> (Bool)
 public typealias RxGMSHandleTapMyLocationButton = () -> (Bool)
-public typealias RxGMSHandleMarkerInfoView = (GMSMarkerWrapper) -> (UIView?)
+public typealias RxGMSHandleMarkerInfoView = (RxGMSMarker) -> (UIView?)
 
 public class RxGMSMapViewDelegateProxy
     : DelegateProxy
-    , GMSMapViewDelegateWrapper
+    , RxGMSMapViewDelegate
     , DelegateProxyType {
     
     var handleTapMarker: RxGMSHandleTapMarker? = nil
@@ -26,14 +26,14 @@ public class RxGMSMapViewDelegateProxy
     var handleMarkerInfoWindow: RxGMSHandleMarkerInfoView? = nil
     var handleMarkerInfoContents: RxGMSHandleMarkerInfoView? = nil
     
-    let didTapMarkerEvent = PublishSubject<GMSMarkerWrapper>()
+    let didTapMarkerEvent = PublishSubject<RxGMSMarker>()
     let didTapMyLocationButtonEvent = PublishSubject<Void>()
     
     /**
      For more information take a look at `DelegateProxyType`.
      */
     public class func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject) {
-        let mapView: GMSMapViewWrapper = castOrFatalError(object)
+        let mapView: RxGMSMapView = castOrFatalError(object)
         mapView.delegateWrapper = castOptionalOrFatalError(delegate)
     }
     
@@ -41,7 +41,7 @@ public class RxGMSMapViewDelegateProxy
      For more information take a look at `DelegateProxyType`.
      */
     public class func currentDelegateFor(_ object: AnyObject) -> AnyObject? {
-        let mapView: GMSMapViewWrapper = castOrFatalError(object)
+        let mapView: RxGMSMapView = castOrFatalError(object)
         return mapView.delegateWrapper
     }
     
@@ -51,7 +51,7 @@ public class RxGMSMapViewDelegateProxy
 
 extension RxGMSMapViewDelegateProxy {
 
-    public func didHandleTap(_ marker: GMSMarkerWrapper) -> Bool {
+    public func didHandleTap(_ marker: RxGMSMarker) -> Bool {
         didTapMarkerEvent.onNext(marker)
         return handleTapMarker?(marker) ?? false
     }
@@ -61,11 +61,11 @@ extension RxGMSMapViewDelegateProxy {
         return handleTapMyLocationButton?() ?? false
     }
 
-    public func markerInfoWindow(marker: GMSMarkerWrapper) -> UIView? {
+    public func markerInfoWindow(marker: RxGMSMarker) -> UIView? {
         return handleMarkerInfoWindow?(marker)
     }
     
-    public func markerInfoContents(marker: GMSMarkerWrapper) -> UIView? {
+    public func markerInfoContents(marker: RxGMSMarker) -> UIView? {
         return handleMarkerInfoContents?(marker)
     }
     
