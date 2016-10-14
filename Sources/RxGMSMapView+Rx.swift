@@ -13,7 +13,7 @@ import RxSwift
 
 extension Reactive where Base: RxGMSMapView {
     
-    var delegateProxy: RxGMSMapViewDelegateProxy {
+    fileprivate var delegateProxy: RxGMSMapViewDelegateProxy {
         return RxGMSMapViewDelegateProxy.proxyForObject(base)
     }
  
@@ -33,6 +33,8 @@ extension Reactive where Base: RxGMSMapView {
         delegateProxy.handleTapMyLocationButton = closure
     }
 }
+
+// GMSMapView delegate
 
 public extension Reactive where Base: RxGMSMapView {
 
@@ -154,7 +156,45 @@ public extension Reactive where Base: RxGMSMapView {
     }
 }
 
+// GMSMapView properties
+
 public extension Reactive where Base: RxGMSMapView, Base: UIView {
+    
+    public var camera: AnyObserver<RxGMSCameraPosition> {
+        return UIBindingObserver(UIElement: base) { control, camera in
+            control.cameraWrapper = camera
+        }.asObserver()
+    }
+    
+    public var cameraToAnimate: AnyObserver<RxGMSCameraPosition> {
+        return UIBindingObserver(UIElement: base) { control, camera in
+            control.animateWrapper(to: camera)
+        }.asObserver()
+    }
+    
+    public var locationToAnimate: AnyObserver<CLLocationCoordinate2D> {
+        return UIBindingObserver(UIElement: base) { control, location in
+            control.animate(toLocation: location)
+        }.asObserver()
+    }
+    
+    public var zoomToAnimate: AnyObserver<Float> {
+        return UIBindingObserver(UIElement: base) { control, zoom in
+            control.animate(toZoom: zoom)
+        }.asObserver()
+    }
+    
+    public var bearingToAnimate: AnyObserver<CLLocationDirection> {
+        return UIBindingObserver(UIElement: base) { control, bearing in
+            control.animate(toBearing: bearing)
+        }.asObserver()
+    }
+    
+    public var viewingAngleToAnimate: AnyObserver<Double> {
+        return UIBindingObserver(UIElement: base) { control, viewingAngle in
+            control.animate(toViewingAngle: viewingAngle)
+        }.asObserver()
+    }
     
     public var myLocationEnabled: AnyObserver<Bool> {
         return UIBindingObserver(UIElement: base) { control, myLocationEnabled in
@@ -181,12 +221,13 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
     }
 }
 
+// 
 
 public struct RxGMSGestureProperty {
     public let byGesture: Bool
 }
 
-func castCoordinateOrThrow(_ object: Any) throws -> CLLocationCoordinate2D {
+fileprivate func castCoordinateOrThrow(_ object: Any) throws -> CLLocationCoordinate2D {
     let value = try castOrThrow(NSValue.self, object)
     var coordinate = CLLocationCoordinate2D()
     value.getValue(&coordinate)

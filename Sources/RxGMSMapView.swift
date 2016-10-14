@@ -14,12 +14,24 @@ import RxSwift
     
     var delegateWrapper: RxGMSMapViewDelegate? { get set }
     
+    var cameraWrapper: RxGMSCameraPosition { get set }
     
     var myLocationEnabled: Bool { @objc(isMyLocationEnabled) get set }
 
     var selectedMarkerWrapper: RxGMSMarker? { get set }
 
     var trafficEnabled: Bool { @objc(isTrafficEnabled) get set }
+    
+    func animateWrapper(to cameraPosition: RxGMSCameraPosition)
+
+    func animate(toLocation location: CLLocationCoordinate2D)
+
+    func animate(toZoom zoom: Float)
+
+    func animate(toBearing bearing: CLLocationDirection)
+
+    func animate(toViewingAngle viewingAngle: Double)
+    
 }
 
 @objc public protocol RxGMSCameraPosition: class {

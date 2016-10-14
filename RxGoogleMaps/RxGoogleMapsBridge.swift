@@ -35,9 +35,18 @@ extension GoogleMaps.GMSMapView: RxGMSMapView {
         set { delegate = newValue as? GMSMapViewDelegate }
     }
     
+    public var cameraWrapper: RxGMSCameraPosition {
+        get { return camera as RxGMSCameraPosition }
+        set { camera = newValue as! GMSCameraPosition }
+    }
+    
     public var selectedMarkerWrapper: RxGMSMarker? {
         get { return selectedMarker as? RxGMSMarker }
         set { selectedMarker = newValue as? GMSMarker }
+    }
+
+    public func animateWrapper(to cameraPosition: RxGMSCameraPosition) {
+        animate(to: cameraPosition as! GMSCameraPosition)
     }
 
 }

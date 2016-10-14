@@ -191,9 +191,16 @@ class ViewController: UIViewController {
         }
         
         do {
-            actionButton0.rx.tap.map { true }.bindTo(mapView.rx.trafficEnabled.asObserver()).addDisposableTo(disposeBag)
-            actionButton1.rx.tap.map { false }.bindTo(mapView.rx.trafficEnabled.asObserver()).addDisposableTo(disposeBag)
-        }
+            //actionButton0.rx.tap.map { true }.bindTo(mapView.rx.trafficEnabled.asObserver()).addDisposableTo(disposeBag)
+            //actionButton1.rx.tap.map { false }.bindTo(mapView.rx.trafficEnabled.asObserver()).addDisposableTo(disposeBag)
+
+            actionButton0.rx.tap.map { 14 }.bindTo(mapView.rx.zoomToAnimate).addDisposableTo(disposeBag)
+            
+            actionButton1.rx.tap
+                .map { GMSCameraPosition.camera(withLatitude: place0.latitude, longitude: place0.longitude, zoom: 8, bearing: 10, viewingAngle: 30) }
+                .bindTo(mapView.rx.cameraToAnimate)
+                .addDisposableTo(disposeBag)
+}
     }
 
 }
