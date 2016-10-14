@@ -156,7 +156,7 @@ public extension Reactive where Base: RxGMSMapView {
     }
 }
 
-// GMSMapView properties
+// GMSMapView properties (camera & animate)
 
 public extension Reactive where Base: RxGMSMapView, Base: UIView {
     
@@ -196,6 +196,12 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
         }.asObserver()
     }
     
+}
+
+// GMSMapView properties
+
+public extension Reactive where Base: RxGMSMapView, Base: UIView {
+
     public var myLocationEnabled: AnyObserver<Bool> {
         return UIBindingObserver(UIElement: base) { control, myLocationEnabled in
             control.myLocationEnabled = myLocationEnabled
@@ -219,9 +225,57 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
             control.trafficEnabled = trafficEnabled
         }.asObserver()
     }
+    
+    public var padding: AnyObserver<UIEdgeInsets> {
+        return UIBindingObserver(UIElement: base) { control, padding in
+            control.padding = padding
+        }.asObserver()
+    }
 }
 
-// 
+// GMSMapView settings (GMSUISettings) properties
+
+public extension Reactive where Base: RxGMSMapView, Base: UIView {
+    
+    public var scrollGesturesEnabled: AnyObserver<Bool> {
+        return UIBindingObserver(UIElement: base) { control, scrollGestures in
+            control.settingsWrapper.scrollGestures = scrollGestures
+        }.asObserver()
+    }
+    
+    public var zoomGesturesEnabled: AnyObserver<Bool> {
+        return UIBindingObserver(UIElement: base) { control, zoomGestures in
+            control.settingsWrapper.zoomGestures = zoomGestures
+        }.asObserver()
+    }
+    
+    public var tiltGesturesEnabled: AnyObserver<Bool> {
+        return UIBindingObserver(UIElement: base) { control, tiltGestures in
+            control.settingsWrapper.tiltGestures = tiltGestures
+        }.asObserver()
+    }
+    
+    public var rotateGesturesEnabled: AnyObserver<Bool> {
+        return UIBindingObserver(UIElement: base) { control, rotateGestures in
+            control.settingsWrapper.rotateGestures = rotateGestures
+        }.asObserver()
+    }
+    
+    public var compassButtonVisible: AnyObserver<Bool> {
+        return UIBindingObserver(UIElement: base) { control, compassButton in
+            control.settingsWrapper.compassButton = compassButton
+        }.asObserver()
+    }
+    
+    public var myLocationButtonVisible: AnyObserver<Bool> {
+        return UIBindingObserver(UIElement: base) { control, myLocationButton in
+            control.settingsWrapper.myLocationButton = myLocationButton
+        }.asObserver()
+    }
+    
+}
+
+//
 
 public struct RxGMSGestureProperty {
     public let byGesture: Bool

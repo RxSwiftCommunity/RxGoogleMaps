@@ -21,7 +21,11 @@ import RxSwift
     var selectedMarkerWrapper: RxGMSMarker? { get set }
 
     var trafficEnabled: Bool { @objc(isTrafficEnabled) get set }
-    
+
+    var padding: UIEdgeInsets { get set }
+
+    var settingsWrapper: RxGMSUISettings { get }
+
     func animateWrapper(to cameraPosition: RxGMSCameraPosition)
 
     func animate(toLocation location: CLLocationCoordinate2D)
@@ -31,6 +35,17 @@ import RxSwift
     func animate(toBearing bearing: CLLocationDirection)
 
     func animate(toViewingAngle viewingAngle: Double)
+    
+}
+
+@objc public protocol RxGMSUISettings: class {
+    
+    var scrollGestures: Bool { get set }
+    var zoomGestures: Bool { get set }
+    var tiltGestures: Bool { get set }
+    var rotateGestures: Bool { get set }
+    var compassButton: Bool { get set }
+    var myLocationButton: Bool { get set }
     
 }
 

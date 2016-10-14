@@ -49,7 +49,13 @@ extension GoogleMaps.GMSMapView: RxGMSMapView {
         animate(to: cameraPosition as! GMSCameraPosition)
     }
 
+    public var settingsWrapper: RxGMSUISettings {
+        return settings as RxGMSUISettings
+    }
+    
 }
+
+extension GoogleMaps.GMSUISettings: RxGMSUISettings { }
 
 extension GoogleMaps.GMSCameraPosition: RxGMSCameraPosition { }
 
