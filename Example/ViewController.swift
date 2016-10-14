@@ -107,6 +107,18 @@ class ViewController: UIViewController {
         mapView.rx.didDragMarker.asDriver()
             .drive(onNext: { print("Did drag marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
             .addDisposableTo(disposeBag)
+        
+        mapView.rx.didStartTileRendering.asDriver()
+            .drive(onNext: { print("Did start tile rendering") })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.didFinishTileRendering.asDriver()
+            .drive(onNext: { print("Did finish tile rendering") })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.snapshotReady.asDriver()
+            .drive(onNext: { print("Snapshot ready") })
+            .addDisposableTo(disposeBag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -134,18 +146,3 @@ class ViewController: UIViewController {
     }
 
 }
-
-//extension ViewController: GMSMapViewDelegate {
-//
-//    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-//        print("willmove \(gesture)")
-//    }
-//    
-//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-//        print("Did change position: \(position.target.longitude)")
-//    }
-//    
-//    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-//        print("Did tap at: (\(coordinate.latitude), \(coordinate.longitude))")
-//    }
-//}

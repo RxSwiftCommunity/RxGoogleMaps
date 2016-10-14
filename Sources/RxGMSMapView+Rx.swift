@@ -129,6 +129,29 @@ public extension Reactive where Base: RxGMSMapView {
         return controlEventWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didDragMarker:)))
     }
 
+    public var didStartTileRendering: ControlEvent<Void> {
+        return ControlEvent(events:
+            delegateProxy
+                .methodInvoked(#selector(RxGMSMapViewDelegate.mapViewDidStartTileRendering(_:)))
+                .map{ _ in return }
+        )
+    }
+    
+    public var didFinishTileRendering: ControlEvent<Void> {
+        return ControlEvent(events:
+            delegateProxy
+                .methodInvoked(#selector(RxGMSMapViewDelegate.mapViewDidFinishTileRendering(_:)))
+                .map{ _ in return }
+        )
+    }
+    
+    public var snapshotReady: ControlEvent<Void> {
+        return ControlEvent(events:
+            delegateProxy
+                .methodInvoked(#selector(RxGMSMapViewDelegate.mapViewSnapshotReady(_:)))
+                .map{ _ in return }
+        )
+    }
 }
 
 public struct RxGMSGestureProperty {

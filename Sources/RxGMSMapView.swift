@@ -83,5 +83,11 @@ import RxSwift
 
     @objc optional func mapView(_ mapView: RxGMSMapView, didDragMarker marker: RxGMSMarker)
 
+    @objc optional func  mapViewDidStartTileRendering(_ mapView: RxGMSMapView)
+
+    @objc optional func  mapViewDidFinishTileRendering(_ mapView: RxGMSMapView)
+    
+    @objc optional func  mapViewSnapshotReady(_ mapView: RxGMSMapView)
+
 }
 
