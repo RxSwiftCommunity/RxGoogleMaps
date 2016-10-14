@@ -166,10 +166,12 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
         return observeWeakly(CLLocation.self, "myLocation")
     }
     
-    public var selectedMarker: AnyObserver<RxGMSMarker?> {
-        return UIBindingObserver(UIElement: base) { control, selectedMarker in
-            control.selectedMarkerWrapper = selectedMarker
-        }.asObserver()
+    public var selectedMarker: ControlProperty<RxGMSMarker?> {
+        return ControlProperty(values: observeWeakly(RxGMSMarker.self, "selectedMarker"),
+                               valueSink: UIBindingObserver(UIElement: base) { control, selectedMarker in
+                                       control.selectedMarkerWrapper = selectedMarker
+                                   }.asObserver()
+        )
     }
 }
 

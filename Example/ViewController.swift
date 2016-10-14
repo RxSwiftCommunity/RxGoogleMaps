@@ -129,6 +129,26 @@ class ViewController: UIViewController {
                 }
             })
             .addDisposableTo(disposeBag)
+        
+        mapView.rx.myLocation
+            .subscribe(onNext: { location in
+                if let l = location {
+                    print("My location: (\(l.coordinate.latitude), \(l.coordinate.longitude))")
+                } else {
+                    print("My location: nil")
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+        mapView.rx.selectedMarker.asDriver()
+            .drive(onNext: { selected in
+                if let marker = selected {
+                    print("Selected marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
+                } else {
+                    print("Selected marker: nil")
+                }
+            })
+            .addDisposableTo(disposeBag)
 
     }
     
