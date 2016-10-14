@@ -149,6 +149,22 @@ class ViewController: UIViewController {
                 }
             })
             .addDisposableTo(disposeBag)
+        
+        do {
+            let s0 = mapView.rx.selectedMarker.asObservable()
+            let s1 = s0.skip(1)
+            
+            Observable.zip(s0, s1) { $0 }
+                .subscribe(onNext: { (prev, cur) in
+                    if let marker = prev {
+                        marker.icon = #imageLiteral(resourceName: "marker_normal")
+                    }
+                    if let marker = cur {
+                        marker.icon = #imageLiteral(resourceName: "marker_selected")
+                    }
+                })
+                .addDisposableTo(disposeBag)
+        }
 
     }
     
@@ -165,17 +181,33 @@ class ViewController: UIViewController {
             let marker = GMSMarker(position: center)
             marker.title = "Hello, RxSwift"
             marker.isDraggable = true
+            marker.icon = #imageLiteral(resourceName: "marker_normal")
             marker.map = mapView
             
-            //actionButton0.rx.tap.map{ _ in marker }.bindTo(mapView.rx.selectedMarker.asObserver()).addDisposableTo(disposeBag)
+//            actionButton0.rx.tap.map{ _ in marker }
+//                .bindTo(mapView.rx.selectedMarker.asObserver())
+//                .addDisposableTo(disposeBag)
+
+//            actionButton0.rx.tap.map{ 180.0 }
+//                .bindTo(marker.rx.rotation.asObserver())
+//                .addDisposableTo(disposeBag)
+//            
+//            actionButton1.rx.tap.map{ 0 }
+//                .bindTo(marker.rx.rotation.asObserver())
+//                .addDisposableTo(disposeBag)
+
         }
+
         do {
             let marker = GMSMarker(position: place0)
             marker.title = "Hello, GoogleMaps"
             marker.isDraggable = true
+            marker.icon = #imageLiteral(resourceName: "marker_normal")
             marker.map = mapView
-            
-            //actionButton1.rx.tap.map{ _ in marker }.bindTo(mapView.rx.selectedMarker.asObserver()).addDisposableTo(disposeBag)
+
+//            actionButton1.rx.tap.map{ _ in marker }
+//                .bindTo(mapView.rx.selectedMarker.asObserver())
+//                .addDisposableTo(disposeBag)
         }
 
         do {
@@ -191,10 +223,16 @@ class ViewController: UIViewController {
         }
         
         do {
-//            actionButton0.rx.tap.map { true }.bindTo(mapView.rx.trafficEnabled.asObserver()).addDisposableTo(disposeBag)
-//            actionButton1.rx.tap.map { false }.bindTo(mapView.rx.trafficEnabled.asObserver()).addDisposableTo(disposeBag)
+//            actionButton0.rx.tap.map { true }
+//                .bindTo(mapView.rx.trafficEnabled.asObserver())
+//                .addDisposableTo(disposeBag)
+//            actionButton1.rx.tap.map { false }
+//                .bindTo(mapView.rx.trafficEnabled.asObserver())
+//                .addDisposableTo(disposeBag)
 
-//            actionButton0.rx.tap.map { 14 }.bindTo(mapView.rx.zoomToAnimate).addDisposableTo(disposeBag)
+//            actionButton0.rx.tap.map { 14 }
+//                .bindTo(mapView.rx.zoomToAnimate)
+//                .addDisposableTo(disposeBag)
             
 //            actionButton1.rx.tap
 //                .map { GMSCameraPosition.camera(withLatitude: place0.latitude, longitude: place0.longitude, zoom: 8, bearing: 10, viewingAngle: 30) }
@@ -202,8 +240,12 @@ class ViewController: UIViewController {
 //                .addDisposableTo(disposeBag)
             
             
-//            actionButton0.rx.tap.map { true }.bindTo(mapView.rx.zoomGesturesEnabled).addDisposableTo(disposeBag)
-//            actionButton1.rx.tap.map { false }.bindTo(mapView.rx.zoomGesturesEnabled).addDisposableTo(disposeBag)
+//            actionButton0.rx.tap.map { true }
+//                .bindTo(mapView.rx.zoomGesturesEnabled)
+//                .addDisposableTo(disposeBag)
+//            actionButton1.rx.tap.map { false }
+//                .bindTo(mapView.rx.zoomGesturesEnabled)
+//                .addDisposableTo(disposeBag)
 
         }
     }
