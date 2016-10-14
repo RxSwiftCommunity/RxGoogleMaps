@@ -167,7 +167,7 @@ class ViewController: UIViewController {
             marker.isDraggable = true
             marker.map = mapView
             
-            actionButton0.rx.tap.map{ _ in marker }.bindTo(mapView.rx.selectedMarker.asObserver()).addDisposableTo(disposeBag)
+            //actionButton0.rx.tap.map{ _ in marker }.bindTo(mapView.rx.selectedMarker.asObserver()).addDisposableTo(disposeBag)
         }
         do {
             let marker = GMSMarker(position: place0)
@@ -175,7 +175,7 @@ class ViewController: UIViewController {
             marker.isDraggable = true
             marker.map = mapView
             
-            actionButton1.rx.tap.map{ _ in marker }.bindTo(mapView.rx.selectedMarker.asObserver()).addDisposableTo(disposeBag)
+            //actionButton1.rx.tap.map{ _ in marker }.bindTo(mapView.rx.selectedMarker.asObserver()).addDisposableTo(disposeBag)
         }
 
         do {
@@ -188,6 +188,11 @@ class ViewController: UIViewController {
             circle.strokeColor = UIColor.green.withAlphaComponent(0.8)
             circle.strokeWidth = 4
             circle.map = mapView
+        }
+        
+        do {
+            actionButton0.rx.tap.map { true }.bindTo(mapView.rx.trafficEnabled.asObserver()).addDisposableTo(disposeBag)
+            actionButton1.rx.tap.map { false }.bindTo(mapView.rx.trafficEnabled.asObserver()).addDisposableTo(disposeBag)
         }
     }
 

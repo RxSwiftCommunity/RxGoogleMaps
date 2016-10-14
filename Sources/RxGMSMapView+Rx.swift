@@ -173,6 +173,12 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
                                    }.asObserver()
         )
     }
+    
+    public var trafficEnabled: AnyObserver<Bool> {
+        return UIBindingObserver(UIElement: base) { control, trafficEnabled in
+            control.trafficEnabled = trafficEnabled
+        }.asObserver()
+    }
 }
 
 

@@ -18,6 +18,8 @@ import RxSwift
     var myLocationEnabled: Bool { @objc(isMyLocationEnabled) get set }
 
     var selectedMarkerWrapper: RxGMSMarker? { get set }
+
+    var trafficEnabled: Bool { @objc(isTrafficEnabled) get set }
 }
 
 @objc public protocol RxGMSCameraPosition: class {
