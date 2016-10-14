@@ -17,15 +17,19 @@ extension Reactive where Base: GMSMapViewWrapper {
         return RxGMSMapViewDelegateProxy.proxyForObject(base)
     }
  
-    public func setHandleTapMarker(_ closure: RxGMSHandleTapMarker?) {
+    public func handleTapMarker(_ closure: RxGMSHandleTapMarker?) {
         delegateProxy.handleTapMarker = closure
     }
     
-    public func setHandleMarkerInfoContents(_ closure: RxGMSHandleMarkerInfoContents?) {
+    public func handleMarkerInfoWindow(_ closure: RxGMSHandleMarkerInfoView?) {
+        delegateProxy.handleMarkerInfoWindow = closure
+    }
+    
+    public func handleMarkerInfoContents(_ closure: RxGMSHandleMarkerInfoView?) {
         delegateProxy.handleMarkerInfoContents = closure
     }
 
-    public func setHandleTapMyLocationButton(_ closure: RxGMSHandleTapMyLocationButton?) {
+    public func handleTapMyLocationButton(_ closure: RxGMSHandleTapMyLocationButton?) {
         delegateProxy.handleTapMyLocationButton = closure
     }
 }

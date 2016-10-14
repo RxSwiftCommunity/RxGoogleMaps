@@ -13,8 +13,8 @@ import RxCocoa
 import UIKit
 
 public typealias RxGMSHandleTapMarker = (GMSMarkerWrapper) -> (Bool)
-public typealias RxGMSHandleMarkerInfoContents = (GMSMarkerWrapper) -> (UIView?)
 public typealias RxGMSHandleTapMyLocationButton = () -> (Bool)
+public typealias RxGMSHandleMarkerInfoView = (GMSMarkerWrapper) -> (UIView?)
 
 public class RxGMSMapViewDelegateProxy
     : DelegateProxy
@@ -22,8 +22,9 @@ public class RxGMSMapViewDelegateProxy
     , DelegateProxyType {
     
     var handleTapMarker: RxGMSHandleTapMarker? = nil
-    var handleMarkerInfoContents: RxGMSHandleMarkerInfoContents? = nil
     var handleTapMyLocationButton: RxGMSHandleTapMyLocationButton? = nil
+    var handleMarkerInfoWindow: RxGMSHandleMarkerInfoView? = nil
+    var handleMarkerInfoContents: RxGMSHandleMarkerInfoView? = nil
     
     let didTapMarkerEvent = PublishSubject<GMSMarkerWrapper>()
     let didTapMyLocationButtonEvent = PublishSubject<Void>()
@@ -55,15 +56,19 @@ extension RxGMSMapViewDelegateProxy {
         return handleTapMarker?(marker) ?? false
     }
     
-    public func markerInfoContents(marker: GMSMarkerWrapper) -> UIView? {
-        return handleMarkerInfoContents?(marker)
-    }
-
     public func didTapMyLocationButton() -> Bool {
         didTapMyLocationButtonEvent.onNext()
         return handleTapMyLocationButton?() ?? false
     }
 
+    public func markerInfoWindow(marker: GMSMarkerWrapper) -> UIView? {
+        return handleMarkerInfoWindow?(marker)
+    }
+    
+    public func markerInfoContents(marker: GMSMarkerWrapper) -> UIView? {
+        return handleMarkerInfoContents?(marker)
+    }
+    
 }
 
 // Referred from RxCococa.swift because it's not public

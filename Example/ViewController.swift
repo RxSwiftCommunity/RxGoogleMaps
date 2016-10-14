@@ -24,12 +24,12 @@ class ViewController: UIViewController {
         mapView.settings.myLocationButton = true
         mapView.isMyLocationEnabled = true
 
-        mapView.rx.setHandleTapMarker { marker in
+        mapView.rx.handleTapMarker { marker in
             print("Handle tap marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
             return false
         }
         
-        mapView.rx.setHandleMarkerInfoContents { marker in
+        mapView.rx.handleMarkerInfoWindow { marker in
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 180, height: 60))
             label.textAlignment = .center
             label.textColor = UIColor.brown
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             return label
         }
         
-        mapView.rx.setHandleTapMyLocationButton {
+        mapView.rx.handleTapMyLocationButton {
             print("Handle my location button")
             return false
         }
