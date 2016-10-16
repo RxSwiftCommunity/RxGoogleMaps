@@ -10,10 +10,7 @@ end
 target 'Example' do
     common
     pod 'GoogleMaps', '~> 2.1.0'
-end
-
-target 'RxGoogleMaps' do
-    common
+    pod 'RxGoogleMaps', :path => './'
 end
 
 post_install do |installer|

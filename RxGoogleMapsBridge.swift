@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import GoogleMaps
 import RxGoogleMaps
 import RxCocoa

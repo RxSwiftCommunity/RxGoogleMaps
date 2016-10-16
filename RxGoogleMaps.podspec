@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RxGoogleMaps"
-  s.version          = "3.0.0-beta.0.1"
+  s.version          = "2.1.0-beta.1"
   s.summary          = "RxSwift reactive wrapper for GoogleMaps SDK."
   s.description      = <<-DESC
     RxSwift reactive wrapper for GoogleMaps SDK. 
@@ -19,8 +19,9 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
 
   s.source_files          = 'Sources/*.swift'
+  s.preserve_paths        = 'RxGoogleMapsBridge.swift'
 
   s.dependency 'RxSwift', '~> 3.0.0-beta.2'
   s.dependency 'RxCocoa', '~> 3.0.0-beta.2'
-  s.dependency 'GoogleMaps', '~> 2.1.0'
+
 end
