@@ -26,18 +26,14 @@ self.view.addSubview(mapView)
 ```swift
 // Camera position
 
-mapView.rx.didChange.asDriver()
-    .drive(onNext: { 
-        print("Did change camera position: (\($0.target.latitude), \($0.target.longitude))")
-    })
+mapView.rx.didChangePosition.asDriver()
+    .drive(onNext: { print("Did change camera position: \($0)") })
     .addDisposableTo(disposeBag)
 
 // Marker tapped
 
 mapView.rx.didTapMarker.asDriver()
-    .drive(onNext: {
-        print("Did tap marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))")
-    })
+    .drive(onNext: { print("Did tap marker: \($0)") })
     .addDisposableTo(disposeBag)
 
 // Update marker icon without storing selection status
@@ -47,12 +43,8 @@ let s1 = s0.skip(1)
 
 Observable.zip(s0, s1) { $0 }
     .subscribe(onNext: { (prev, cur) in
-        if let marker = prev {
-            marker.icon = #imageLiteral(resourceName: "marker_normal")
-        }
-        if let marker = cur {
-            marker.icon = #imageLiteral(resourceName: "marker_selected")
-        }
+        if let marker = prev { marker.icon = #imageLiteral(resourceName: "marker_normal") }
+        if let marker = cur { marker.icon = #imageLiteral(resourceName: "marker_selected") }
     })
     .addDisposableTo(disposeBag)
                 
@@ -100,24 +92,40 @@ button.rx.tap
     
 ```
 
+### Delegates which have a return value
+```Swift
+// func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool
+
+mapView.rx.handleTapMarker { false }
+
+// func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView?
+
+mapView.rx.handleMarkerInfoWindow { marker in
+    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 180, height: 60))
+    label.textAlignment = .center
+    label.textColor = UIColor.brown
+    label.font = UIFont.boldSystemFont(ofSize: 16)
+    label.backgroundColor = UIColor.yellow
+    label.text = marker.title
+    return label
+}
+
+```
+
 ## Installation
 
 ### CocoaPods
 
-Add to `Podfile`:
-
+1. Add to `Podfile`:
 ```
-pod 'GoogleMaps', '~> 2.1.0'
+pod 'GoogleMaps'
 pod 'RxGoogleMaps', :git => 'https://github.com/inkyfox/RxGoogleMaps.git'
 ```
-
-and 
-
-**Add ``Pods/RxGoogleMaps/RxGoogleMapsBridge.swift`` to your app target in your project.**
+2. Add **``Pods/RxGoogleMaps/RxGoogleMapsBridge.swift`` file to your app target** in your Xcode project.
 
 ## Requirements
 
-RxGoogleMaps requires Swift 3.0 and dedicated versions of RxSwift 3.0.0-beta.2
+RxGoogleMaps requires Swift 3.0 and dedicated versions of RxSwift 3.0.0-beta.2 (Xcode8+ and iOS8+)
 
 ## License
 
