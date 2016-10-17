@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RxGoogleMaps"
-  s.version          = "2.1.0"
+  s.version          = "2.1.1"
   s.summary          = "RxSwift reactive wrapper for GoogleMaps SDK."
   s.description      = <<-DESC
     RxSwift reactive wrapper for GoogleMaps SDK. 
@@ -120,7 +120,6 @@ mapView.rx.handleMarkerInfoWindow { marker in
 
 ## Installation
 
-### CocoaPods
 Because GoogleMaps SDK include static binaries, it's hard to find a nice solution to make a *straight-forward* Cocoapods framework if it uses GoogleMaps SDK. So I decided ``RxGoogleMaps`` not to use ``GoogleMaps`` directly and to provide a *bridging* swift file which connects ``GoogleMaps`` and ``RxGoogleMaps`` instead.
 
 1. Add to `Podfile`:
@@ -139,10 +138,10 @@ RxGoogleMaps requires Swift 3.0 and dedicated versions of RxSwift 3.0.0-beta.2 (
 
 MIT
                         DESC
-  s.homepage         = "https://github.com/inkyfox/RxGoogleMaps"
+  s.homepage         = "https://github.com/RxSwiftCommunity/RxGoogleMaps"
   s.license          = 'MIT'
   s.author           = { "Yongha Yoo" => "inkyfox@oo-v.com" }
-  s.source           = { :git => "https://github.com/inkyfox/RxGoogleMaps.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/RxSwiftCommunity/RxGoogleMaps.git", :tag => s.version.to_s }
 
   s.requires_arc          = true
 
