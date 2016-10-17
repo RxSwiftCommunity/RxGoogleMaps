@@ -60,38 +60,73 @@ extension GoogleMaps.GMSMapView: RxGMSMapView {
 
 extension Reactive where Base: GoogleMaps.GMSMapView {
     
-    public var didChange: ControlEvent<GMSCameraPosition> {
-        return ControlEvent(events: didChangeWrapper.map { $0 as! GMSCameraPosition })
+    /**
+     Wrapper of: mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition)
+     */
+    public var didChangePosition: ControlEvent<GMSCameraPosition> {
+        return ControlEvent(events: didChangePositionWrapper.map { $0 as! GMSCameraPosition })
     }
     
-    public var idleAt: ControlEvent<GMSCameraPosition> {
-        return ControlEvent(events: idleAtWrapper.map { $0 as! GMSCameraPosition })
+    /**
+     Wrapper of: mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition)
+     */
+    public var idleAtPosition: ControlEvent<GMSCameraPosition> {
+        return ControlEvent(events: idleAtPositionWrapper.map { $0 as! GMSCameraPosition })
     }
     
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool
+     */
     public var didTapMarker: ControlEvent<GMSMarker> {
         return ControlEvent(events: didTapMarkerWrapper.map { $0 as! GMSMarker })
     }
     
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
+     */
     public var didTapInfoWindow: ControlEvent<GMSMarker> {
         return ControlEvent(events: didTapInfoWindowWrapper.map { $0 as! GMSMarker })
     }
     
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didLongPressInfoWindowOf marker: GMSMarker)
+     */
     public var didLongPressInfoWindow: ControlEvent<GMSMarker> {
         return ControlEvent(events: didLongPressInfoWindowWrapper.map { $0 as! GMSMarker })
     }
     
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D)
+     */
     public var didTapOverlay: ControlEvent<GMSOverlay> {
         return ControlEvent(events: didTapOverlayWrapper.map { $0 as! GMSOverlay })
     }
     
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker)
+     */
+    public var didCloseInfoWindow: ControlEvent<GMSMarker> {
+        return ControlEvent(events: didCloseInfoWindowWrapper.map { $0 as! GMSMarker })
+    }
+    
+    
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didBeginDragging marker: GMSMarker)
+     */
     public var didBeginDraggingMarker: ControlEvent<GMSMarker> {
         return ControlEvent(events: didBeginDraggingMarkerWrapper.map { $0 as! GMSMarker })
     }
     
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker)
+     */
     public var didEndDraggingMarker: ControlEvent<GMSMarker> {
         return ControlEvent(events: didEndDraggingMarkerWrapper.map { $0 as! GMSMarker })
     }
     
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didDrag marker: GMSMarker)
+     */
     public var didDragMarker: ControlEvent<GMSMarker> {
         return ControlEvent(events: didDragMarkerWrapper.map { $0 as! GMSMarker })
     }

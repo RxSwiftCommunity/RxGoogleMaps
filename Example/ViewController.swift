@@ -54,36 +54,36 @@ class ViewController: UIViewController {
             .drive(onNext: { print("Will move: by gesture \($0.byGesture)") })
             .addDisposableTo(disposeBag)
 
-        mapView.rx.didChange.asDriver()
-            .drive(onNext: { print("Did change position: (\($0.target.latitude), \($0.target.longitude))") })
+        mapView.rx.didChangePosition.asDriver()
+            .drive(onNext: { print("Did change position: \($0)") })
             .addDisposableTo(disposeBag)
 
-        mapView.rx.idleAt.asDriver()
-            .drive(onNext: { print("Idle at: (\($0.target.latitude), \($0.target.longitude))") })
+        mapView.rx.idleAtPosition.asDriver()
+            .drive(onNext: { print("Idle at coordinate: \($0)") })
             .addDisposableTo(disposeBag)
 
         mapView.rx.didTapAt.asDriver()
-            .drive(onNext: { print("Did tap at: (\($0.latitude), \($0.longitude))") })
+            .drive(onNext: { print("Did tap at coordinate: \($0)") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didLongPressAt.asDriver()
-            .drive(onNext: { print("Did long press at: (\($0.latitude), \($0.longitude))") })
+            .drive(onNext: { print("Did long press at coordinate: \($0)") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didTapMarker.asDriver()
-            .drive(onNext: { print("Did tap marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
+            .drive(onNext: { print("Did tap marker: \($0)") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didTapInfoWindow.asDriver()
-            .drive(onNext: { print("Did tap info window: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
+            .drive(onNext: { print("Did tap info window of marker: \($0)") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didLongPressInfoWindow.asDriver()
-            .drive(onNext: { print("Did long press info window: (\($0.position.latitude), \($0.position.longitude))") })
+            .drive(onNext: { print("Did long press info window of marker: \($0)") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didTapOverlay.asDriver()
-            .drive(onNext: { print("Did tap overlay: \($0.title ?? "")") })
+            .drive(onNext: { print("Did tap overlay: \($0)") })
             .addDisposableTo(disposeBag)
 
         mapView.rx.didTapPOI.asDriver()
@@ -96,16 +96,20 @@ class ViewController: UIViewController {
             .drive(onNext: { print("Did tap my location button") })
             .addDisposableTo(disposeBag)
 
+        mapView.rx.didCloseInfoWindow.asDriver()
+            .drive(onNext: { print("Did close info window of marker: \($0)") })
+            .addDisposableTo(disposeBag)
+
         mapView.rx.didBeginDraggingMarker.asDriver()
-            .drive(onNext: { print("Did begin dragging marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
+            .drive(onNext: { print("Did begin dragging marker: \($0)") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didEndDraggingMarker.asDriver()
-            .drive(onNext: { print("Did end dragging marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
+            .drive(onNext: { print("Did end dragging marker: \($0)") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didDragMarker.asDriver()
-            .drive(onNext: { print("Did drag marker: \($0.title ?? "") (\($0.position.latitude), \($0.position.longitude))") })
+            .drive(onNext: { print("Did drag marker: \($0)") })
             .addDisposableTo(disposeBag)
         
         mapView.rx.didStartTileRendering.asDriver()

@@ -49,6 +49,9 @@ public extension Reactive where Base: RxGMSMapView {
         return ControlEvent(events: methodInvokedWithParam1(selector))
     }
     
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, willMove gesture: Bool)
+     */
     public var willMove: ControlEvent<RxGMSGestureProperty> {
         return ControlEvent(events:
             methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:willMove:)))
@@ -56,14 +59,17 @@ public extension Reactive where Base: RxGMSMapView {
         )
     }
     
-    public var didChangeWrapper: Observable<RxGMSCameraPosition> {
+    public var didChangePositionWrapper: Observable<RxGMSCameraPosition> {
         return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didChangeCameraPosition:)))
     }
     
-    public var idleAtWrapper: Observable<RxGMSCameraPosition> {
+    public var idleAtPositionWrapper: Observable<RxGMSCameraPosition> {
         return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:idleAtCameraPosition:)))
     }
     
+    /**
+     Wrapper of: mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D)
+     */
     public var didTapAt: ControlEvent<CLLocationCoordinate2D> {
         let source = delegateProxy
             .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didTapAtCoordinate:)))
@@ -74,6 +80,9 @@ public extension Reactive where Base: RxGMSMapView {
         return ControlEvent(events: source)
     }
 
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D)
+     */
     public var didLongPressAt: ControlEvent<CLLocationCoordinate2D> {
         let source = delegateProxy
             .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didLongPressAtCoordinate:)))
@@ -100,6 +109,9 @@ public extension Reactive where Base: RxGMSMapView {
         return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didTapOverlay:)))
     }
 
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay)
+     */
     public var didTapPOI: ControlEvent<(placeID: String, name: String, location: CLLocationCoordinate2D)> {
         let source = delegateProxy
             .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didTapPOIWithPlaceID:name:location:)))
@@ -116,8 +128,15 @@ public extension Reactive where Base: RxGMSMapView {
         return ControlEvent(events: source)
     }
 
+    /**
+     Wrapper of: func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D)
+     */
     public var didTapMyLocationButton: ControlEvent<Void> {
         return ControlEvent(events: delegateProxy.didTapMyLocationButtonEvent)
+    }
+
+    public var didCloseInfoWindowWrapper: Observable<RxGMSMarker> {
+        return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didCloseInfoWindowOfMarker:)))
     }
 
     public var didBeginDraggingMarkerWrapper: Observable<RxGMSMarker> {
@@ -132,6 +151,9 @@ public extension Reactive where Base: RxGMSMapView {
         return methodInvokedWithParam1(#selector(RxGMSMapViewDelegate.mapView(_:didDragMarker:)))
     }
 
+    /**
+     Wrapper of: func mapViewDidStartTileRendering(_ mapView: GMSMapView)
+     */
     public var didStartTileRendering: ControlEvent<Void> {
         return ControlEvent(events:
             delegateProxy
@@ -140,6 +162,9 @@ public extension Reactive where Base: RxGMSMapView {
         )
     }
     
+    /**
+     Wrapper of: func mapViewDidFinishTileRendering(_ mapView: GMSMapView)
+     */
     public var didFinishTileRendering: ControlEvent<Void> {
         return ControlEvent(events:
             delegateProxy
@@ -148,6 +173,9 @@ public extension Reactive where Base: RxGMSMapView {
         )
     }
     
+    /**
+     Wrapper of: func mapViewSnapshotReady(_ mapView: GMSMapView)
+     */
     public var snapshotReady: ControlEvent<Void> {
         return ControlEvent(events:
             delegateProxy
