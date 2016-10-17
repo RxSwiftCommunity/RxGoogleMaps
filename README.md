@@ -121,7 +121,7 @@ Because GoogleMaps SDK include static binaries, it's hard to find a nice solutio
 
     ```
     pod 'GoogleMaps'
-    pod 'RxGoogleMaps', :git => 'https://github.com/inkyfox/RxGoogleMaps.git'
+    pod 'RxGoogleMaps'
   ```
 2. Add **``Pods/RxGoogleMaps/RxGoogleMapsBridge.swift`` file to your app target** in your Xcode project manually. (Once at first installation)
 
