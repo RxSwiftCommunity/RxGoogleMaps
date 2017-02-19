@@ -3,13 +3,13 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 def common
-    pod 'RxSwift',    '~> 3.0.0-beta.2'
-    pod 'RxCocoa',    '~> 3.0.0-beta.2'
+    pod 'RxSwift',    '~> 3.2'
+    pod 'RxCocoa',    '~> 3.2'
 end
 
 target 'Example' do
     common
-    pod 'GoogleMaps', '~> 2.1.0'
+    pod 'GoogleMaps', '~> 2.2.0'
     pod 'RxGoogleMaps', :path => './'
 end
 

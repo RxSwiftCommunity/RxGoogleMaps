@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RxGoogleMaps"
-  s.version          = "2.1.1"
+  s.version          = "2.2.0"
   s.summary          = "RxSwift reactive wrapper for GoogleMaps SDK."
   s.description      = <<-DESC
     RxSwift reactive wrapper for GoogleMaps SDK. 
@@ -150,8 +150,8 @@ MIT
   s.source_files          = 'Sources/*.swift'
   s.preserve_paths        = 'RxGoogleMapsBridge.swift'
 
-  s.dependency 'RxSwift', '~> 3.0.0-beta.2'
-  s.dependency 'RxCocoa', '~> 3.0.0-beta.2'
+  s.dependency 'RxSwift', '~> 3.2'
+  s.dependency 'RxCocoa', '~> 3.2'
 
   s.pod_target_xcconfig = {
     'SWIFT_VERSION' => '3.0'

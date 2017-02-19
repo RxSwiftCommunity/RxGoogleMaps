@@ -1,32 +1,32 @@
 PODS:
-  - GoogleMaps (2.1.0):
-    - GoogleMaps/Maps (= 2.1.0)
-  - GoogleMaps/Base (2.1.0)
-  - GoogleMaps/Maps (2.1.0):
-    - GoogleMaps/Base (= 2.1.0)
-  - RxCocoa (3.0.0-beta.2):
-    - RxSwift (~> 3.0.0-beta.2)
-  - RxGoogleMaps (2.1.0-beta.2):
-    - RxCocoa (~> 3.0.0-beta.2)
-    - RxSwift (~> 3.0.0-beta.2)
-  - RxSwift (3.0.0-beta.2)
+  - GoogleMaps (2.2.0):
+    - GoogleMaps/Maps (= 2.2.0)
+  - GoogleMaps/Base (2.2.0)
+  - GoogleMaps/Maps (2.2.0):
+    - GoogleMaps/Base
+  - RxCocoa (3.2.0):
+    - RxSwift (~> 3.1)
+  - RxGoogleMaps (2.2.0):
+    - RxCocoa (~> 3.2)
+    - RxSwift (~> 3.2)
+  - RxSwift (3.2.0)
 
 DEPENDENCIES:
-  - GoogleMaps (~> 2.1.0)
-  - RxCocoa (~> 3.0.0-beta.2)
+  - GoogleMaps (~> 2.2.0)
+  - RxCocoa (~> 3.2)
   - RxGoogleMaps (from `./`)
-  - RxSwift (~> 3.0.0-beta.2)
+  - RxSwift (~> 3.2)
 
 EXTERNAL SOURCES:
   RxGoogleMaps:
-    :path: ./
+    :path: "./"
 
 SPEC CHECKSUMS:
-  GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
-  RxCocoa: 1dd105d8a4e18034ccd7bd6d136445363ce67c8e
-  RxGoogleMaps: 74168fd0ef90e149c8cdc4b09a5eca5603628294
-  RxSwift: 0ea939d7d97cb70657190ffde8dc2a9b455778fc
+  GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
+  RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
+  RxGoogleMaps: 69e5bb879d96cec2c35002337cd318e7734bbd28
+  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
 
-PODFILE CHECKSUM: f8502c794d4cd5513627890641558978e4087410
+PODFILE CHECKSUM: a5340236f0df479ecd503c252b7778f14df53fe4
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0
