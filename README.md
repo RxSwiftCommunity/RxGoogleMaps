@@ -135,8 +135,8 @@ Because GoogleMaps SDK include static binaries, it's hard to find a nice solutio
 ## Requirements
 
 - Swift 3.0
-- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.0.0-rc.1
-- [RxCocoa](https://github.com/ReactiveX/RxSwift) 3.0.0-rc.1
+- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.2
+- [RxCocoa](https://github.com/ReactiveX/RxSwift) 3.2
 
 ## License
 
