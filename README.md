@@ -1,4 +1,9 @@
 # RxGoogleMaps
+![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
+[![Version](https://img.shields.io/cocoapods/v/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
+[![License](https://img.shields.io/cocoapods/l/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
+[![Platform](https://img.shields.io/cocoapods/p/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
+
 
 RxGoogleMaps is a [RxSwift](https://github.com/ReactiveX/RxSwift) wrapper for [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/).
 
@@ -114,20 +119,24 @@ mapView.rx.handleMarkerInfoWindow { marker in
 
 ## Installation
 
-### CocoaPods
 Because GoogleMaps SDK include static binaries, it's hard to find a nice solution to make a *straight-forward* Cocoapods framework if it uses GoogleMaps SDK. So I decided ``RxGoogleMaps`` not to use ``GoogleMaps`` directly and to provide a *bridging* swift file which connects ``GoogleMaps`` and ``RxGoogleMaps`` instead.
+
+### CocoaPods
 
 1. Add to `Podfile`:
 
-    ```
+    ```ruby
     pod 'GoogleMaps'
     pod 'RxGoogleMaps'
-  ```
+    ```
+    
 2. Add **``Pods/RxGoogleMaps/RxGoogleMapsBridge.swift`` file to your app target** in your Xcode project manually. (Once at first installation)
 
 ## Requirements
 
-RxGoogleMaps requires Swift 3.0 and dedicated versions of RxSwift 3.0.0-beta.2 (Xcode8+ and iOS8+)
+- Swift 3.0
+- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.0.0-rc.1
+- [RxCocoa](https://github.com/ReactiveX/RxSwift) 3.0.0-rc.1
 
 ## License
 
