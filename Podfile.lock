@@ -13,9 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - GoogleMaps (~> 2.2.0)
-  - RxCocoa (~> 3.2)
   - RxGoogleMaps (from `./`)
-  - RxSwift (~> 3.2)
 
 EXTERNAL SOURCES:
   RxGoogleMaps:
@@ -27,6 +25,6 @@ SPEC CHECKSUMS:
   RxGoogleMaps: 69e5bb879d96cec2c35002337cd318e7734bbd28
   RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
 
-PODFILE CHECKSUM: a5340236f0df479ecd503c252b7778f14df53fe4
+PODFILE CHECKSUM: b63938aa5b51c49ecf0f250904ab70520a91e33a
 
 COCOAPODS: 1.2.0
