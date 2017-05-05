@@ -52,7 +52,7 @@ Observable.zip(s0, s1) { $0 }
         if let marker = cur { marker.icon = #imageLiteral(resourceName: "marker_selected") }
     })
     .addDisposableTo(disposeBag)
-                
+
 ```
 
 ### Binding properties
@@ -70,19 +70,19 @@ button.rx.tap
     .map { 14 }
     .bindTo(mapView.rx.zoomToAnimate)
     .addDisposableTo(disposeBag)
-            
+
 button.rx.tap
     .map { GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 8, bearing: 10, viewingAngle: 30) }
     .bindTo(mapView.rx.cameraToAnimate)
     .addDisposableTo(disposeBag)
-    
+
 // Selected marker
 
 button.rx.tap
     .map { myMarker }
     .bindTo(mapView.rx.selectedMarker.asObserver())
     .addDisposableTo(disposeBag)
-    
+
 // GMSMarker or GMSOverlay properties
 
 button.rx.tap
@@ -94,7 +94,7 @@ button.rx.tap
     .map{ UIColor.red }
     .bindTo(circle.rx.fillColor.asObserver())
     .addDisposableTo(disposeBag)
-    
+
 ```
 
 ### Delegates which have a return value
@@ -129,8 +129,18 @@ Because GoogleMaps SDK include static binaries, it's hard to find a nice solutio
     pod 'GoogleMaps'
     pod 'RxGoogleMaps'
     ```
-    
+
 2. Add **``Pods/RxGoogleMaps/RxGoogleMapsBridge.swift`` file to your app target** in your Xcode project manually. (Once at first installation)
+
+### Carthage
+
+1. Add to `Cartfile`:
+
+```
+github "RxSwiftCommunity/RxGoogleMaps" "master"
+```
+
+2. Add [RxGoogleMapsBridge.swift](RxGoogleMapsBridge.swift) file to your Xcode project manually.
 
 ## Requirements
 
