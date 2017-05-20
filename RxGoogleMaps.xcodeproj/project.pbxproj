@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090646D61EB8C350007F53BA /* RxGoogleMaps-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 090646D41EB8C350007F53BA /* RxGoogleMaps-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		090646DA1EB8C3E6007F53BA /* RxGMSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646B91EB8C1F2007F53BA /* RxGMSCircle.swift */; };
+		090646DB1EB8C3E6007F53BA /* RxGMSGroundOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BA1EB8C1F2007F53BA /* RxGMSGroundOverlay.swift */; };
+		090646DC1EB8C3E6007F53BA /* RxGMSMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BB1EB8C1F2007F53BA /* RxGMSMapView.swift */; };
+		090646DD1EB8C3E6007F53BA /* RxGMSMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BC1EB8C1F2007F53BA /* RxGMSMapView+Rx.swift */; };
+		090646DE1EB8C3E6007F53BA /* RxGMSMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BD1EB8C1F2007F53BA /* RxGMSMapViewDelegate.swift */; };
+		090646DF1EB8C3E6007F53BA /* RxGMSMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BE1EB8C1F2007F53BA /* RxGMSMapViewDelegateProxy.swift */; };
+		090646E01EB8C3E6007F53BA /* RxGMSMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BF1EB8C1F2007F53BA /* RxGMSMarker.swift */; };
+		090646E11EB8C3E6007F53BA /* RxGMSOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646C01EB8C1F2007F53BA /* RxGMSOverlay.swift */; };
+		090646E21EB8C3E6007F53BA /* RxGMSPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646C11EB8C1F2007F53BA /* RxGMSPolygon.swift */; };
+		090646E31EB8C3E6007F53BA /* RxGMSPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646C21EB8C1F2007F53BA /* RxGMSPolyline.swift */; };
+		096B037E1EBD1F00008387E2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096B037D1EBD1F00008387E2 /* RxCocoa.framework */; };
+		096B03801EBD1F16008387E2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096B037F1EBD1F16008387E2 /* RxSwift.framework */; };
 		A90681E71DAFCDD00019C689 /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = A90681E61DAFCDD00019C689 /* key.plist */; };
 		A90F9CBC1DAABB5600A3461E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CBB1DAABB5600A3461E /* AppDelegate.swift */; };
 		A90F9CBE1DAABB5600A3461E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CBD1DAABB5600A3461E /* ViewController.swift */; };
@@ -18,6 +31,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090646B91EB8C1F2007F53BA /* RxGMSCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSCircle.swift; sourceTree = "<group>"; };
+		090646BA1EB8C1F2007F53BA /* RxGMSGroundOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSGroundOverlay.swift; sourceTree = "<group>"; };
+		090646BB1EB8C1F2007F53BA /* RxGMSMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapView.swift; sourceTree = "<group>"; };
+		090646BC1EB8C1F2007F53BA /* RxGMSMapView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxGMSMapView+Rx.swift"; sourceTree = "<group>"; };
+		090646BD1EB8C1F2007F53BA /* RxGMSMapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapViewDelegate.swift; sourceTree = "<group>"; };
+		090646BE1EB8C1F2007F53BA /* RxGMSMapViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapViewDelegateProxy.swift; sourceTree = "<group>"; };
+		090646BF1EB8C1F2007F53BA /* RxGMSMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMarker.swift; sourceTree = "<group>"; };
+		090646C01EB8C1F2007F53BA /* RxGMSOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSOverlay.swift; sourceTree = "<group>"; };
+		090646C11EB8C1F2007F53BA /* RxGMSPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSPolygon.swift; sourceTree = "<group>"; };
+		090646C21EB8C1F2007F53BA /* RxGMSPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSPolyline.swift; sourceTree = "<group>"; };
+		090646D21EB8C350007F53BA /* RxGoogleMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxGoogleMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		090646D41EB8C350007F53BA /* RxGoogleMaps-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RxGoogleMaps-iOS.h"; sourceTree = "<group>"; };
+		090646D51EB8C350007F53BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		096B037D1EBD1F00008387E2 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		096B037F1EBD1F16008387E2 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		259DDC520C5E3D8FE4BA82D7 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		53D0DB689702006F776EF1D4 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A90681E61DAFCDD00019C689 /* key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
@@ -33,6 +61,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		090646CE1EB8C350007F53BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				096B03801EBD1F16008387E2 /* RxSwift.framework in Frameworks */,
+				096B037E1EBD1F00008387E2 /* RxCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A90F9CB61DAABB5600A3461E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,9 +81,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090646B81EB8C1AE007F53BA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				090646B91EB8C1F2007F53BA /* RxGMSCircle.swift */,
+				090646BA1EB8C1F2007F53BA /* RxGMSGroundOverlay.swift */,
+				090646BB1EB8C1F2007F53BA /* RxGMSMapView.swift */,
+				090646BC1EB8C1F2007F53BA /* RxGMSMapView+Rx.swift */,
+				090646BD1EB8C1F2007F53BA /* RxGMSMapViewDelegate.swift */,
+				090646BE1EB8C1F2007F53BA /* RxGMSMapViewDelegateProxy.swift */,
+				090646BF1EB8C1F2007F53BA /* RxGMSMarker.swift */,
+				090646C01EB8C1F2007F53BA /* RxGMSOverlay.swift */,
+				090646C11EB8C1F2007F53BA /* RxGMSPolygon.swift */,
+				090646C21EB8C1F2007F53BA /* RxGMSPolyline.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		090646D31EB8C350007F53BA /* RxGoogleMaps-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				090646D41EB8C350007F53BA /* RxGoogleMaps-iOS.h */,
+				090646D51EB8C350007F53BA /* Info.plist */,
+			);
+			path = "RxGoogleMaps-iOS";
+			sourceTree = "<group>";
+		};
 		75B80F02794213887976E6AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				096B037F1EBD1F16008387E2 /* RxSwift.framework */,
+				096B037D1EBD1F00008387E2 /* RxCocoa.framework */,
 				AEE9272F37DFF9F5256AB1B0 /* Pods_Example.framework */,
 			);
 			name = Frameworks;
@@ -64,7 +129,9 @@
 		A90F9C911DAAB67100A3461E = {
 			isa = PBXGroup;
 			children = (
+				090646B81EB8C1AE007F53BA /* Sources */,
 				A90F9CBA1DAABB5600A3461E /* Example */,
+				090646D31EB8C350007F53BA /* RxGoogleMaps-iOS */,
 				A90F9C9C1DAAB67100A3461E /* Products */,
 				9B7A7BF2C222C22118C2FAA0 /* Pods */,
 				75B80F02794213887976E6AD /* Frameworks */,
@@ -75,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				A90F9CB91DAABB5600A3461E /* Example.app */,
+				090646D21EB8C350007F53BA /* RxGoogleMaps.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +164,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		090646CF1EB8C350007F53BA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				090646D61EB8C350007F53BA /* RxGoogleMaps-iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		090646D11EB8C350007F53BA /* RxGoogleMaps-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 090646D71EB8C350007F53BA /* Build configuration list for PBXNativeTarget "RxGoogleMaps-iOS" */;
+			buildPhases = (
+				090646CD1EB8C350007F53BA /* Sources */,
+				090646CE1EB8C350007F53BA /* Frameworks */,
+				090646CF1EB8C350007F53BA /* Headers */,
+				090646D01EB8C350007F53BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RxGoogleMaps-iOS";
+			productName = "RxGoogleMaps-iOS";
+			productReference = 090646D21EB8C350007F53BA /* RxGoogleMaps.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		A90F9CB81DAABB5600A3461E /* Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A90F9CD31DAABB5600A3461E /* Build configuration list for PBXNativeTarget "Example" */;
@@ -127,6 +224,10 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Gen X Hippies Company";
 				TargetAttributes = {
+					090646D11EB8C350007F53BA = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 					A90F9CB81DAABB5600A3461E = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = XH2F8QV9GT;
@@ -148,11 +249,19 @@
 			projectRoot = "";
 			targets = (
 				A90F9CB81DAABB5600A3461E /* Example */,
+				090646D11EB8C350007F53BA /* RxGoogleMaps-iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		090646D01EB8C350007F53BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A90F9CB71DAABB5600A3461E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -215,6 +324,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		090646CD1EB8C350007F53BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				090646E11EB8C3E6007F53BA /* RxGMSOverlay.swift in Sources */,
+				090646DA1EB8C3E6007F53BA /* RxGMSCircle.swift in Sources */,
+				090646DB1EB8C3E6007F53BA /* RxGMSGroundOverlay.swift in Sources */,
+				090646DC1EB8C3E6007F53BA /* RxGMSMapView.swift in Sources */,
+				090646DF1EB8C3E6007F53BA /* RxGMSMapViewDelegateProxy.swift in Sources */,
+				090646E01EB8C3E6007F53BA /* RxGMSMarker.swift in Sources */,
+				090646E21EB8C3E6007F53BA /* RxGMSPolygon.swift in Sources */,
+				090646DE1EB8C3E6007F53BA /* RxGMSMapViewDelegate.swift in Sources */,
+				090646DD1EB8C3E6007F53BA /* RxGMSMapView+Rx.swift in Sources */,
+				090646E31EB8C3E6007F53BA /* RxGMSPolyline.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A90F9CB51DAABB5600A3461E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,6 +373,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		090646D81EB8C350007F53BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "RxGoogleMaps-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oo-v.RxGoogleMaps";
+				PRODUCT_NAME = RxGoogleMaps;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		090646D91EB8C350007F53BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "RxGoogleMaps-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oo-v.RxGoogleMaps";
+				PRODUCT_NAME = RxGoogleMaps;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		A90F9CAD1DAAB67100A3461E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -379,6 +555,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		090646D71EB8C350007F53BA /* Build configuration list for PBXNativeTarget "RxGoogleMaps-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				090646D81EB8C350007F53BA /* Debug */,
+				090646D91EB8C350007F53BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A90F9C951DAAB67100A3461E /* Build configuration list for PBXProject "RxGoogleMaps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
