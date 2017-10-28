@@ -49,61 +49,61 @@ import RxSwift
 public extension Reactive where Base: RxGMSMarker {
     
     public var position: AnyObserver<CLLocationCoordinate2D> {
-        return UIBindingObserver(UIElement: base) { control, position in
+        return Binder(base) { control, position in
             control.position = position
         }.asObserver()
     }
     
     public var snippet: AnyObserver<String?> {
-        return UIBindingObserver(UIElement: base) { control, snippet in
+        return Binder(base) { control, snippet in
             control.snippet = snippet
         }.asObserver()
     }
     
     public var icon: AnyObserver<UIImage?> {
-        return UIBindingObserver(UIElement: base) { control, icon in
+        return Binder(base) { control, icon in
             control.icon = icon
         }.asObserver()
     }
     
     public var iconView: AnyObserver<UIView?> {
-        return UIBindingObserver(UIElement: base) { control, iconView in
+        return Binder(base) { control, iconView in
             control.iconView = iconView
         }.asObserver()
     }
     
     public var groundAnchor: AnyObserver<CGPoint> {
-        return UIBindingObserver(UIElement: base) { control, groundAnchor in
+        return Binder(base) { control, groundAnchor in
             control.groundAnchor = groundAnchor
         }.asObserver()
     }
     
     public var infoWindowAnchor: AnyObserver<CGPoint> {
-        return UIBindingObserver(UIElement: base) { control, infoWindowAnchor in
+        return Binder(base) { control, infoWindowAnchor in
             control.infoWindowAnchor = infoWindowAnchor
         }.asObserver()
     }
     
     public var draggable: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, draggable in
+        return Binder(base) { control, draggable in
             control.draggable = draggable
         }.asObserver()
     }
     
     public var rotation: AnyObserver<CLLocationDegrees> {
-        return UIBindingObserver(UIElement: base) { control, rotation in
+        return Binder(base) { control, rotation in
             control.rotation = rotation
         }.asObserver()
     }
     
     public var opacity: AnyObserver<Float> {
-        return UIBindingObserver(UIElement: base) { control, opacity in
+        return Binder(base) { control, opacity in
             control.opacity = opacity
         }.asObserver()
     }
     
     public var userData: AnyObserver<Any?> {
-        return UIBindingObserver(UIElement: base) { control, userData in
+        return Binder(base) { control, userData in
             control.userData = userData
         }.asObserver()
     }

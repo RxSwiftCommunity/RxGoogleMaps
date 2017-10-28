@@ -27,7 +27,7 @@ import RxSwift
 extension Reactive where Base: RxGMSMapView {
     
     fileprivate var delegateProxy: RxGMSMapViewDelegateProxy {
-        return RxGMSMapViewDelegateProxy.proxyForObject(base)
+        return RxGMSMapViewDelegateProxy.proxy(for: base)
     }
  
     public func handleTapMarkerWrapper(_ closure: RxGMSHandleTapMarker?) {
@@ -202,37 +202,37 @@ public extension Reactive where Base: RxGMSMapView {
 public extension Reactive where Base: RxGMSMapView, Base: UIView {
     
     public var camera: AnyObserver<RxGMSCameraPosition> {
-        return UIBindingObserver(UIElement: base) { control, camera in
+        return Binder(base) { control, camera in
             control.cameraWrapper = camera
         }.asObserver()
     }
     
     public var cameraToAnimate: AnyObserver<RxGMSCameraPosition> {
-        return UIBindingObserver(UIElement: base) { control, camera in
+        return Binder(base) { control, camera in
             control.animateWrapper(to: camera)
         }.asObserver()
     }
     
     public var locationToAnimate: AnyObserver<CLLocationCoordinate2D> {
-        return UIBindingObserver(UIElement: base) { control, location in
+        return Binder(base) { control, location in
             control.animate(toLocation: location)
         }.asObserver()
     }
     
     public var zoomToAnimate: AnyObserver<Float> {
-        return UIBindingObserver(UIElement: base) { control, zoom in
+        return Binder(base) { control, zoom in
             control.animate(toZoom: zoom)
         }.asObserver()
     }
     
     public var bearingToAnimate: AnyObserver<CLLocationDirection> {
-        return UIBindingObserver(UIElement: base) { control, bearing in
+        return Binder(base) { control, bearing in
             control.animate(toBearing: bearing)
         }.asObserver()
     }
     
     public var viewingAngleToAnimate: AnyObserver<Double> {
-        return UIBindingObserver(UIElement: base) { control, viewingAngle in
+        return Binder(base) { control, viewingAngle in
             control.animate(toViewingAngle: viewingAngle)
         }.asObserver()
     }
@@ -244,7 +244,7 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
 public extension Reactive where Base: RxGMSMapView, Base: UIView {
 
     public var myLocationEnabled: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, myLocationEnabled in
+        return Binder(base) { control, myLocationEnabled in
             control.myLocationEnabled = myLocationEnabled
         }.asObserver()
     }
@@ -255,20 +255,20 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
     
     public var selectedMarker: ControlProperty<RxGMSMarker?> {
         return ControlProperty(values: observeWeakly(RxGMSMarker.self, "selectedMarker"),
-                               valueSink: UIBindingObserver(UIElement: base) { control, selectedMarker in
+                               valueSink: Binder(base) { control, selectedMarker in
                                        control.selectedMarkerWrapper = selectedMarker
                                    }.asObserver()
         )
     }
     
     public var trafficEnabled: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, trafficEnabled in
+        return Binder(base) { control, trafficEnabled in
             control.trafficEnabled = trafficEnabled
         }.asObserver()
     }
     
     public var padding: AnyObserver<UIEdgeInsets> {
-        return UIBindingObserver(UIElement: base) { control, padding in
+        return Binder(base) { control, padding in
             control.padding = padding
         }.asObserver()
     }
@@ -279,37 +279,37 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
 public extension Reactive where Base: RxGMSMapView, Base: UIView {
     
     public var scrollGesturesEnabled: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, scrollGestures in
+        return Binder(base) { control, scrollGestures in
             control.settingsWrapper.scrollGestures = scrollGestures
         }.asObserver()
     }
     
     public var zoomGesturesEnabled: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, zoomGestures in
+        return Binder(base) { control, zoomGestures in
             control.settingsWrapper.zoomGestures = zoomGestures
         }.asObserver()
     }
     
     public var tiltGesturesEnabled: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, tiltGestures in
+        return Binder(base) { control, tiltGestures in
             control.settingsWrapper.tiltGestures = tiltGestures
         }.asObserver()
     }
     
     public var rotateGesturesEnabled: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, rotateGestures in
+        return Binder(base) { control, rotateGestures in
             control.settingsWrapper.rotateGestures = rotateGestures
         }.asObserver()
     }
     
     public var compassButtonVisible: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, compassButton in
+        return Binder(base) { control, compassButton in
             control.settingsWrapper.compassButton = compassButton
         }.asObserver()
     }
     
     public var myLocationButtonVisible: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, myLocationButton in
+        return Binder(base) { control, myLocationButton in
             control.settingsWrapper.myLocationButton = myLocationButton
         }.asObserver()
     }

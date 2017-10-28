@@ -37,19 +37,19 @@ import RxSwift
 public extension Reactive where Base: RxGMSOverlay {
 
     public var title: AnyObserver<String?> {
-        return UIBindingObserver(UIElement: base) { control, title in
+        return Binder(base) { control, title in
             control.title = title
         }.asObserver()
     }
 
     public var tappable: AnyObserver<Bool> {
-        return UIBindingObserver(UIElement: base) { control, tappable in
+        return Binder(base) { control, tappable in
             control.tappable = tappable
         }.asObserver()
     }
     
     public var zIndex: AnyObserver<Int32> {
-        return UIBindingObserver(UIElement: base) { control, zIndex in
+        return Binder(base) { control, zIndex in
             control.zIndex = zIndex
         }.asObserver()
     }

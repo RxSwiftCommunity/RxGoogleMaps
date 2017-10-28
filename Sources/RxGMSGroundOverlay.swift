@@ -37,31 +37,31 @@ import RxSwift
 public extension Reactive where Base: RxGMSGroundOverlay {
     
     public var position: AnyObserver<CLLocationCoordinate2D> {
-        return UIBindingObserver(UIElement: base) { control, position in
+        return Binder(base) { control, position in
             control.position = position
         }.asObserver()
     }
     
     public var anchor: AnyObserver<CGPoint> {
-        return UIBindingObserver(UIElement: base) { control, anchor in
+        return Binder(base) { control, anchor in
             control.anchor = anchor
         }.asObserver()
     }
     
     public var icon: AnyObserver<UIImage?> {
-        return UIBindingObserver(UIElement: base) { control, icon in
+        return Binder(base) { control, icon in
             control.icon = icon
         }.asObserver()
     }
     
     public var opacity: AnyObserver<Float> {
-        return UIBindingObserver(UIElement: base) { control, opacity in
+        return Binder(base) { control, opacity in
             control.opacity = opacity
         }.asObserver()
     }
     
     public var bearing: AnyObserver<CLLocationDirection> {
-        return UIBindingObserver(UIElement: base) { control, bearing in
+        return Binder(base) { control, bearing in
             control.bearing = bearing
         }.asObserver()
     }
