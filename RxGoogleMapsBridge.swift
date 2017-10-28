@@ -27,19 +27,19 @@ import RxSwift
 
 extension RxGMSMapViewDelegateProxy: GMSMapViewDelegate {
 
-    public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+    @nonobjc public func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         return self.didHandleTap(marker)
     }
 
-    public func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+    @nonobjc public func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         return self.markerInfoWindow(marker: marker)
     }
     
-    public func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+    @nonobjc public func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
         return self.markerInfoContents(marker: marker)
     }
     
-    public func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+    @nonobjc public func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
         return self.didTapMyLocationButton()
     }
 }
@@ -56,7 +56,7 @@ extension GoogleMaps.GMSMapView: RxGMSMapView {
     }
     
     public var selectedMarkerWrapper: RxGMSMarker? {
-        get { return selectedMarker as? RxGMSMarker }
+        get { return selectedMarker }
         set { selectedMarker = newValue as? GMSMarker }
     }
 
@@ -68,6 +68,15 @@ extension GoogleMaps.GMSMapView: RxGMSMapView {
         return settings as RxGMSUISettings
     }
     
+    public var myLocationEnabledWrapper: Bool {
+        get { return isMyLocationEnabled }
+        set { isMyLocationEnabled = newValue }
+    }
+    
+    public var trafficEnabledWrapper: Bool {
+        get { return isTrafficEnabled }
+        set { isTrafficEnabled = newValue }
+    }
 }
 
 extension Reactive where Base: GoogleMaps.GMSMapView {
@@ -177,9 +186,27 @@ extension GoogleMaps.GMSUISettings: RxGMSUISettings { }
 
 extension GoogleMaps.GMSCameraPosition: RxGMSCameraPosition { }
 
-extension GoogleMaps.GMSOverlay: RxGMSOverlay { }
+extension GoogleMaps.GMSOverlay: RxGMSOverlay {
+    //var tappable: Bool { @objc(isTappable) get set }
+    public var tappableWrapper: Bool {
+        get { return isTappable }
+        set { isTappable = newValue }
+    }
+}
 
-extension GoogleMaps.GMSMarker: RxGMSMarker { }
+extension GoogleMaps.GMSMarker: RxGMSMarker {
+    //var draggable: Bool { @objc(isDraggable) get set }
+    public var draggableWrapper: Bool {
+        get { return isDraggable }
+        set { isDraggable = newValue }
+    }
+    
+    //var flat: Bool { @objc(isFlat) get set }
+    public var flatWrapper: Bool {
+        get { return isFlat }
+        set { isFlat = newValue }
+    }
+}
 
 extension GoogleMaps.GMSCircle: RxGMSCircle { }
 

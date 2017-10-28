@@ -34,13 +34,13 @@ import RxSwift
 public extension Reactive where Base: RxGMSPolyline {
     
     public var strokeWidth: AnyObserver<CGFloat> {
-        return UIBindingObserver(UIElement: base) { control, strokeWidth in
+        return Binder(base) { control, strokeWidth in
             control.strokeWidth = strokeWidth
         }.asObserver()
     }
     
     public var strokeColor: AnyObserver<UIColor> {
-        return UIBindingObserver(UIElement: base) { control, strokeColor in
+        return Binder(base) { control, strokeColor in
             control.strokeColor = strokeColor
         }.asObserver()
     }

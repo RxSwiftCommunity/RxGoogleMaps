@@ -29,11 +29,13 @@ import RxSwift
     
     var cameraWrapper: RxGMSCameraPosition { get set }
     
-    var myLocationEnabled: Bool { @objc(isMyLocationEnabled) get set }
+    //var myLocationEnabled: Bool { @objc(isMyLocationEnabled) get }
+    var myLocationEnabledWrapper: Bool { get set }
 
     var selectedMarkerWrapper: RxGMSMarker? { get set }
 
-    var trafficEnabled: Bool { @objc(isTrafficEnabled) get set }
+    //var trafficEnabled: Bool { @objc(isTrafficEnabled) get }
+    var trafficEnabledWrapper: Bool { get set }
 
     var padding: UIEdgeInsets { get set }
 

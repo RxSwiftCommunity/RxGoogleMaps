@@ -34,8 +34,10 @@ import RxSwift
     var tracksInfoWindowChanges: Bool { get set }
     var groundAnchor: CGPoint { get set }
     var infoWindowAnchor: CGPoint { get set }
-    var draggable: Bool { @objc(isDraggable) get set }
-    var flat: Bool { @objc(isFlat) get set }
+    //var draggable: Bool { @objc(isDraggable) get set }
+    var draggableWrapper: Bool { get set }
+    //var flat: Bool { @objc(isFlat) get set }
+    var flatWrapper: Bool { get set }
     var rotation: CLLocationDegrees { get set }
     var opacity: Float { get set }
     var userData: Any? { get set }
@@ -86,7 +88,13 @@ public extension Reactive where Base: RxGMSMarker {
     
     public var draggable: AnyObserver<Bool> {
         return Binder(base) { control, draggable in
-            control.draggable = draggable
+            control.draggableWrapper = draggable
+        }.asObserver()
+    }
+    
+    public var flat: AnyObserver<Bool> {
+        return Binder(base) { control, flat in
+            control.flatWrapper = flat
         }.asObserver()
     }
     

@@ -27,7 +27,8 @@ import RxSwift
 @objc public protocol RxGMSOverlay: class {
     
     var title: String? { get set }
-    var tappable: Bool { @objc(isTappable) get set }
+    //var tappable: Bool { @objc(isTappable) get set }
+    var tappableWrapper: Bool { get set }
     var zIndex: Int32 { get set }
     
     //weak var map: RxGMSMapView? { get set }
@@ -44,7 +45,7 @@ public extension Reactive where Base: RxGMSOverlay {
 
     public var tappable: AnyObserver<Bool> {
         return Binder(base) { control, tappable in
-            control.tappable = tappable
+            control.tappableWrapper = tappable
         }.asObserver()
     }
     

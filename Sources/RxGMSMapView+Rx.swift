@@ -245,7 +245,7 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
 
     public var myLocationEnabled: AnyObserver<Bool> {
         return Binder(base) { control, myLocationEnabled in
-            control.myLocationEnabled = myLocationEnabled
+            control.myLocationEnabledWrapper = myLocationEnabled
         }.asObserver()
     }
 
@@ -263,7 +263,7 @@ public extension Reactive where Base: RxGMSMapView, Base: UIView {
     
     public var trafficEnabled: AnyObserver<Bool> {
         return Binder(base) { control, trafficEnabled in
-            control.trafficEnabled = trafficEnabled
+            control.trafficEnabledWrapper = trafficEnabled
         }.asObserver()
     }
     

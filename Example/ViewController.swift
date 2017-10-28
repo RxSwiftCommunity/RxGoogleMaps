@@ -39,8 +39,8 @@ class ViewController: UIViewController {
 
         let startLocationManager = mapView.rx.didTapMyLocationButton.take(1).publish()
         _ = startLocationManager.subscribe(onNext: { [weak self] in self?.locationManager.requestWhenInUseAuthorization() })
-        _ = startLocationManager.map { true }.bindTo(mapView.rx.myLocationEnabled)
-        startLocationManager.connect().addDisposableTo(disposeBag)
+        _ = startLocationManager.map { true }.bind(to: mapView.rx.myLocationEnabled)
+        startLocationManager.connect().disposed(by: disposeBag)
         
         mapView.rx.handleTapMarker { marker in
             print("Handle tap marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
@@ -64,77 +64,77 @@ class ViewController: UIViewController {
         
         mapView.rx.willMove.asDriver()
             .drive(onNext: { print("Will move: by gesture \($0.byGesture)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         mapView.rx.didChangePosition.asDriver()
             .drive(onNext: { print("Did change position: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         mapView.rx.idleAtPosition.asDriver()
             .drive(onNext: { print("Idle at coordinate: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         mapView.rx.didTapAt.asDriver()
             .drive(onNext: { print("Did tap at coordinate: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didLongPressAt.asDriver()
             .drive(onNext: { print("Did long press at coordinate: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didTapMarker.asDriver()
             .drive(onNext: { print("Did tap marker: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didTapInfoWindow.asDriver()
             .drive(onNext: { print("Did tap info window of marker: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didLongPressInfoWindow.asDriver()
             .drive(onNext: { print("Did long press info window of marker: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didTapOverlay.asDriver()
             .drive(onNext: { print("Did tap overlay: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         mapView.rx.didTapPOI.asDriver()
             .drive(onNext: { (placeID, name, coordinate) in
                 print("Did tap POI: [\(placeID)] \(name) (\(coordinate.latitude), \(coordinate.longitude))")
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didTapMyLocationButton.asDriver()
             .drive(onNext: { print("Did tap my location button") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         mapView.rx.didCloseInfoWindow.asDriver()
             .drive(onNext: { print("Did close info window of marker: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         mapView.rx.didBeginDraggingMarker.asDriver()
             .drive(onNext: { print("Did begin dragging marker: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didEndDraggingMarker.asDriver()
             .drive(onNext: { print("Did end dragging marker: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didDragMarker.asDriver()
             .drive(onNext: { print("Did drag marker: \($0)") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didStartTileRendering.asDriver()
             .drive(onNext: { print("Did start tile rendering") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.didFinishTileRendering.asDriver()
             .drive(onNext: { print("Did finish tile rendering") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.snapshotReady.asDriver()
             .drive(onNext: { print("Snapshot ready") })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.myLocation
             .subscribe(onNext: { location in
@@ -144,7 +144,7 @@ class ViewController: UIViewController {
                     print("My location: nil")
                 }
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.myLocation
             .subscribe(onNext: { location in
@@ -154,7 +154,7 @@ class ViewController: UIViewController {
                     print("My location: nil")
                 }
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         mapView.rx.selectedMarker.asDriver()
             .drive(onNext: { selected in
@@ -164,13 +164,13 @@ class ViewController: UIViewController {
                     print("Selected marker: nil")
                 }
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         do {
             let s0 = mapView.rx.selectedMarker.asObservable()
             let s1 = s0.skip(1)
             
-            Observable.zip(s0, s1) { $0 }
+            Observable.zip(s0, s1) { ($0, $1) }
                 .subscribe(onNext: { (prev, cur) in
                     if let marker = prev {
                         marker.icon = #imageLiteral(resourceName: "marker_normal")
@@ -179,7 +179,7 @@ class ViewController: UIViewController {
                         marker.icon = #imageLiteral(resourceName: "marker_selected")
                     }
                 })
-                .addDisposableTo(disposeBag)
+                .disposed(by: disposeBag)
         }
 
     }
@@ -202,15 +202,15 @@ class ViewController: UIViewController {
             
 //            actionButton0.rx.tap.map{ _ in marker }
 //                .bindTo(mapView.rx.selectedMarker.asObserver())
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 
 //            actionButton0.rx.tap.map{ 180.0 }
 //                .bindTo(marker.rx.rotation.asObserver())
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 //            
 //            actionButton1.rx.tap.map{ 0 }
 //                .bindTo(marker.rx.rotation.asObserver())
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 
         }
 
@@ -223,7 +223,7 @@ class ViewController: UIViewController {
 
 //            actionButton1.rx.tap.map{ _ in marker }
 //                .bindTo(mapView.rx.selectedMarker.asObserver())
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
         }
 
         do {
@@ -239,38 +239,38 @@ class ViewController: UIViewController {
             
 //            actionButton0.rx.tap.map{ UIColor.red }
 //                .bindTo(circle.rx.fillColor.asObserver())
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 //            
 //            actionButton1.rx.tap.map{ UIColor.green }
 //                .bindTo(circle.rx.fillColor.asObserver())
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 
         }
         
         do {
 //            actionButton0.rx.tap.map { true }
 //                .bindTo(mapView.rx.trafficEnabled.asObserver())
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 //            actionButton1.rx.tap.map { false }
 //                .bindTo(mapView.rx.trafficEnabled.asObserver())
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 
 //            actionButton0.rx.tap.map { 14 }
 //                .bindTo(mapView.rx.zoomToAnimate)
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
             
 //            actionButton1.rx.tap
 //                .map { GMSCameraPosition.camera(withLatitude: place0.latitude, longitude: place0.longitude, zoom: 8, bearing: 10, viewingAngle: 30) }
 //                .bindTo(mapView.rx.cameraToAnimate)
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
             
             
 //            actionButton0.rx.tap.map { true }
 //                .bindTo(mapView.rx.zoomGesturesEnabled)
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 //            actionButton1.rx.tap.map { false }
 //                .bindTo(mapView.rx.zoomGesturesEnabled)
-//                .addDisposableTo(disposeBag)
+//                .disposed(by: disposeBag)
 
         }
     }

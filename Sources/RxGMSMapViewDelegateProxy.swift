@@ -29,7 +29,7 @@ public typealias RxGMSHandleTapMyLocationButton = () -> (Bool)
 public typealias RxGMSHandleMarkerInfoView = (RxGMSMarker) -> (UIView?)
 
 public class RxGMSMapViewDelegateProxy
-    : DelegateProxy
+    : DelegateProxy<RxGMSMapView, RxGMSMapViewDelegate>
     , RxGMSMapViewDelegate
     , DelegateProxyType {
     
@@ -49,6 +49,11 @@ public class RxGMSMapViewDelegateProxy
         mapView.delegateWrapper = castOptionalOrFatalError(delegate)
     }
     
+    /// - parameter tabBar: Parent object for delegate proxy.
+    public init(gsMapView: ParentObject) {
+        super.init(parentObject: gsMapView, delegateProxy: RxGMSMapViewDelegateProxy.self)
+    }
+    
     /**
      For more information take a look at `DelegateProxyType`.
      */
@@ -57,6 +62,20 @@ public class RxGMSMapViewDelegateProxy
         return mapView.delegateWrapper
     }
     
+    // Register known implementations
+    public static func registerKnownImplementations() {
+        self.register { RxGMSMapViewDelegateProxy(gsMapView: $0) }
+    }
+    
+    /// For more information take a look at `DelegateProxyType`.
+    open class func currentDelegate(for object: ParentObject) -> RxGMSMapViewDelegate? {
+        return object.delegateWrapper
+    }
+    
+    /// For more information take a look at `DelegateProxyType`.
+    open class func setCurrentDelegate(_ delegate: RxGMSMapViewDelegate?, to object: ParentObject) {
+        object.delegateWrapper = delegate
+    }
 }
 
 // For delegates that needs return types
@@ -69,7 +88,7 @@ extension RxGMSMapViewDelegateProxy {
     }
     
     public func didTapMyLocationButton() -> Bool {
-        didTapMyLocationButtonEvent.onNext()
+        didTapMyLocationButtonEvent.onNext(())
         return handleTapMyLocationButton?() ?? false
     }
 
