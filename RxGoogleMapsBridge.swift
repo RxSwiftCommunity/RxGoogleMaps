@@ -99,7 +99,7 @@ extension Reactive where Base: GoogleMaps.GMSMapView {
      Wrapper of: func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool
      */
     public var didTapMarker: ControlEvent<GMSMarker> {
-        return ControlEvent(events: didTapMarkerWrapper.map { $0 as! GMSMarker })
+        return ControlEvent(events: didTapMarkerWrapper.map { $0 as! GMSMarker }) //NotWorking
     }
     
     /**
@@ -119,9 +119,9 @@ extension Reactive where Base: GoogleMaps.GMSMapView {
     /**
      Wrapper of: func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D)
      */
-    public var didTapOverlay: ControlEvent<GMSOverlay> {
-        return ControlEvent(events: didTapOverlayWrapper.map { $0 as! GMSOverlay })
-    }
+//    public var didTapOverlay: ControlEvent<GMSOverlay> {
+//        return ControlEvent(events: didTapOverlayWrapper.map { $0 as! GMSOverlay })
+//    }
     
     /**
      Wrapper of: func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker)

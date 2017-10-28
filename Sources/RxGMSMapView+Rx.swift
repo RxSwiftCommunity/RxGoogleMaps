@@ -23,10 +23,11 @@ import UIKit
 import CoreLocation
 import RxCocoa
 import RxSwift
+import GoogleMaps
 
-extension Reactive where Base: RxGMSMapView {
+extension Reactive where Base: GMSMapView {
     
-    fileprivate var delegateProxy: RxGMSMapViewDelegateProxy {
+    fileprivate var delegateProxy: GMSMapViewDelegateProxy {
         return RxGMSMapViewDelegateProxy.proxy(for: base)
     }
  
@@ -124,21 +125,21 @@ public extension Reactive where Base: RxGMSMapView {
     /**
      Wrapper of: func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay)
      */
-    public var didTapPOI: ControlEvent<(placeID: String, name: String, location: CLLocationCoordinate2D)> {
-        let source = delegateProxy
-            .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didTapPOIWithPlaceID:name:location:)))
-            .map { a -> (placeID: String, name: String, location: CLLocationCoordinate2D)in
-                let placeID = try castOrThrow(NSString.self, a[1]) as String
-                let name = try castOrThrow(NSString.self, a[2]) as String
-                
-                let value = try castOrThrow(NSValue.self, a[3])
-                var coordinate = CLLocationCoordinate2D()
-                value.getValue(&coordinate)
-                return (placeID, name, coordinate)
-        }
-
-        return ControlEvent(events: source)
-    }
+//    public var didTapPOI: ControlEvent<(placeID: String, name: String, location: CLLocationCoordinate2D)> {
+//        let source = delegateProxy
+//            .methodInvoked(#selector(RxGMSMapViewDelegate.mapView(_:didTapPOIWithPlaceID:name:location:)))
+//            .map { a -> (placeID: String, name: String, location: CLLocationCoordinate2D)in
+//                let placeID = try castOrThrow(NSString.self, a[1]) as String
+//                let name = try castOrThrow(NSString.self, a[2]) as String
+//                
+//                let value = try castOrThrow(NSValue.self, a[3])
+//                var coordinate = CLLocationCoordinate2D()
+//                value.getValue(&coordinate)
+//                return (placeID, name, coordinate)
+//        }
+//
+//        return ControlEvent(events: source)
+//    }
 
     /**
      Wrapper of: func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D)

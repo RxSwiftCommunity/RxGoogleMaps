@@ -23,13 +23,14 @@ import UIKit
 import CoreLocation
 import RxSwift
 import RxCocoa
+import GoogleMaps
 
 public typealias RxGMSHandleTapMarker = (RxGMSMarker) -> (Bool)
 public typealias RxGMSHandleTapMyLocationButton = () -> (Bool)
 public typealias RxGMSHandleMarkerInfoView = (RxGMSMarker) -> (UIView?)
 
 public class RxGMSMapViewDelegateProxy
-    : DelegateProxy<RxGMSMapView, RxGMSMapViewDelegate>
+    : DelegateProxy<GMSMapView, GMSMapViewDelegate>
     , RxGMSMapViewDelegate
     , DelegateProxyType {
     
@@ -41,6 +42,9 @@ public class RxGMSMapViewDelegateProxy
     let didTapMarkerEvent = PublishSubject<RxGMSMarker>()
     let didTapMyLocationButtonEvent = PublishSubject<Void>()
     
+    /// Typed parent object.
+    public weak private(set) var mapView: RxGMSMapView?
+    
     /**
      For more information take a look at `DelegateProxyType`.
      */
@@ -51,6 +55,7 @@ public class RxGMSMapViewDelegateProxy
     
     /// - parameter tabBar: Parent object for delegate proxy.
     public init(gsMapView: ParentObject) {
+        self.mapView = gsMapView
         super.init(parentObject: gsMapView, delegateProxy: RxGMSMapViewDelegateProxy.self)
     }
     
@@ -68,13 +73,13 @@ public class RxGMSMapViewDelegateProxy
     }
     
     /// For more information take a look at `DelegateProxyType`.
-    open class func currentDelegate(for object: ParentObject) -> RxGMSMapViewDelegate? {
-        return object.delegateWrapper
+    open class func currentDelegate(for object: ParentObject) -> GMSMapViewDelegate? {
+        return object.delegate
     }
     
     /// For more information take a look at `DelegateProxyType`.
-    open class func setCurrentDelegate(_ delegate: RxGMSMapViewDelegate?, to object: ParentObject) {
-        object.delegateWrapper = delegate
+    open class func setCurrentDelegate(_ delegate: GMSMapViewDelegate?, to object: ParentObject) {
+        object.delegate = delegate
     }
 }
 
@@ -128,4 +133,5 @@ func castOrFatalError<T>(_ value: Any!) -> T {
     
     return result
 }
+
 
