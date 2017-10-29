@@ -21,6 +21,46 @@ func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     return returnValue
 }
 
+public extension Reactive where Base: GMSMapView, Base: UIView {
+    
+    public var camera: AnyObserver<GMSCameraPosition> {
+        return Binder(base) { control, camera in
+            control.camera = camera
+            }.asObserver()
+    }
+    
+    public var cameraToAnimate: AnyObserver<GMSCameraPosition> {
+        return Binder(base) { control, camera in
+            control.animate(to: camera)
+            }.asObserver()
+    }
+    
+    public var locationToAnimate: AnyObserver<CLLocationCoordinate2D> {
+        return Binder(base) { control, location in
+            control.animate(toLocation: location)
+            }.asObserver()
+    }
+    
+    public var zoomToAnimate: AnyObserver<Float> {
+        return Binder(base) { control, zoom in
+            control.animate(toZoom: zoom)
+            }.asObserver()
+    }
+    
+    public var bearingToAnimate: AnyObserver<CLLocationDirection> {
+        return Binder(base) { control, bearing in
+            control.animate(toBearing: bearing)
+            }.asObserver()
+    }
+    
+    public var viewingAngleToAnimate: AnyObserver<Double> {
+        return Binder(base) { control, viewingAngle in
+            control.animate(toViewingAngle: viewingAngle)
+            }.asObserver()
+    }
+    
+}
+
 extension Reactive where Base : GMSMapView {
     
     fileprivate var delegate: GMSMapViewDelegateProxy {
@@ -89,17 +129,16 @@ extension Reactive where Base : GMSMapView {
             .map { return try castOrThrow(GMSOverlay.self, $0) }
     }
 
-    public var didTapPOI: ControlEvent<(placeID: String, name: String, location: CLLocationCoordinate2D)> {
+    public var didTapAtPoi : ControlEvent<(placeId: String, name: String, location: CLLocationCoordinate2D)> {
         let source = delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didTapPOIWithPlaceID:name:location:)))
-            .map {
-                let placeID = try castOrThrow(NSString.self, $0[1]) as String
-                let name = try castOrThrow(NSString.self, $0[2]) as String
-                
-                let value = try castOrThrow(NSValue.self, $0[3])
+            .map { a -> (placeId: String, name: String, location: CLLocationCoordinate2D) in
+                let placeId = try castOrThrow(NSString.self, a[1]) as String
+                let name = try castOrThrow(NSString.self, a[2]) as String
+                let value = try castOrThrow(NSValue.self, a[3])
                 var coordinate = CLLocationCoordinate2D()
                 value.getValue(&coordinate)
-                return (placeID, name, coordinate)
+                return (placeId, name, coordinate)
             }
         return ControlEvent(events: source)
     }
@@ -144,9 +183,29 @@ extension Reactive where Base : GMSMapView {
         return ControlEvent(events: source)
     }
     
-//    - (BOOL)didTapMyLocationButtonForMapView:(GMSMapView *)mapView;
-//    - (void)mapViewDidStartTileRendering:(GMSMapView *)mapView;
-//    - (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView;
-//    - (void)mapViewSnapshotReady:(GMSMapView *)mapView;
+    public var didTapMyLocationButton: ControlEvent<Bool> {
+        let source =  delegate
+            .methodInvoked(#selector(GMSMapViewDelegate.didTapMyLocationButton(for:)))
+            .map { return try castOrThrow(Bool.self, $0) }
+        return ControlEvent(events: source)
+    }
+    
+    public var mapViewDidStartTileRendering: Observable<Void> {
+        return  delegate
+            .methodInvoked(#selector(GMSMapViewDelegate.mapViewDidStartTileRendering(_:)))
+            .map { return try castOrThrow(Void.self, $0) }
+    }
+    
+    public var mapViewDidFinishTileRendering: Observable<Void> {
+        return  delegate
+            .methodInvoked(#selector(GMSMapViewDelegate.mapViewDidFinishTileRendering(_:)))
+            .map { return try castOrThrow(Void.self, $0) }
+    }
+    
+    public var mapViewSnapshotReady: Observable<Void> {
+        return  delegate
+            .methodInvoked(#selector(GMSMapViewDelegate.mapViewSnapshotReady(_:)))
+            .map { return try castOrThrow(Void.self, $0) }
+    }
 }
 

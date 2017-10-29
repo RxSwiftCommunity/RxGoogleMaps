@@ -126,8 +126,12 @@ Because GoogleMaps SDK include static binaries, it's hard to find a nice solutio
 1. Add to `Podfile`:
 
     ```ruby
-    pod 'GoogleMaps'
     pod 'RxGoogleMaps'
+    
+    pre_install do |installer|
+    # workaround for https://github.com/CocoaPods/CocoaPods/issues/3289
+    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+    end
     ```
 
 2. Add **``Pods/RxGoogleMaps/RxGoogleMapsBridge.swift`` file to your app target** in your Xcode project manually. (Once at first installation)
