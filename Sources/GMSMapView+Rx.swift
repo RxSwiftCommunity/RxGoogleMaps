@@ -59,6 +59,70 @@ public extension Reactive where Base: GMSMapView, Base: UIView {
             }.asObserver()
     }
     
+    public var myLocationEnabled: AnyObserver<Bool> {
+        return Binder(base) { control, myLocationEnabled in
+            control.myLocationEnabled = myLocationEnabled
+            }.asObserver()
+    }
+    
+    public var myLocation: Observable<CLLocation?> {
+        return observeWeakly(CLLocation.self, "myLocation")
+    }
+    
+    public var selectedMarker: ControlProperty<GMSMarker?> {
+        return ControlProperty(values: observeWeakly(GMSMarker.self, "selectedMarker"), valueSink: Binder(base) { control, selectedMarker in
+                control.selectedMarker = selectedMarker
+                }.asObserver()
+        )
+    }
+    
+    public var trafficEnabled: AnyObserver<Bool> {
+        return Binder(base) { control, trafficEnabled in
+            control.trafficEnabled = trafficEnabled
+            }.asObserver()
+    }
+    
+    public var padding: AnyObserver<UIEdgeInsets> {
+        return Binder(base) { control, padding in
+            control.padding = padding
+            }.asObserver()
+    }
+    
+    public var scrollGesturesEnabled: AnyObserver<Bool> {
+        return Binder(base) { control, scrollGestures in
+            control.settings.scrollGestures = scrollGestures
+            }.asObserver()
+    }
+    
+    public var zoomGesturesEnabled: AnyObserver<Bool> {
+        return Binder(base) { control, zoomGestures in
+            control.settings.zoomGestures = zoomGestures
+            }.asObserver()
+    }
+    
+    public var tiltGesturesEnabled: AnyObserver<Bool> {
+        return Binder(base) { control, tiltGestures in
+            control.settings.tiltGestures = tiltGestures
+            }.asObserver()
+    }
+    
+    public var rotateGesturesEnabled: AnyObserver<Bool> {
+        return Binder(base) { control, rotateGestures in
+            control.settings.rotateGestures = rotateGestures
+            }.asObserver()
+    }
+    
+    public var compassButtonVisible: AnyObserver<Bool> {
+        return Binder(base) { control, compassButton in
+            control.settings.compassButton = compassButton
+            }.asObserver()
+    }
+    
+    public var myLocationButtonVisible: AnyObserver<Bool> {
+        return Binder(base) { control, myLocationButton in
+            control.settings.myLocationButton = myLocationButton
+            }.asObserver()
+    }
 }
 
 extension Reactive where Base : GMSMapView {

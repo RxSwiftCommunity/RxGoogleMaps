@@ -30,6 +30,7 @@
 		E5792B801FA4CF1000FA823A /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5792B7F1FA4CF1000FA823A /* key.plist */; };
 		E5792B821FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5792B811FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift */; };
 		E5792B841FA4DC4A00FA823A /* GMSMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5792B831FA4DC4A00FA823A /* GMSMapView+Rx.swift */; };
+		E5BA91EC1FA667C60090EA87 /* GMSPolyline+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA91EB1FA667C60090EA87 /* GMSPolyline+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		E5792B7F1FA4CF1000FA823A /* key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
 		E5792B811FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMapViewDelegateProxy.swift; sourceTree = "<group>"; };
 		E5792B831FA4DC4A00FA823A /* GMSMapView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSMapView+Rx.swift"; sourceTree = "<group>"; };
+		E5BA91EB1FA667C60090EA87 /* GMSPolyline+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSPolyline+Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				090646C21EB8C1F2007F53BA /* RxGMSPolyline.swift */,
 				E5792B811FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift */,
 				E5792B831FA4DC4A00FA823A /* GMSMapView+Rx.swift */,
+				E5BA91EB1FA667C60090EA87 /* GMSPolyline+Rx.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				A90F9CBE1DAABB5600A3461E /* ViewController.swift in Sources */,
 				A90F9CBC1DAABB5600A3461E /* AppDelegate.swift in Sources */,
 				E5792B841FA4DC4A00FA823A /* GMSMapView+Rx.swift in Sources */,
+				E5BA91EC1FA667C60090EA87 /* GMSPolyline+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
