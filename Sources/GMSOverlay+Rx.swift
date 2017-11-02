@@ -18,19 +18,19 @@ public extension Reactive where Base: GMSOverlay {
     public var title: AnyObserver<String?> {
         return Binder(base) { control, title in
             control.title = title
-            }.asObserver()
+        }.asObserver()
     }
     
     public var tappable: AnyObserver<Bool> {
         return Binder(base) { control, tappable in
             control.isTappable = tappable
-            }.asObserver()
+        }.asObserver()
     }
     
     public var zIndex: AnyObserver<Int32> {
         return Binder(base) { control, zIndex in
             control.zIndex = zIndex
-            }.asObserver()
+        }.asObserver()
     }
     
 }

@@ -18,13 +18,13 @@ public extension Reactive where Base: GMSPolyline {
     public var strokeWidth: AnyObserver<CGFloat> {
         return Binder(base) { control, strokeWidth in
             control.strokeWidth = strokeWidth
-            }.asObserver()
+        }.asObserver()
     }
     
     public var strokeColor: AnyObserver<UIColor> {
         return Binder(base) { control, strokeColor in
             control.strokeColor = strokeColor
-            }.asObserver()
+        }.asObserver()
     }
     
 }

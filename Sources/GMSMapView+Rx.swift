@@ -18,43 +18,43 @@ public extension Reactive where Base: GMSMapView {
     public var camera: AnyObserver<GMSCameraPosition> {
         return Binder(base) { control, camera in
             control.camera = camera
-            }.asObserver()
+        }.asObserver()
     }
     
     public var cameraToAnimate: AnyObserver<GMSCameraPosition> {
         return Binder(base) { control, camera in
             control.animate(to: camera)
-            }.asObserver()
+        }.asObserver()
     }
     
     public var locationToAnimate: AnyObserver<CLLocationCoordinate2D> {
         return Binder(base) { control, location in
             control.animate(toLocation: location)
-            }.asObserver()
+        }.asObserver()
     }
     
     public var zoomToAnimate: AnyObserver<Float> {
         return Binder(base) { control, zoom in
             control.animate(toZoom: zoom)
-            }.asObserver()
+        }.asObserver()
     }
     
     public var bearingToAnimate: AnyObserver<CLLocationDirection> {
         return Binder(base) { control, bearing in
             control.animate(toBearing: bearing)
-            }.asObserver()
+        }.asObserver()
     }
     
     public var viewingAngleToAnimate: AnyObserver<Double> {
         return Binder(base) { control, viewingAngle in
             control.animate(toViewingAngle: viewingAngle)
-            }.asObserver()
+        }.asObserver()
     }
     
     public var myLocationEnabled: AnyObserver<Bool> {
         return Binder(base) { control, myLocationEnabled in
             control.isMyLocationEnabled = myLocationEnabled
-            }.asObserver()
+        }.asObserver()
     }
     
     public var myLocation: Observable<CLLocation?> {
@@ -64,56 +64,56 @@ public extension Reactive where Base: GMSMapView {
     public var selectedMarker: ControlProperty<GMSMarker?> {
         return ControlProperty(values: observeWeakly(GMSMarker.self, "selectedMarker"), valueSink: Binder(base) { control, selectedMarker in
                 control.selectedMarker = selectedMarker
-                }.asObserver()
+            }.asObserver()
         )
     }
     
     public var trafficEnabled: AnyObserver<Bool> {
         return Binder(base) { control, trafficEnabled in
             control.isTrafficEnabled = trafficEnabled
-            }.asObserver()
+        }.asObserver()
     }
     
     public var padding: AnyObserver<UIEdgeInsets> {
         return Binder(base) { control, padding in
             control.padding = padding
-            }.asObserver()
+        }.asObserver()
     }
     
     public var scrollGesturesEnabled: AnyObserver<Bool> {
         return Binder(base) { control, scrollGestures in
             control.settings.scrollGestures = scrollGestures
-            }.asObserver()
+        }.asObserver()
     }
     
     public var zoomGesturesEnabled: AnyObserver<Bool> {
         return Binder(base) { control, zoomGestures in
             control.settings.zoomGestures = zoomGestures
-            }.asObserver()
+        }.asObserver()
     }
     
     public var tiltGesturesEnabled: AnyObserver<Bool> {
         return Binder(base) { control, tiltGestures in
             control.settings.tiltGestures = tiltGestures
-            }.asObserver()
+        }.asObserver()
     }
     
     public var rotateGesturesEnabled: AnyObserver<Bool> {
         return Binder(base) { control, rotateGestures in
             control.settings.rotateGestures = rotateGestures
-            }.asObserver()
+        }.asObserver()
     }
     
     public var compassButtonVisible: AnyObserver<Bool> {
         return Binder(base) { control, compassButton in
             control.settings.compassButton = compassButton
-            }.asObserver()
+        }.asObserver()
     }
     
     public var myLocationButtonVisible: AnyObserver<Bool> {
         return Binder(base) { control, myLocationButton in
             control.settings.myLocationButton = myLocationButton
-            }.asObserver()
+        }.asObserver()
     }
 }
 

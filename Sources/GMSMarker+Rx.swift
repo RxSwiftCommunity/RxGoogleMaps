@@ -18,67 +18,67 @@ public extension Reactive where Base: GMSMarker {
     public var position: AnyObserver<CLLocationCoordinate2D> {
         return Binder(base) { control, position in
             control.position = position
-            }.asObserver()
+        }.asObserver()
     }
     
     public var snippet: AnyObserver<String?> {
         return Binder(base) { control, snippet in
             control.snippet = snippet
-            }.asObserver()
+        }.asObserver()
     }
     
     public var icon: AnyObserver<UIImage?> {
         return Binder(base) { control, icon in
             control.icon = icon
-            }.asObserver()
+        }.asObserver()
     }
     
     public var iconView: AnyObserver<UIView?> {
         return Binder(base) { control, iconView in
             control.iconView = iconView
-            }.asObserver()
+        }.asObserver()
     }
     
     public var groundAnchor: AnyObserver<CGPoint> {
         return Binder(base) { control, groundAnchor in
             control.groundAnchor = groundAnchor
-            }.asObserver()
+        }.asObserver()
     }
     
     public var infoWindowAnchor: AnyObserver<CGPoint> {
         return Binder(base) { control, infoWindowAnchor in
             control.infoWindowAnchor = infoWindowAnchor
-            }.asObserver()
+        }.asObserver()
     }
     
     public var draggable: AnyObserver<Bool> {
         return Binder(base) { control, draggable in
             control.isDraggable = draggable
-            }.asObserver()
+        }.asObserver()
     }
     
     public var flat: AnyObserver<Bool> {
         return Binder(base) { control, flat in
             control.isFlat = flat
-            }.asObserver()
+        }.asObserver()
     }
     
     public var rotation: AnyObserver<CLLocationDegrees> {
         return Binder(base) { control, rotation in
             control.rotation = rotation
-            }.asObserver()
+        }.asObserver()
     }
     
     public var opacity: AnyObserver<Float> {
         return Binder(base) { control, opacity in
             control.opacity = opacity
-            }.asObserver()
+        }.asObserver()
     }
     
     public var userData: AnyObserver<Any?> {
         return Binder(base) { control, userData in
             control.userData = userData
-            }.asObserver()
+        }.asObserver()
     }
     
 }

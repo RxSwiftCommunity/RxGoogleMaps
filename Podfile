@@ -3,8 +3,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'Example' do
-    pod 'RxSwift', '~> 4.0'
-    pod 'RxCocoa', '~> 4.0'
     pod 'GoogleMaps', '~> 2.5.0'
     pod 'RxGoogleMaps', :path => './'
 end

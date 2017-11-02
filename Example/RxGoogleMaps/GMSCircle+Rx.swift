@@ -18,31 +18,31 @@ public extension Reactive where Base: GMSCircle {
     public var position: AnyObserver<CLLocationCoordinate2D> {
         return Binder(base) { control, position in
             control.position = position
-            }.asObserver()
+        }.asObserver()
     }
     
     public var radius: AnyObserver<CLLocationDistance> {
         return Binder(base) { control, radius in
             control.radius = radius
-            }.asObserver()
+        }.asObserver()
     }
     
     public var strokeWidth: AnyObserver<CGFloat> {
         return Binder(base) { control, strokeWidth in
             control.strokeWidth = strokeWidth
-            }.asObserver()
+        }.asObserver()
     }
     
     public var strokeColor: AnyObserver<UIColor?> {
         return Binder(base) { control, strokeColor in
             control.strokeColor = strokeColor
-            }.asObserver()
+        }.asObserver()
     }
     
     public var fillColor: AnyObserver<UIColor?> {
         return Binder(base) { control, fillColor in
             control.fillColor = fillColor
-            }.asObserver()
+        }.asObserver()
     }
     
 }

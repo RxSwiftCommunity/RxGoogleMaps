@@ -59,7 +59,7 @@ class GMSMapViewDelegateProxy : DelegateProxy<GMSMapView, GMSMapViewDelegate>, D
     }
     
     func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) -> Void {
-        return self.didHandleTapOverlay(overlay)!
+        return self.didHandleTapOverlay(overlay)
     }
     
     public func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
@@ -82,9 +82,9 @@ extension GMSMapViewDelegateProxy {
         return handleTapMarker?(marker) ?? false
     }
     
-    public func didHandleTapOverlay(_ overlay: GMSOverlay) -> Void? {
+    public func didHandleTapOverlay(_ overlay: GMSOverlay) -> Void {
         didTapOverlayEvent.onNext(overlay)
-        return handleTapOverlay?(overlay)
+        return handleTapOverlay?(overlay) ?? ()
     }
     
     public func didTapMyLocationButton() -> Bool {
@@ -102,9 +102,7 @@ extension GMSMapViewDelegateProxy {
     
 }
 
-// Referred from RxCococa.swift because it's not public
-//   They said: workaround for Swift compiler bug, cheers compiler team :)
-
+// - MARK: Internal Helpers
 func castOptionalOrFatalError<T>(_ value: Any?) -> T? {
     if value == nil {
         return nil
