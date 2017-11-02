@@ -8,16 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		090646D61EB8C350007F53BA /* RxGoogleMaps-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 090646D41EB8C350007F53BA /* RxGoogleMaps-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		090646DA1EB8C3E6007F53BA /* RxGMSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646B91EB8C1F2007F53BA /* RxGMSCircle.swift */; };
-		090646DB1EB8C3E6007F53BA /* RxGMSGroundOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BA1EB8C1F2007F53BA /* RxGMSGroundOverlay.swift */; };
-		090646DC1EB8C3E6007F53BA /* RxGMSMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BB1EB8C1F2007F53BA /* RxGMSMapView.swift */; };
-		090646DD1EB8C3E6007F53BA /* RxGMSMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BC1EB8C1F2007F53BA /* RxGMSMapView+Rx.swift */; };
-		090646DE1EB8C3E6007F53BA /* RxGMSMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BD1EB8C1F2007F53BA /* RxGMSMapViewDelegate.swift */; };
-		090646DF1EB8C3E6007F53BA /* RxGMSMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BE1EB8C1F2007F53BA /* RxGMSMapViewDelegateProxy.swift */; };
-		090646E01EB8C3E6007F53BA /* RxGMSMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646BF1EB8C1F2007F53BA /* RxGMSMarker.swift */; };
-		090646E11EB8C3E6007F53BA /* RxGMSOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646C01EB8C1F2007F53BA /* RxGMSOverlay.swift */; };
-		090646E21EB8C3E6007F53BA /* RxGMSPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646C11EB8C1F2007F53BA /* RxGMSPolygon.swift */; };
-		090646E31EB8C3E6007F53BA /* RxGMSPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090646C21EB8C1F2007F53BA /* RxGMSPolyline.swift */; };
 		096B037E1EBD1F00008387E2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096B037D1EBD1F00008387E2 /* RxCocoa.framework */; };
 		096B03801EBD1F16008387E2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096B037F1EBD1F16008387E2 /* RxSwift.framework */; };
 		A90F9CBC1DAABB5600A3461E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CBB1DAABB5600A3461E /* AppDelegate.swift */; };
@@ -25,25 +15,19 @@
 		A90F9CC11DAABB5600A3461E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90F9CBF1DAABB5600A3461E /* Main.storyboard */; };
 		A90F9CC31DAABB5600A3461E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90F9CC21DAABB5600A3461E /* Assets.xcassets */; };
 		A90F9CC61DAABB5600A3461E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90F9CC41DAABB5600A3461E /* LaunchScreen.storyboard */; };
-		A943D57F1DB436B10027DEA3 /* RxGoogleMapsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943D57E1DB436B10027DEA3 /* RxGoogleMapsBridge.swift */; };
 		C5B2468C4099994FDD74ED4D /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE9272F37DFF9F5256AB1B0 /* Pods_Example.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E5792B801FA4CF1000FA823A /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5792B7F1FA4CF1000FA823A /* key.plist */; };
 		E5792B821FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5792B811FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift */; };
 		E5792B841FA4DC4A00FA823A /* GMSMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5792B831FA4DC4A00FA823A /* GMSMapView+Rx.swift */; };
 		E5BA91EC1FA667C60090EA87 /* GMSPolyline+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA91EB1FA667C60090EA87 /* GMSPolyline+Rx.swift */; };
+		E5BA91EE1FA7E0120090EA87 /* GMSPolygon+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA91ED1FA7E0120090EA87 /* GMSPolygon+Rx.swift */; };
+		E5BA91F01FA7E03A0090EA87 /* GMSOverlay+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA91EF1FA7E03A0090EA87 /* GMSOverlay+Rx.swift */; };
+		E5BA91F21FA7E0640090EA87 /* GMSMarker+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA91F11FA7E0640090EA87 /* GMSMarker+Rx.swift */; };
+		E5BA91F61FA7E2650090EA87 /* GMSGroundOverlay+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA91F51FA7E2650090EA87 /* GMSGroundOverlay+Rx.swift */; };
+		E5BA91F81FA7E2900090EA87 /* GMSCircle+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BA91F71FA7E2900090EA87 /* GMSCircle+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		090646B91EB8C1F2007F53BA /* RxGMSCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSCircle.swift; sourceTree = "<group>"; };
-		090646BA1EB8C1F2007F53BA /* RxGMSGroundOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSGroundOverlay.swift; sourceTree = "<group>"; };
-		090646BB1EB8C1F2007F53BA /* RxGMSMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapView.swift; sourceTree = "<group>"; };
-		090646BC1EB8C1F2007F53BA /* RxGMSMapView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxGMSMapView+Rx.swift"; sourceTree = "<group>"; };
-		090646BD1EB8C1F2007F53BA /* RxGMSMapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapViewDelegate.swift; sourceTree = "<group>"; };
-		090646BE1EB8C1F2007F53BA /* RxGMSMapViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMapViewDelegateProxy.swift; sourceTree = "<group>"; };
-		090646BF1EB8C1F2007F53BA /* RxGMSMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSMarker.swift; sourceTree = "<group>"; };
-		090646C01EB8C1F2007F53BA /* RxGMSOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSOverlay.swift; sourceTree = "<group>"; };
-		090646C11EB8C1F2007F53BA /* RxGMSPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSPolygon.swift; sourceTree = "<group>"; };
-		090646C21EB8C1F2007F53BA /* RxGMSPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGMSPolyline.swift; sourceTree = "<group>"; };
 		090646D21EB8C350007F53BA /* RxGoogleMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxGoogleMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		090646D41EB8C350007F53BA /* RxGoogleMaps-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RxGoogleMaps-iOS.h"; sourceTree = "<group>"; };
 		090646D51EB8C350007F53BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,12 +42,16 @@
 		A90F9CC21DAABB5600A3461E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A90F9CC51DAABB5600A3461E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A90F9CC71DAABB5600A3461E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A943D57E1DB436B10027DEA3 /* RxGoogleMapsBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxGoogleMapsBridge.swift; sourceTree = SOURCE_ROOT; };
 		AEE9272F37DFF9F5256AB1B0 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5792B7F1FA4CF1000FA823A /* key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
 		E5792B811FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMapViewDelegateProxy.swift; sourceTree = "<group>"; };
 		E5792B831FA4DC4A00FA823A /* GMSMapView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSMapView+Rx.swift"; sourceTree = "<group>"; };
 		E5BA91EB1FA667C60090EA87 /* GMSPolyline+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSPolyline+Rx.swift"; sourceTree = "<group>"; };
+		E5BA91ED1FA7E0120090EA87 /* GMSPolygon+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSPolygon+Rx.swift"; sourceTree = "<group>"; };
+		E5BA91EF1FA7E03A0090EA87 /* GMSOverlay+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSOverlay+Rx.swift"; sourceTree = "<group>"; };
+		E5BA91F11FA7E0640090EA87 /* GMSMarker+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSMarker+Rx.swift"; sourceTree = "<group>"; };
+		E5BA91F51FA7E2650090EA87 /* GMSGroundOverlay+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSGroundOverlay+Rx.swift"; sourceTree = "<group>"; };
+		E5BA91F71FA7E2900090EA87 /* GMSCircle+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMSCircle+Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,19 +78,6 @@
 		090646B81EB8C1AE007F53BA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				090646B91EB8C1F2007F53BA /* RxGMSCircle.swift */,
-				090646BA1EB8C1F2007F53BA /* RxGMSGroundOverlay.swift */,
-				090646BB1EB8C1F2007F53BA /* RxGMSMapView.swift */,
-				090646BC1EB8C1F2007F53BA /* RxGMSMapView+Rx.swift */,
-				090646BD1EB8C1F2007F53BA /* RxGMSMapViewDelegate.swift */,
-				090646BE1EB8C1F2007F53BA /* RxGMSMapViewDelegateProxy.swift */,
-				090646BF1EB8C1F2007F53BA /* RxGMSMarker.swift */,
-				090646C01EB8C1F2007F53BA /* RxGMSOverlay.swift */,
-				090646C11EB8C1F2007F53BA /* RxGMSPolygon.swift */,
-				090646C21EB8C1F2007F53BA /* RxGMSPolyline.swift */,
-				E5792B811FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift */,
-				E5792B831FA4DC4A00FA823A /* GMSMapView+Rx.swift */,
-				E5BA91EB1FA667C60090EA87 /* GMSPolyline+Rx.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -159,16 +134,31 @@
 		A90F9CBA1DAABB5600A3461E /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				E5BA92091FA7E3330090EA87 /* RxGoogleMaps */,
 				A90F9CBB1DAABB5600A3461E /* AppDelegate.swift */,
 				A90F9CBD1DAABB5600A3461E /* ViewController.swift */,
 				A90F9CBF1DAABB5600A3461E /* Main.storyboard */,
 				A90F9CC21DAABB5600A3461E /* Assets.xcassets */,
 				A90F9CC41DAABB5600A3461E /* LaunchScreen.storyboard */,
 				A90F9CC71DAABB5600A3461E /* Info.plist */,
-				A943D57E1DB436B10027DEA3 /* RxGoogleMapsBridge.swift */,
 				E5792B7F1FA4CF1000FA823A /* key.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		E5BA92091FA7E3330090EA87 /* RxGoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				E5792B811FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift */,
+				E5792B831FA4DC4A00FA823A /* GMSMapView+Rx.swift */,
+				E5BA91EB1FA667C60090EA87 /* GMSPolyline+Rx.swift */,
+				E5BA91ED1FA7E0120090EA87 /* GMSPolygon+Rx.swift */,
+				E5BA91EF1FA7E03A0090EA87 /* GMSOverlay+Rx.swift */,
+				E5BA91F11FA7E0640090EA87 /* GMSMarker+Rx.swift */,
+				E5BA91F51FA7E2650090EA87 /* GMSGroundOverlay+Rx.swift */,
+				E5BA91F71FA7E2900090EA87 /* GMSCircle+Rx.swift */,
+			);
+			path = RxGoogleMaps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,16 +340,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				090646E11EB8C3E6007F53BA /* RxGMSOverlay.swift in Sources */,
-				090646DA1EB8C3E6007F53BA /* RxGMSCircle.swift in Sources */,
-				090646DB1EB8C3E6007F53BA /* RxGMSGroundOverlay.swift in Sources */,
-				090646DC1EB8C3E6007F53BA /* RxGMSMapView.swift in Sources */,
-				090646DF1EB8C3E6007F53BA /* RxGMSMapViewDelegateProxy.swift in Sources */,
-				090646E01EB8C3E6007F53BA /* RxGMSMarker.swift in Sources */,
-				090646E21EB8C3E6007F53BA /* RxGMSPolygon.swift in Sources */,
-				090646DE1EB8C3E6007F53BA /* RxGMSMapViewDelegate.swift in Sources */,
-				090646DD1EB8C3E6007F53BA /* RxGMSMapView+Rx.swift in Sources */,
-				090646E31EB8C3E6007F53BA /* RxGMSPolyline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,12 +347,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A943D57F1DB436B10027DEA3 /* RxGoogleMapsBridge.swift in Sources */,
+				E5BA91F61FA7E2650090EA87 /* GMSGroundOverlay+Rx.swift in Sources */,
+				E5BA91F21FA7E0640090EA87 /* GMSMarker+Rx.swift in Sources */,
 				E5792B821FA4D76C00FA823A /* GMSMapViewDelegateProxy.swift in Sources */,
+				E5BA91F81FA7E2900090EA87 /* GMSCircle+Rx.swift in Sources */,
 				A90F9CBE1DAABB5600A3461E /* ViewController.swift in Sources */,
 				A90F9CBC1DAABB5600A3461E /* AppDelegate.swift in Sources */,
+				E5BA91F01FA7E03A0090EA87 /* GMSOverlay+Rx.swift in Sources */,
 				E5792B841FA4DC4A00FA823A /* GMSMapView+Rx.swift in Sources */,
 				E5BA91EC1FA667C60090EA87 /* GMSPolyline+Rx.swift in Sources */,
+				E5BA91EE1FA7E0120090EA87 /* GMSPolygon+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

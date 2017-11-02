@@ -13,15 +13,7 @@ import RxSwift
 import RxCocoa
 import GoogleMaps
 
-// Taken from RxCococa until marked as public
-func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
-    guard let returnValue = object as? T else {
-        throw RxCocoaError.castingError(object: object, targetType: resultType)
-    }
-    return returnValue
-}
-
-public extension Reactive where Base: GMSMapView, Base: UIView {
+public extension Reactive where Base: GMSMapView {
     
     public var camera: AnyObserver<GMSCameraPosition> {
         return Binder(base) { control, camera in
@@ -61,7 +53,7 @@ public extension Reactive where Base: GMSMapView, Base: UIView {
     
     public var myLocationEnabled: AnyObserver<Bool> {
         return Binder(base) { control, myLocationEnabled in
-            control.myLocationEnabled = myLocationEnabled
+            control.isMyLocationEnabled = myLocationEnabled
             }.asObserver()
     }
     
@@ -78,7 +70,7 @@ public extension Reactive where Base: GMSMapView, Base: UIView {
     
     public var trafficEnabled: AnyObserver<Bool> {
         return Binder(base) { control, trafficEnabled in
-            control.trafficEnabled = trafficEnabled
+            control.isTrafficEnabled = trafficEnabled
             }.asObserver()
     }
     
@@ -131,7 +123,20 @@ extension Reactive where Base : GMSMapView {
         return GMSMapViewDelegateProxy.proxy(for: base)
     }
     
-    public var wiilMove: ControlEvent<Bool> {
+    public func handleMarkerInfoWindowWrapper(_ closure: GMSHandleMarkerInfo?) {
+        delegate.handleMarkerInfoWindow = closure
+    }
+    
+    public func handleMarkerInfoContentsWrapper(_ closure: GMSHandleMarkerInfo?) {
+        delegate.handleMarkerInfoContents = closure
+    }
+    
+    public func handleTapMyLocationButton(_ closure: GMSHandleTapMyLocationButton?) {
+        delegate.didTapMyLocationButtonEvent.onNext(())
+        delegate.handleTapMyLocationButton = closure
+    }
+    
+    public var willMove: ControlEvent<Bool> {
         let source = delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:willMove:)))
             .map { a in
@@ -140,58 +145,77 @@ extension Reactive where Base : GMSMapView {
         return ControlEvent(events: source)
     }
     
-    public var didChange: Observable<GMSCameraPosition> {
-        return delegate
+    public var didChange: ControlEvent<GMSCameraPosition> {
+        let source = delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didChange:)))
-            .map { return try castOrThrow(GMSCameraPosition.self, $0) }
+            .map { a in
+                return try castOrThrow(GMSCameraPosition.self, a[1])
+            }
+        return ControlEvent(events: source)
     }
     
-    public var idleAt: Observable<GMSCameraPosition> {
-        return delegate
+    public var idleAt: ControlEvent<GMSCameraPosition> {
+        let source = delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:idleAt:)))
-            .map { return try castOrThrow(GMSCameraPosition.self, $0) }
+            .map { a in
+                return try castOrThrow(GMSCameraPosition.self, a[1])
+            }
+        return ControlEvent(events: source)
     }
     
     public var didTapAt: ControlEvent<CLLocationCoordinate2D> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didTapAt:)))
-            .map { return try castOrThrow(CLLocationCoordinate2D.self, $0) }
+            .map { a in
+                return try castCoordinateOrThrow(a[1])
+            }
         return ControlEvent(events: source)
     }
     
     public var didLongPressAt: ControlEvent<CLLocationCoordinate2D> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didLongPressAt:)))
-            .map { return try castOrThrow(CLLocationCoordinate2D.self, $0) }
+            .map { a in
+                return try castCoordinateOrThrow(a[1])
+            }
         return ControlEvent(events: source)
     }
     
     public var didTap: ControlEvent<GMSMarker> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didTap:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
+            .map { a in
+                return try castOrThrow(GMSMarker.self, a[1])
+            }
         return ControlEvent(events: source)
     }
     
     public var didTapInfoWindowOf: ControlEvent<GMSMarker> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didTapInfoWindowOf:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
+            .map { a in
+                return try castOrThrow(GMSMarker.self, a[1])
+            }
         return ControlEvent(events: source)
     }
     
     public var didLongPressInfoWindowOf: ControlEvent<GMSMarker> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didLongPressInfoWindowOf:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
+            .map { a in
+                return try castOrThrow(GMSMarker.self, a[1])
+            }
         return ControlEvent(events: source)
     }
     
-    public var didTapOverlay: Observable<GMSOverlay> {
-        return  delegate
-            .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didTap:)))
-            .map { return try castOrThrow(GMSOverlay.self, $0) }
-    }
+//    public var didTapOverlay: ControlEvent<GMSOverlay> {
+//        let source =   delegate
+//            .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didTap:)))
+//            .map { a in
+//                return try castOrThrow(GMSOverlay.self, a[1])
+//            }
+//        return ControlEvent(events: source)
+//    }
 
     public var didTapAtPoi : ControlEvent<(placeId: String, name: String, location: CLLocationCoordinate2D)> {
         let source = delegate
@@ -207,69 +231,98 @@ extension Reactive where Base : GMSMapView {
         return ControlEvent(events: source)
     }
     
-    public var markerInfoWindow: Observable<GMSMarker> {
-        return  delegate
-            .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:markerInfoWindow:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
-    }
-    
-    public var markerInfoContents: Observable<GMSMarker> {
-        return  delegate
-            .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:markerInfoContents:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
-    }
+//    public var markerInfoWindow: Observable<GMSMarker> {
+//        return  delegate
+//            .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:markerInfoWindow:)))
+//            .map { a in return try castOrThrow(GMSMarker.self, a[1]) }
+//    }
+//
+//    public var markerInfoContents: Observable<GMSMarker> {
+//        return  delegate
+//            .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:markerInfoContents:)))
+//            .map { a in return try castOrThrow(GMSMarker.self, a[1]) }
+//    }
     
     public var didCloseInfoWindowOfMarker: ControlEvent<GMSMarker> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didCloseInfoWindowOf:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
+            .map { a in return try castOrThrow(GMSMarker.self, a[1]) }
         return ControlEvent(events: source)
     }
     
     public var didBeginDragging: ControlEvent<GMSMarker> {
-        let source =  delegate
+        let source = delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didBeginDragging:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
+            .map {  a in
+                return try castOrThrow(GMSMarker.self, a[1])
+            }
         return ControlEvent(events: source)
     }
     
     public var didEndDragging: ControlEvent<GMSMarker> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didEndDragging:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
+            .map { a in return try castOrThrow(GMSMarker.self, a[1]) }
         return ControlEvent(events: source)
     }
     
     public var didDrag: ControlEvent<GMSMarker> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapView(_:didDrag:)))
-            .map { return try castOrThrow(GMSMarker.self, $0) }
+            .map { a in return try castOrThrow(GMSMarker.self, a[1]) }
         return ControlEvent(events: source)
     }
     
     public var didTapMyLocationButton: ControlEvent<Bool> {
         let source =  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.didTapMyLocationButton(for:)))
-            .map { return try castOrThrow(Bool.self, $0) }
+            .map { a in return try castOrThrow(Bool.self, a[1]) }
         return ControlEvent(events: source)
     }
     
-    public var mapViewDidStartTileRendering: Observable<Void> {
+    public var didStartTileRendering: Observable<Void> {
         return  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapViewDidStartTileRendering(_:)))
-            .map { return try castOrThrow(Void.self, $0) }
+            .map { _ in return }
     }
     
-    public var mapViewDidFinishTileRendering: Observable<Void> {
+    public var didFinishTileRendering: Observable<Void> {
         return  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapViewDidFinishTileRendering(_:)))
-            .map { return try castOrThrow(Void.self, $0) }
+            .map { _ in return }
     }
     
-    public var mapViewSnapshotReady: Observable<Void> {
+    public var snapshotReady: Observable<Void> {
         return  delegate
             .methodInvoked(#selector(GMSMapViewDelegate.mapViewSnapshotReady(_:)))
-            .map { return try castOrThrow(Void.self, $0) }
+            .map { _ in return }
+    }
+    
+    public func handleTapMyLocationButton() -> Bool {
+        didTapMyLocationButtonEvent.onNext(())
+        return handleTapMyLocationButton?() ?? false
+    }
+    
+    public func handleMarkerInfoWindow(_ closure: ((GMSMarker) -> (UIView?))?) {
+        if let c = closure {
+            handleMarkerInfoWindowWrapper { c($0) }
+        } else {
+            handleMarkerInfoWindowWrapper(nil)
+        }
+    }
+    
+    public func handleMarkerInfoContents(_ closure: ((GMSMarker) -> (UIView?))?) {
+        if let c = closure {
+            handleMarkerInfoContentsWrapper { c($0) }
+        } else {
+            handleMarkerInfoContentsWrapper(nil)
+        }
     }
 }
 
+fileprivate func castCoordinateOrThrow(_ object: Any) throws -> CLLocationCoordinate2D {
+    let value = try castOrThrow(NSValue.self, object)
+    var coordinate = CLLocationCoordinate2D()
+    value.getValue(&coordinate)
+    return coordinate
+}
