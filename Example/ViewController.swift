@@ -21,7 +21,6 @@
 import UIKit
 import RxSwift
 import GoogleMaps
-import RxGoogleMaps
 
 class ViewController: UIViewController {
 
@@ -37,10 +36,19 @@ class ViewController: UIViewController {
         
         mapView.settings.myLocationButton = true
 
-//        let startLocationManager = mapView.rx.didTapMyLocationButton.take(1).publish()
-//        _ = startLocationManager.subscribe({ [weak self] _ in self?.locationManager.requestWhenInUseAuthorization() })
-//        _ = startLocationManager.map { _ in true }.bind(to: mapView.rx.myLocationEnabled)
-//        startLocationManager.connect().disposed(by: disposeBag)
+        let startLocationManager = mapView.rx.didTapMyLocationButton.take(1).publish()
+        _ = startLocationManager.subscribe({ [weak self] _ in self?.locationManager.requestWhenInUseAuthorization() })
+        _ = startLocationManager.map { _ in true }.bind(to: mapView.rx.myLocationEnabled)
+        startLocationManager.connect().disposed(by: disposeBag)
+        
+        mapView.rx.handleTapMarker { marker in
+            print("Handle tap marker: \(marker.title ?? "") (\(marker.position.latitude), \(marker.position.longitude))")
+            return false
+        }
+        
+        mapView.rx.handleTapOverlay { overlay in
+            print("Handle tap overlay: \(overlay.title ?? "")")
+        }
         
         mapView.rx.handleMarkerInfoWindow { marker in
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 180, height: 60))
@@ -50,6 +58,21 @@ class ViewController: UIViewController {
             label.backgroundColor = UIColor.yellow
             label.text = marker.title
             return label
+        }
+        
+        mapView.rx.handleMarkerInfoContents { marker in
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 100))
+            label.textAlignment = .center
+            label.textColor = UIColor.green
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+            label.backgroundColor = UIColor.yellow
+            label.text = "Picles"
+            return label
+        }
+        
+        mapView.rx.handleTapMyLocationButton {
+            print("Handle my location button")
+            return false
         }
         
         mapView.rx.willMove.asDriver()
@@ -73,11 +96,6 @@ class ViewController: UIViewController {
         mapView.rx.didLongPressAt.asDriver()
             .drive(onNext: { print("Did long press at coordinate: \($0)") })
             .disposed(by: disposeBag)
-        
-        //Class doesnt respond to
-//        mapView.rx.didTap.asDriver()
-//            .drive(onNext: { print("Did tap marker: \($0)") })
-//            .disposed(by: disposeBag)
 
         mapView.rx.didTapInfoWindowOf.asDriver()
             .drive(onNext: { print("Did tap info window of marker: \($0)") })
@@ -86,11 +104,6 @@ class ViewController: UIViewController {
         mapView.rx.didLongPressInfoWindowOf.asDriver()
             .drive(onNext: { print("Did long press info window of marker: \($0)") })
             .disposed(by: disposeBag)
-        
-        //Class doesnt respond to
-//        mapView.rx.didTapOverlay.asDriver(onErrorJustReturn: GMSOverlay())
-//            .drive(onNext: { print("Did tap overlay: \($0)") })
-//            .disposed(by: disposeBag)
 
         mapView.rx.didTapAtPoi.asDriver()
             .drive(onNext: { (placeID, name, coordinate) in
@@ -98,10 +111,9 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        //Class doesnt respond to
-//        mapView.rx.didTapMyLocationButton.asDriver()
-//            .drive(onNext: { _ in print("Did tap my location button") })
-//            .disposed(by: disposeBag)
+        mapView.rx.didTapMyLocationButton.asDriver()
+            .drive(onNext: { _ in print("Did tap my location button") })
+            .disposed(by: disposeBag)
 
         mapView.rx.didCloseInfoWindowOfMarker.asDriver()
             .drive(onNext: { print("Did close info window of marker: \($0)") })
@@ -172,10 +184,10 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let center = CLLocationCoordinate2D(latitude: 33.3659424, longitude: 126.3476852)
-        let place0 = CLLocationCoordinate2D(latitude: 33.4108625, longitude: 126.391319)
+        let center = CLLocationCoordinate2D(latitude: -23.565314, longitude: -46.651857)
+        let place0 = CLLocationCoordinate2D(latitude: -23.549932, longitude: -46.653737)
         
-        let camera = GMSCameraPosition.camera(withLatitude: center.latitude, longitude: center.longitude, zoom: 12, bearing: 30, viewingAngle: 45)
+        let camera = GMSCameraPosition.camera(withLatitude: center.latitude, longitude: center.longitude, zoom: 14, bearing: 30, viewingAngle: 0)
         mapView.camera = camera
         
         do {
@@ -189,10 +201,10 @@ class ViewController: UIViewController {
 //                .bindTo(mapView.rx.selectedMarker.asObserver())
 //                .disposed(by: disposeBag)
 
-//            actionButton0.rx.tap.map{ 180.0 }
-//                .bindTo(marker.rx.rotation.asObserver())
-//                .disposed(by: disposeBag)
-//            
+            actionButton0.rx.tap.map{ 180.0 }
+                .bind(to: marker.rx.rotation.asObserver())
+                .disposed(by: disposeBag)
+//
 //            actionButton1.rx.tap.map{ 0 }
 //                .bindTo(marker.rx.rotation.asObserver())
 //                .disposed(by: disposeBag)

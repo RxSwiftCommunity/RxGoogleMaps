@@ -33,13 +33,13 @@ self.view.addSubview(mapView)
 
 mapView.rx.didChangePosition.asDriver()
     .drive(onNext: { print("Did change camera position: \($0)") })
-    .addDisposableTo(disposeBag)
+    .disposed(by: disposeBag)
 
 // Marker tapped
 
 mapView.rx.didTapMarker.asDriver()
     .drive(onNext: { print("Did tap marker: \($0)") })
-    .addDisposableTo(disposeBag)
+    .disposed(by: disposeBag)
 
 // Update marker icon without storing selection status
 
@@ -51,7 +51,7 @@ Observable.zip(s0, s1) { $0 }
         if let marker = prev { marker.icon = #imageLiteral(resourceName: "marker_normal") }
         if let marker = cur { marker.icon = #imageLiteral(resourceName: "marker_selected") }
     })
-    .addDisposableTo(disposeBag)
+    .disposed(by: disposeBag)
 
 ```
 
@@ -61,39 +61,39 @@ Observable.zip(s0, s1) { $0 }
 
 button.rx.tap
     .map { false }
-    .bindTo(mapView.rx.trafficEnabled.asObserver())
-    .addDisposableTo(disposeBag)
+    .bind(to: mapView.rx.trafficEnabled.asObserver())
+    .disposed(by: disposeBag)
 
 // Camera animations
 
 button.rx.tap
     .map { 14 }
-    .bindTo(mapView.rx.zoomToAnimate)
-    .addDisposableTo(disposeBag)
+    .bind(to: mapView.rx.zoomToAnimate)
+    .disposed(by: disposeBag)
 
 button.rx.tap
     .map { GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 8, bearing: 10, viewingAngle: 30) }
-    .bindTo(mapView.rx.cameraToAnimate)
-    .addDisposableTo(disposeBag)
+    .bind(to: mapView.rx.cameraToAnimate)
+    .disposed(by: disposeBag)
 
 // Selected marker
 
 button.rx.tap
     .map { myMarker }
-    .bindTo(mapView.rx.selectedMarker.asObserver())
-    .addDisposableTo(disposeBag)
+    .bind(to: mapView.rx.selectedMarker.asObserver())
+    .disposed(by: disposeBag)
 
 // GMSMarker or GMSOverlay properties
 
 button.rx.tap
     .map{ 180.0 }
-    .bindTo(marker.rx.rotation.asObserver())
-    .addDisposableTo(disposeBag)
+    .bind(to: marker.rx.rotation.asObserver())
+    .disposed(by: disposeBag)
 
 button.rx.tap
     .map{ UIColor.red }
-    .bindTo(circle.rx.fillColor.asObserver())
-    .addDisposableTo(disposeBag)
+    .bind(to: circle.rx.fillColor.asObserver())
+    .disposed(by: disposeBag)
 
 ```
 
@@ -119,24 +119,22 @@ mapView.rx.handleMarkerInfoWindow { marker in
 
 ## Installation
 
-Because GoogleMaps SDK include static binaries, it's hard to find a nice solution to make a *straight-forward* Cocoapods framework if it uses GoogleMaps SDK. So I decided ``RxGoogleMaps`` not to use ``GoogleMaps`` directly and to provide a *bridging* swift file which connects ``GoogleMaps`` and ``RxGoogleMaps`` instead.
+Because GoogleMaps SDK include static binaries, it's hard to find a nice solution to make a *straight-forward* Cocoapods framework if it uses GoogleMaps SDK. So I decided ``RxGoogleMaps`` not to use ``GoogleMaps`` directly and to provide *bridging* files which contains ``GoogleMaps`` and ``RxSwift`` instead.
 
 ### CocoaPods
 
 1. Add to `Podfile`:
 
     ```ruby
+    pod 'RxSwift', '~> 4.0'
+    pod 'RxCocoa', '~> 4.0'
+    pod 'GoogleMaps', '~> 2.5.0'
     pod 'RxGoogleMaps'
-    
-    pre_install do |installer|
-    # workaround for https://github.com/CocoaPods/CocoaPods/issues/3289
-    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
-    end
     ```
 
-2. Add **``Pods/RxGoogleMaps/RxGoogleMapsBridge.swift`` file to your app target** in your Xcode project manually. (Once at first installation)
+2. Add **``Pods/RxGoogleMaps`` folder to your app target** in your Xcode project manually. (Once at first installation)
 
-### Carthage
+### Carthage ------ TO BE CORRECTED DO NOT USE
 
 1. Add to `Cartfile`:
 
@@ -148,9 +146,9 @@ github "RxSwiftCommunity/RxGoogleMaps" "master"
 
 ## Requirements
 
-- Swift 3.0
-- [RxSwift](https://github.com/ReactiveX/RxSwift) 3.2
-- [RxCocoa](https://github.com/ReactiveX/RxSwift) 3.2
+- Swift 4.0
+- [RxSwift](https://github.com/ReactiveX/RxSwift) 4.0
+- [RxCocoa](https://github.com/ReactiveX/RxSwift) 4.0
 
 ## License
 
