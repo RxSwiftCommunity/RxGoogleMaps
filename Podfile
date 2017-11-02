@@ -3,15 +3,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'Example' do
-    'RxSwift', '~> 4.0'
-    'RxCocoa', '~> 4.0'
-    'GoogleMaps', '~> 2.5.0'
+    pod 'RxSwift', '~> 4.0'
+    pod 'RxCocoa', '~> 4.0'
+    pod 'GoogleMaps', '~> 2.5.0'
     pod 'RxGoogleMaps', :path => './'
-end
-
-pre_install do |installer|
-    # workaround for https://github.com/CocoaPods/CocoaPods/issues/3289
-    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
 end
 
 post_install do |installer|

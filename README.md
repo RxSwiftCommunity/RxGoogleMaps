@@ -132,9 +132,9 @@ Because GoogleMaps SDK include static binaries, it's hard to find a nice solutio
     pod 'RxGoogleMaps'
     ```
 
-2. Add **``Pods/RxGoogleMaps`` folder to your app target** in your Xcode project manually. (Once at first installation)
+2. Add **``Pods/RxGoogleMaps`` files to your app target** in your Xcode project manually. (Once at first installation, ignore Support Files folder)
 
-### Carthage ------ TO BE CORRECTED DO NOT USE
+### Carthage
 
 1. Add to `Cartfile`:
 
@@ -142,7 +142,7 @@ Because GoogleMaps SDK include static binaries, it's hard to find a nice solutio
 github "RxSwiftCommunity/RxGoogleMaps" "master"
 ```
 
-2. Add [RxGoogleMapsBridge.swift](RxGoogleMapsBridge.swift) file to your Xcode project manually.
+2. Add all files from Sources folder to your Xcode project manually.
 
 ## Requirements
 
