@@ -119,30 +119,19 @@ mapView.rx.handleMarkerInfoWindow { marker in
 
 ## Installation
 
-Because GoogleMaps SDK include static binaries, it's hard to find a nice solution to make a *straight-forward* Cocoapods framework if it uses GoogleMaps SDK. So I decided ``RxGoogleMaps`` not to use ``GoogleMaps`` directly and to provide *bridging* files which contains ``GoogleMaps`` and ``RxSwift`` instead.
-
 ### CocoaPods
 
-1. Add to `Podfile`:
+1. Update your cocoapods `Podfile`:
 
     ```ruby
-    pod 'RxSwift', '~> 4.0'
-    pod 'RxCocoa', '~> 4.0'
-    pod 'GoogleMaps', '~> 2.5.0'
-    pod 'RxGoogleMaps'
+    sudo gem install cocoapods --pre
     ```
 
-2. Add **``Pods/RxGoogleMaps`` files to your app target** in your Xcode project manually. (Once at first installation, ignore Support Files folder)
+2. Add to `Podfile`:
 
-### Carthage
-
-1. Add to `Cartfile`:
-
-```
-github "RxSwiftCommunity/RxGoogleMaps" "master"
-```
-
-2. Add all files from Sources folder to your Xcode project manually.
+    ```ruby
+    pod 'RxGoogleMaps'
+    ```
 
 ## Requirements
 

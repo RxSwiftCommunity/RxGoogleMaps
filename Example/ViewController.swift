@@ -21,6 +21,7 @@
 import UIKit
 import RxSwift
 import GoogleMaps
+import RxGoogleMaps
 
 class ViewController: UIViewController {
 
