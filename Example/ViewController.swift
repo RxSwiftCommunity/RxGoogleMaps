@@ -197,18 +197,6 @@ class ViewController: UIViewController {
             marker.isDraggable = true
             marker.icon = #imageLiteral(resourceName: "marker_normal")
             marker.map = mapView
-            
-//            actionButton0.rx.tap.map{ _ in marker }
-//                .bindTo(mapView.rx.selectedMarker.asObserver())
-//                .disposed(by: disposeBag)
-
-            actionButton0.rx.tap.map{ 180.0 }
-                .bind(to: marker.rx.rotation.asObserver())
-                .disposed(by: disposeBag)
-//
-//            actionButton1.rx.tap.map{ 0 }
-//                .bindTo(marker.rx.rotation.asObserver())
-//                .disposed(by: disposeBag)
 
         }
 
@@ -218,16 +206,22 @@ class ViewController: UIViewController {
             marker.isDraggable = true
             marker.icon = #imageLiteral(resourceName: "marker_normal")
             marker.map = mapView
-
-//            actionButton1.rx.tap.map{ _ in marker }
-//                .bindTo(mapView.rx.selectedMarker.asObserver())
-//                .disposed(by: disposeBag)
+            
+            //Rotate marker upsidedown
+            actionButton0.rx.tap.map{ 180.0 }
+                .bind(to: marker.rx.rotation.asObserver())
+                .disposed(by: disposeBag)
+            
+            //Rotate marker back
+            actionButton1.rx.tap.map{ 0 }
+                .bind(to: marker.rx.rotation.asObserver())
+                .disposed(by: disposeBag)
         }
 
         do {
             let circle = GMSCircle()
             circle.title = "Circle"
-            circle.radius = 2000
+            circle.radius = 1000
             circle.isTappable = true
             circle.position = center
             circle.fillColor = UIColor.green.withAlphaComponent(0.3)
@@ -235,40 +229,49 @@ class ViewController: UIViewController {
             circle.strokeWidth = 4
             circle.map = mapView
             
-//            actionButton0.rx.tap.map{ UIColor.red }
-//                .bindTo(circle.rx.fillColor.asObserver())
-//                .disposed(by: disposeBag)
-//            
-//            actionButton1.rx.tap.map{ UIColor.green }
-//                .bindTo(circle.rx.fillColor.asObserver())
-//                .disposed(by: disposeBag)
+            //Change circle color to red
+            actionButton0.rx.tap.map{ UIColor.red }
+                .bind(to: circle.rx.fillColor.asObserver())
+                .disposed(by: disposeBag)
+            
+            //Change circle color to red
+            actionButton1.rx.tap.map{ UIColor.green }
+                .bind(to: circle.rx.fillColor.asObserver())
+                .disposed(by: disposeBag)
 
         }
         
         do {
-//            actionButton0.rx.tap.map { true }
-//                .bindTo(mapView.rx.trafficEnabled.asObserver())
-//                .disposed(by: disposeBag)
-//            actionButton1.rx.tap.map { false }
-//                .bindTo(mapView.rx.trafficEnabled.asObserver())
-//                .disposed(by: disposeBag)
+            //Enable traffic
+            actionButton0.rx.tap.map { true }
+                .bind(to: mapView.rx.trafficEnabled.asObserver())
+                .disposed(by: disposeBag)
+            
+            //Disable traffic
+            actionButton1.rx.tap.map { false }
+                .bind(to: mapView.rx.trafficEnabled.asObserver())
+                .disposed(by: disposeBag)
 
-//            actionButton0.rx.tap.map { 14 }
-//                .bindTo(mapView.rx.zoomToAnimate)
-//                .disposed(by: disposeBag)
+            //Animated Zoom
+            actionButton0.rx.tap.map { 14 }
+                .bind(to: mapView.rx.zoomToAnimate)
+                .disposed(by: disposeBag)
             
-//            actionButton1.rx.tap
-//                .map { GMSCameraPosition.camera(withLatitude: place0.latitude, longitude: place0.longitude, zoom: 8, bearing: 10, viewingAngle: 30) }
-//                .bindTo(mapView.rx.cameraToAnimate)
-//                .disposed(by: disposeBag)
+            //Move to camera position
+            actionButton1.rx.tap
+                .map { GMSCameraPosition.camera(withLatitude: place0.latitude, longitude: place0.longitude, zoom: 8, bearing: 10, viewingAngle: 30) }
+                .bind(to: mapView.rx.cameraToAnimate)
+                .disposed(by: disposeBag)
             
+            //Enable zoom gesture
+            actionButton0.rx.tap.map { true }
+                .bind(to: mapView.rx.zoomGesturesEnabled)
+                .disposed(by: disposeBag)
             
-//            actionButton0.rx.tap.map { true }
-//                .bindTo(mapView.rx.zoomGesturesEnabled)
-//                .disposed(by: disposeBag)
-//            actionButton1.rx.tap.map { false }
-//                .bindTo(mapView.rx.zoomGesturesEnabled)
-//                .disposed(by: disposeBag)
+            //Disable zoom gesture
+            actionButton1.rx.tap.map { false }
+                .bind(to: mapView.rx.zoomGesturesEnabled)
+                .disposed(by: disposeBag)
 
         }
     }
