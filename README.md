@@ -31,25 +31,25 @@ self.view.addSubview(mapView)
 ```swift
 // Camera position
 
-mapView.rx.didChangePosition.asDriver()
-    .drive(onNext: { print("Did change camera position: \($0)") })
+mapView.rx.didChange.asDriver()
+    .drive(onNext: { print("Did change position: \($0)") })
     .disposed(by: disposeBag)
 
 // Marker tapped
 
-mapView.rx.didTapMarker.asDriver()
-    .drive(onNext: { print("Did tap marker: \($0)") })
+mapView.rx.didTapAt.asDriver()
+    .drive(onNext: { print("Did tap at coordinate: \($0)") })
     .disposed(by: disposeBag)
 
-// Update marker icon without storing selection status
+// Location update
 
-let s0 = mapView.rx.selectedMarker.asObservable()
-let s1 = s0.skip(1)
-
-Observable.zip(s0, s1) { $0 }
-    .subscribe(onNext: { (prev, cur) in
-        if let marker = prev { marker.icon = #imageLiteral(resourceName: "marker_normal") }
-        if let marker = cur { marker.icon = #imageLiteral(resourceName: "marker_selected") }
+mapView.rx.myLocation
+    .subscribe(onNext: { location in
+        if let l = location {
+            print("My location: (\(l.coordinate.latitude), \(l.coordinate.longitude))")
+        } else {
+            print("My location: nil")
+        }
     })
     .disposed(by: disposeBag)
 
@@ -117,9 +117,13 @@ mapView.rx.handleMarkerInfoWindow { marker in
 
 ```
 
+*Note:* More examples can be found at the example project from this repo!.
+
 ## Installation
 
 ### CocoaPods
+
+  *Note:* Due to the fact Google Maps is delivered as a static library, you must have CocoaPods 1.4.0 installed to install this library.
 
 1. Update your cocoapods `Podfile`:
 
@@ -132,6 +136,11 @@ mapView.rx.handleMarkerInfoWindow { marker in
     ```ruby
     pod 'RxGoogleMaps'
     ```
+
+## Example Project
+
+1. Get your own API Key a key at https://developers.google.com/maps/documentation/ios-sdk/
+2. Open the example project and set your API Key in AppDelegate
 
 ## Requirements
 
