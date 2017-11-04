@@ -16,7 +16,6 @@
 		A90F9CC31DAABB5600A3461E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90F9CC21DAABB5600A3461E /* Assets.xcassets */; };
 		A90F9CC61DAABB5600A3461E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90F9CC41DAABB5600A3461E /* LaunchScreen.storyboard */; };
 		C5B2468C4099994FDD74ED4D /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE9272F37DFF9F5256AB1B0 /* Pods_Example.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		E5792B801FA4CF1000FA823A /* key.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5792B7F1FA4CF1000FA823A /* key.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		A90F9CC51DAABB5600A3461E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A90F9CC71DAABB5600A3461E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEE9272F37DFF9F5256AB1B0 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5792B7F1FA4CF1000FA823A /* key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = key.plist; sourceTree = "<group>"; };
 		E58C77E01FABF78500521822 /* libRxGoogleMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRxGoogleMaps.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,7 +124,6 @@
 				A90F9CC21DAABB5600A3461E /* Assets.xcassets */,
 				A90F9CC41DAABB5600A3461E /* LaunchScreen.storyboard */,
 				A90F9CC71DAABB5600A3461E /* Info.plist */,
-				E5792B7F1FA4CF1000FA823A /* key.plist */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -235,7 +232,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5792B801FA4CF1000FA823A /* key.plist in Resources */,
 				A90F9CC61DAABB5600A3461E /* LaunchScreen.storyboard in Resources */,
 				A90F9CC31DAABB5600A3461E /* Assets.xcassets in Resources */,
 				A90F9CC11DAABB5600A3461E /* Main.storyboard in Resources */,

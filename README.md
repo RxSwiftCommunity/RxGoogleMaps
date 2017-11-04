@@ -139,9 +139,8 @@ mapView.rx.handleMarkerInfoWindow { marker in
 
 ## Example Project
 
-1. You first need to create a key for [GoogleMaps iOS SDK](https://developers.google.com/maps/documentation/ios-sdk/)
-2. Create a key.plist file and add to the root folder of the project.
-3. Add the key `googleMapsAPIKey` of type String and add the key you got from the first step as it's value.
+1. Get your own API Key a key at https://developers.google.com/maps/documentation/ios-sdk/
+2. Open the example project and set your API Key in AppDelegate
 
 ## Requirements
 
