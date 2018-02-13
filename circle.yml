@@ -6,6 +6,7 @@ machine:
 
 dependencies:
   override:
+    - gem update cocoapods
     - pod install
   cache_directories:
     - Pods
