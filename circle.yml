@@ -1,0 +1,19 @@
+machine:
+  xcode:
+    version: 9.1
+  environment:
+    LANG: en_US.UTF-8
+
+dependencies:
+  override:
+    - pod install
+  cache_directories:
+    - Pods
+    - ~/.cocoapods
+
+test:
+  pre:
+    - set -o pipefail
+    
+  override:
+    - xcodebuild build -scheme 'Example' -workspace 'RxGoogleMaps.xcworkspace' -sdk iphonesimulator -destination "name=iPhone 8" | xcpretty -c
