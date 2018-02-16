@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.dependency 'RxSwift', '~> 4.0'
   s.dependency 'RxCocoa', '~> 4.0'
-  s.dependency 'GoogleMaps', '~> 2.5.0'
+  s.dependency 'GoogleMaps', '~> 2.6.0'
 
   s.pod_target_xcconfig = {
     'SWIFT_VERSION' => '4.0'
