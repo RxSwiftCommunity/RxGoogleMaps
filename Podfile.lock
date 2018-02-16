@@ -6,7 +6,7 @@ PODS:
     - GoogleMaps/Base
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
-  - RxGoogleMaps (3.0):
+  - RxGoogleMaps (3.0.1):
     - GoogleMaps (~> 2.6.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
-  RxGoogleMaps: 0f2761d688b97296f14dc8a505c12a4c788e9bcc
+  RxGoogleMaps: 35ac8f51dc37e2b2ca0bf475ddd713a96ad896a6
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
 PODFILE CHECKSUM: 8926bb4f317d1813c964a7c97038b24441fbcde8
