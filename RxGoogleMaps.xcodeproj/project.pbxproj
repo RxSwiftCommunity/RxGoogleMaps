@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		090646D61EB8C350007F53BA /* RxGoogleMaps-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 090646D41EB8C350007F53BA /* RxGoogleMaps-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		096B037E1EBD1F00008387E2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096B037D1EBD1F00008387E2 /* RxCocoa.framework */; };
-		096B03801EBD1F16008387E2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096B037F1EBD1F16008387E2 /* RxSwift.framework */; };
 		A90F9CBC1DAABB5600A3461E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CBB1DAABB5600A3461E /* AppDelegate.swift */; };
 		A90F9CBE1DAABB5600A3461E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90F9CBD1DAABB5600A3461E /* ViewController.swift */; };
 		A90F9CC11DAABB5600A3461E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A90F9CBF1DAABB5600A3461E /* Main.storyboard */; };
@@ -42,8 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				096B03801EBD1F16008387E2 /* RxSwift.framework in Frameworks */,
-				096B037E1EBD1F00008387E2 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
