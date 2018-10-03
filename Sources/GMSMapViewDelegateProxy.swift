@@ -121,7 +121,7 @@ func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
 func castOrFatalError<T>(_ value: Any!) -> T {
     let maybeResult: T? = value as? T
     guard let result = maybeResult else {
-        fatalError("Failure converting from \(value) to \(T.self)")
+        fatalError("Failure converting from \(value ?? "") to \(T.self)")
     }
     
     return result

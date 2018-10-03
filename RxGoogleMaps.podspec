@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RxGoogleMaps"
-  s.version          = "3.0.1"
+  s.version          = "3.1.0"
   s.summary          = "RxSwift reactive wrapper for GoogleMaps SDK."
   s.homepage         = "https://github.com/RxSwiftCommunity/RxGoogleMaps"
   s.license          = 'MIT'
@@ -12,11 +12,11 @@ Pod::Spec.new do |s|
   s.source_files          = 'Sources/*.swift'
 
   s.static_framework = true
-  s.dependency 'RxSwift', '~> 4.0'
-  s.dependency 'RxCocoa', '~> 4.0'
-  s.dependency 'GoogleMaps', '~> 2.6.0'
+  s.dependency 'RxSwift', '~> 4.3'
+  s.dependency 'RxCocoa', '~> 4.3'
+  s.dependency 'GoogleMaps', '~> 2.7.0'
 
   s.pod_target_xcconfig = {
-    'SWIFT_VERSION' => '4.0'
+    'SWIFT_VERSION' => '4.2'
   }
 end

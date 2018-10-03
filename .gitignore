@@ -65,3 +65,5 @@ fastlane/screenshots
 fastlane/test_output
 
 Example/key.plist
+
+.DS_Store
