@@ -21,12 +21,18 @@
 import UIKit
 import GoogleMaps
 
+#if swift(>=4.2)
+    typealias ApplicationLaunchOptionsKey = UIApplication.LaunchOptionsKey
+#else
+    typealias ApplicationLaunchOptionsKey = UIApplicationLaunchOptionsKey
+#endif
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [ApplicationLaunchOptionsKey: Any]?) -> Bool {
         // TODO: Replace with your API Key from https://developers.google.com/maps/documentation/ios-sdk/
         GMSServices.provideAPIKey("YOUR-API-KEY")
         return true
