@@ -142,9 +142,9 @@ Than run `pod install`, and you should be good to go!
 
 ## Requirements
 
-- Swift 4.0
-- [RxSwift](https://github.com/ReactiveX/RxSwift) >= 4.0
-- [RxCocoa](https://github.com/ReactiveX/RxSwift) >= 4.0
+- Swift 4.2
+- [RxSwift](https://github.com/ReactiveX/RxSwift) >= 4.3
+- [RxCocoa](https://github.com/ReactiveX/RxSwift) >= 4.3
 
 ## License
 
