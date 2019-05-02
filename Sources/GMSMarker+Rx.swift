@@ -14,71 +14,69 @@ import RxCocoa
 import GoogleMaps
 
 public extension Reactive where Base: GMSMarker {
-    
-    public var position: AnyObserver<CLLocationCoordinate2D> {
+    var position: Binder<CLLocationCoordinate2D> {
         return Binder(base) { control, position in
             control.position = position
-        }.asObserver()
+        }
     }
     
-    public var snippet: AnyObserver<String?> {
+    var snippet: Binder<String?> {
         return Binder(base) { control, snippet in
             control.snippet = snippet
-        }.asObserver()
+        }
     }
     
-    public var icon: AnyObserver<UIImage?> {
+    var icon: Binder<UIImage?> {
         return Binder(base) { control, icon in
             control.icon = icon
-        }.asObserver()
+        }
     }
     
-    public var iconView: AnyObserver<UIView?> {
+    var iconView: Binder<UIView?> {
         return Binder(base) { control, iconView in
             control.iconView = iconView
-        }.asObserver()
+        }
     }
     
-    public var groundAnchor: AnyObserver<CGPoint> {
+    var groundAnchor: Binder<CGPoint> {
         return Binder(base) { control, groundAnchor in
             control.groundAnchor = groundAnchor
-        }.asObserver()
+        }
     }
     
-    public var infoWindowAnchor: AnyObserver<CGPoint> {
+    var infoWindowAnchor: Binder<CGPoint> {
         return Binder(base) { control, infoWindowAnchor in
             control.infoWindowAnchor = infoWindowAnchor
-        }.asObserver()
+        }
     }
     
-    public var draggable: AnyObserver<Bool> {
+    var draggable: Binder<Bool> {
         return Binder(base) { control, draggable in
             control.isDraggable = draggable
-        }.asObserver()
+        }
     }
     
-    public var flat: AnyObserver<Bool> {
+    var flat: Binder<Bool> {
         return Binder(base) { control, flat in
             control.isFlat = flat
-        }.asObserver()
+        }
     }
     
-    public var rotation: AnyObserver<CLLocationDegrees> {
+    var rotation: Binder<CLLocationDegrees> {
         return Binder(base) { control, rotation in
             control.rotation = rotation
-        }.asObserver()
+        }
     }
     
-    public var opacity: AnyObserver<Float> {
+    var opacity: Binder<Float> {
         return Binder(base) { control, opacity in
             control.opacity = opacity
-        }.asObserver()
+        }
     }
     
-    public var userData: AnyObserver<Any?> {
+    var userData: Binder<Any?> {
         return Binder(base) { control, userData in
             control.userData = userData
-        }.asObserver()
+        }
     }
-    
 }

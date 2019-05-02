@@ -14,35 +14,33 @@ import RxCocoa
 import GoogleMaps
 
 public extension Reactive where Base: GMSCircle {
-    
-    public var position: AnyObserver<CLLocationCoordinate2D> {
+    var position: Binder<CLLocationCoordinate2D> {
         return Binder(base) { control, position in
             control.position = position
-        }.asObserver()
+        }
     }
     
-    public var radius: AnyObserver<CLLocationDistance> {
+    var radius: Binder<CLLocationDistance> {
         return Binder(base) { control, radius in
             control.radius = radius
-        }.asObserver()
+        }
     }
     
-    public var strokeWidth: AnyObserver<CGFloat> {
+    var strokeWidth: Binder<CGFloat> {
         return Binder(base) { control, strokeWidth in
             control.strokeWidth = strokeWidth
-        }.asObserver()
+        }
     }
     
-    public var strokeColor: AnyObserver<UIColor?> {
+    var strokeColor: Binder<UIColor?> {
         return Binder(base) { control, strokeColor in
             control.strokeColor = strokeColor
-        }.asObserver()
+        }
     }
     
-    public var fillColor: AnyObserver<UIColor?> {
+    var fillColor: Binder<UIColor?> {
         return Binder(base) { control, fillColor in
             control.fillColor = fillColor
-        }.asObserver()
+        }
     }
-    
 }
