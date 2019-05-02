@@ -14,23 +14,21 @@ import RxCocoa
 import GoogleMaps
 
 public extension Reactive where Base: GMSOverlay {
-    
-    public var title: AnyObserver<String?> {
+    var title: Binder<String?> {
         return Binder(base) { control, title in
             control.title = title
-        }.asObserver()
+        }
     }
     
-    public var tappable: AnyObserver<Bool> {
+    var tappable: Binder<Bool> {
         return Binder(base) { control, tappable in
             control.isTappable = tappable
-        }.asObserver()
+        }
     }
     
-    public var zIndex: AnyObserver<Int32> {
+    var zIndex: Binder<Int32> {
         return Binder(base) { control, zIndex in
             control.zIndex = zIndex
-        }.asObserver()
+        }
     }
-    
 }

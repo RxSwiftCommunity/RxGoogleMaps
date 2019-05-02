@@ -14,23 +14,21 @@ import RxCocoa
 import GoogleMaps
 
 public extension Reactive where Base: GMSPolygon {
-    
-    public var strokeWidth: AnyObserver<CGFloat> {
+    var strokeWidth: Binder<CGFloat> {
         return Binder(base) { control, strokeWidth in
             control.strokeWidth = strokeWidth
-        }.asObserver()
+        }
     }
     
-    public var strokeColor: AnyObserver<UIColor?> {
+    var strokeColor: Binder<UIColor?> {
         return Binder(base) { control, strokeColor in
             control.strokeColor = strokeColor
-        }.asObserver()
+        }
     }
     
-    public var fillColor: AnyObserver<UIColor?> {
+    var fillColor: Binder<UIColor?> {
         return Binder(base) { control, fillColor in
             control.fillColor = fillColor
-        }.asObserver()
+        }
     }
-    
 }

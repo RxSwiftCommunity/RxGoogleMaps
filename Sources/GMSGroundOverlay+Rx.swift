@@ -14,35 +14,33 @@ import RxCocoa
 import GoogleMaps
 
 public extension Reactive where Base: GMSGroundOverlay {
-    
-    public var position: AnyObserver<CLLocationCoordinate2D> {
+    var position: Binder<CLLocationCoordinate2D> {
         return Binder(base) { control, position in
             control.position = position
-        }.asObserver()
+        }
     }
     
-    public var anchor: AnyObserver<CGPoint> {
+    var anchor: Binder<CGPoint> {
         return Binder(base) { control, anchor in
             control.anchor = anchor
-        }.asObserver()
+        }
     }
     
-    public var icon: AnyObserver<UIImage?> {
+    var icon: Binder<UIImage?> {
         return Binder(base) { control, icon in
             control.icon = icon
-        }.asObserver()
+        }
     }
     
-    public var opacity: AnyObserver<Float> {
+    var opacity: Binder<Float> {
         return Binder(base) { control, opacity in
             control.opacity = opacity
-        }.asObserver()
+        }
     }
     
-    public var bearing: AnyObserver<CLLocationDirection> {
+    var bearing: Binder<CLLocationDirection> {
         return Binder(base) { control, bearing in
             control.bearing = bearing
-        }.asObserver()
+        }
     }
-    
 }
