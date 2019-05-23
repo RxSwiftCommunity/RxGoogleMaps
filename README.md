@@ -1,6 +1,6 @@
 # RxGoogleMaps
 [![CircleCI](https://img.shields.io/circleci/project/github/RxSwiftCommunity/RxGoogleMaps/master.svg)](https://circleci.com/gh/RxSwiftCommunity/RxGoogleMaps/tree/master)
-![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)
 [![Version](https://img.shields.io/cocoapods/v/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
 [![License](https://img.shields.io/cocoapods/l/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
 [![Platform](https://img.shields.io/cocoapods/p/RxGoogleMaps.svg?style=flat)](http://cocoapods.org/pods/RxGoogleMaps)
@@ -142,9 +142,9 @@ Than run `pod install`, and you should be good to go!
 
 ## Requirements
 
-- Swift 4.2
-- [RxSwift](https://github.com/ReactiveX/RxSwift) >= 4.3
-- [RxCocoa](https://github.com/ReactiveX/RxSwift) >= 4.3
+- Swift 5.0
+- [RxSwift](https://github.com/ReactiveX/RxSwift) >= 5.0
+- [RxCocoa](https://github.com/ReactiveX/RxSwift) >= 5.0
 
 ## License
 
