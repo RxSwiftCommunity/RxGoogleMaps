@@ -333,7 +333,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oo-v.RxGoogleMaps";
 				PRODUCT_NAME = RxGoogleMaps;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -355,7 +354,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oo-v.RxGoogleMaps";
 				PRODUCT_NAME = RxGoogleMaps;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -491,7 +489,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oo-v.RxGoogleMaps.Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -506,7 +503,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oo-v.RxGoogleMaps.Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
