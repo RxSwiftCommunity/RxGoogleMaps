@@ -2,7 +2,7 @@ platform :ios, '9.0'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Example' do
-    pod 'RxGoogleMaps', :path => './'
+    pod 'RxGoogleMaps', '4.2.0'
 end
 
 post_install do |installer|
