@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.static_framework = true
   s.dependency 'RxSwift', '~> 6'
   s.dependency 'RxCocoa', '~> 6'
-  s.dependency 'GoogleMaps', '~> 4'
+  s.dependency 'GoogleMaps', '~> 5'
 end
