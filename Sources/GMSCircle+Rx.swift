@@ -7,12 +7,14 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
+#endif //canImport(UIKit)
 import CoreLocation
 import RxSwift
 import RxCocoa
 import GoogleMaps
-
+#if canImport(UIKit)
 public extension Reactive where Base: GMSCircle {
     var position: Binder<CLLocationCoordinate2D> {
         return Binder(base) { control, position in
@@ -44,3 +46,4 @@ public extension Reactive where Base: GMSCircle {
         }
     }
 }
+#endif //canImport(UIKit)
