@@ -12,13 +12,8 @@ Pod::Spec.new do |s|
   s.source_files          = 'Sources/*.swift'
 
   s.static_framework = true
-<<<<<<< HEAD
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
   s.dependency 'GoogleMaps', '~> 5'
-=======
-  s.dependency 'RxSwift', '~> 5'
-  s.dependency 'RxCocoa', '~> 5'
-  s.dependency 'GoogleMaps', '~> 4'
->>>>>>> 1a68f4c (Update RxGoogleMaps.podspec)
+
 end
