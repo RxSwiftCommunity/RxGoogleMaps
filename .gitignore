@@ -67,3 +67,6 @@ fastlane/test_output
 Example/key.plist
 
 .DS_Store
+
+.swiftpm/
+Package.resolved

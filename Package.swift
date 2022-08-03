@@ -13,7 +13,7 @@ let package = Package(
             targets: ["RxGoogleMaps"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/YAtechnologies/GoogleMaps-SP.git", .upToNextMinor(from: "6.0.0")),
+        .package(url: "https://github.com/sk-chanch/GoogleMaps-SPM", branch: "main"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMinor(from: "6.5.0"))
     ],
     targets: [
@@ -24,7 +24,7 @@ let package = Package(
             dependencies: [
                 "RxSwift",
                 .product(name: "RxCocoa", package: "RxSwift"),
-                .product(name: "GoogleMaps", package: "GoogleMaps-SP")
+                .product(name: "GoogleMaps", package: "GoogleMaps-SPM")
                 
             ],
             path: "Sources"

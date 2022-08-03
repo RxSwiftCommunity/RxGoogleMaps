@@ -1,23 +1,25 @@
 {
-  "pins" : [
-    {
-      "identity" : "googlemaps-sp",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/YAtechnologies/GoogleMaps-SP.git",
-      "state" : {
-        "revision" : "0e4d95a5844c2a40381bf659fff84cf66699e17b",
-        "version" : "6.0.0"
+  "object": {
+    "pins": [
+      {
+        "package": "GoogleMaps",
+        "repositoryURL": "https://github.com/sk-chanch/GoogleMaps-SPM",
+        "state": {
+          "branch": "main",
+          "revision": "500789d820462347565b042cfc131a05f5ca798c",
+          "version": null
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "b4307ba0b6425c0ba4178e138799946c3da594f8",
+          "version": "6.5.0"
+        }
       }
-    },
-    {
-      "identity" : "rxswift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ReactiveX/RxSwift.git",
-      "state" : {
-        "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
-        "version" : "6.5.0"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }
