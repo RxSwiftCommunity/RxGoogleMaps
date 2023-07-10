@@ -122,6 +122,16 @@ mapView.rx.handleMarkerInfoWindow { marker in
 
 ## Installation
 
+### Swift Package Manager
+
+Add as a dependecy to your Swift Package
+
+```swift
+dependencies: [
+  .package(url: "https://github.com/RxSwiftCommunity/RxGoogleMaps.git", branch: "master")
+]
+```
+
 ### CocoaPods
 
   *Note:* Due to the fact Google Maps is delivered as a static library, you must have CocoaPods 1.4.0 installed to install this library.
