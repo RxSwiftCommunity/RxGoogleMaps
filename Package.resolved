@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "GoogleMaps",
+        "repositoryURL": "https://github.com/gomore/GoogleMaps-SPM.git",
+        "state": {
+          "branch": null,
+          "revision": "50acb0007868133ef9039c67ac04f6e4003c2b12",
+          "version": "7.3.0"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "9dcaa4b333db437b0fbfaf453fad29069044a8b4",
+          "version": "6.6.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
