@@ -15,7 +15,7 @@ jobs:
           command: set -o pipefail 
       - run: 
           name: XCode Build Example
-          command: xcodebuild build -scheme 'Example' -workspace 'RxGoogleMaps.xcworkspace' -sdk iphonesimulator -destination "name=iPhone 8" | xcpretty -c
+          command: xcodebuild build -scheme 'Example' -workspace 'RxGoogleMaps.xcworkspace' -sdk iphonesimulator -destination "name=iPhone 14 Pro Max" | xcpretty -c
 
   "RxGoogleMaps Release":
     working_directory: ~/RxSwiftCommunity/RxGoogleMaps
